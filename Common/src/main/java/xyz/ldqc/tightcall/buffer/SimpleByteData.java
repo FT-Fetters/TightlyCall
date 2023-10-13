@@ -55,6 +55,10 @@ public class SimpleByteData extends ByteData {
         this(DEFAULT_INIT_CAPACITY, DEFAULT_MAX_CAPACITY);
     }
 
+    public SimpleByteData(int capacity) {
+        this(capacity, DEFAULT_MAX_CAPACITY);
+    }
+
     public SimpleByteData(int capacity, int maxCapacity) {
         if (capacity > maxCapacity) {
             try {
@@ -65,9 +69,9 @@ public class SimpleByteData extends ByteData {
         }
         this.hp = alloc(capacity);
         this.maxCapacity = maxCapacity;
-        head = -1;
-        tail = -1;
-        readPos = -1;
+        head = 0;
+        tail = 0;
+        readPos = 0;
         size = 0;
     }
 
@@ -122,13 +126,14 @@ public class SimpleByteData extends ByteData {
 
     /**
      * 扩大存储字节数组
+     *
      * @param minCap 最小容量
      */
     private void grow(int minCap) {
         minCap = Math.min(minCap, maxCapacity);
         int n = IntegerUtils.setAllBitsToOne(minCap);
         // 将
-        int targetCap = n + n >> 1;
+        int targetCap = n + (n >> 1);
         // 分配新的字节数组
         byte[] _hp = alloc(targetCap);
         // 判断是否超过末尾循环
@@ -153,7 +158,9 @@ public class SimpleByteData extends ByteData {
     @Override
     public ByteData writeByte(byte b) {
         ensureCapEnough(size + 1);
-        this.setByte((head + 1) % hp.length, b);
+        this.setByte((tail + 1) % hp.length, b);
+        size++;
+        tail = (tail + 1) % hp.length;
         return this;
     }
 
@@ -165,6 +172,7 @@ public class SimpleByteData extends ByteData {
 
     /**
      * 确保hp数组容量足够
+     *
      * @param size 需要的大小
      */
     private void ensureCapEnough(int size) {
@@ -175,13 +183,13 @@ public class SimpleByteData extends ByteData {
                 throw new RuntimeException(e);
             }
         }
-        if (size > this.size) {
+        if (size > this.hp.length) {
             grow(size);
         }
     }
 
-    private void setByte(int i, byte b){
-        if (i > hp.length - 1){
+    private void setByte(int i, byte b) {
+        if (i > hp.length - 1) {
             try {
                 throw new ByteDataException("index out of range");
             } catch (ByteDataException e) {
