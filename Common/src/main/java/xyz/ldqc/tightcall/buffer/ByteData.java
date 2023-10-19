@@ -10,4 +10,6 @@ public abstract class ByteData implements Comparable<ByteData>{
     public abstract ByteData writeByte(byte b);
     public abstract ByteData writeBytes(byte[] bs);
 
+    public abstract byte readByte();
+
 }

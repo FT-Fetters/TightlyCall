@@ -25,12 +25,7 @@ public class SimpleByteData extends ByteData {
     /**
      * 最大空间
      */
-    private int maxCapacity;
-
-    /**
-     * 数据头指针
-     */
-    private int head;
+    private final int maxCapacity;
 
     /**
      * 数据尾指针
@@ -69,8 +64,7 @@ public class SimpleByteData extends ByteData {
         }
         this.hp = alloc(capacity);
         this.maxCapacity = maxCapacity;
-        head = 0;
-        tail = 0;
+        tail = -1;
         readPos = 0;
         size = 0;
     }
@@ -97,7 +91,6 @@ public class SimpleByteData extends ByteData {
         hp = alloc(byteLen);
         // 从ByteBuffer获取字节数组存入hp中
         byteBuffer.get(hp, 0, remaining);
-        head = 0;
         tail = remaining - 1;
         readPos = 0;
         this.maxCapacity = maxCapacity;
@@ -132,26 +125,24 @@ public class SimpleByteData extends ByteData {
     private void grow(int minCap) {
         minCap = Math.min(minCap, maxCapacity);
         int n = IntegerUtils.setAllBitsToOne(minCap);
-        // 将
+        // 将目标大小设为原来的1.5倍
         int targetCap = n + (n >> 1);
         // 分配新的字节数组
         byte[] _hp = alloc(targetCap);
         // 判断是否超过末尾循环
-        if (head + size > hp.length - 1) {
+        if (readPos > tail) {
             // 尾部长度
-            int tailLen = hp.length - head;
+            int tailLen = hp.length - readPos;
             // 复制第一部分
-            System.arraycopy(hp, head, _hp, 0, tailLen);
+            System.arraycopy(hp, readPos, _hp, 0, tailLen);
             // 复制第二部分
-            System.arraycopy(hp, head, _hp, tailLen - 1, size - tailLen);
-            if (readPos < head) readPos = tailLen + readPos;
-            else readPos = readPos - head;
+            System.arraycopy(hp, 0, _hp, tailLen , size - tailLen);
+            readPos = 0;
         } else {
-            System.arraycopy(hp, head, _hp, 0, size);
-            readPos = readPos - head;
+            System.arraycopy(hp, readPos, _hp, 0, size);
+            readPos = 0;
         }
         hp = _hp;
-        head = 0;
         tail = size - 1;
     }
 
@@ -168,6 +159,15 @@ public class SimpleByteData extends ByteData {
     public ByteData writeBytes(byte[] bs) {
         ensureCapEnough(size + bs.length);
         return null;
+    }
+
+    @Override
+    public byte readByte() {
+        checkReadableByte(1);
+        byte b = getByte(readPos);
+        size--;
+        readPos = (readPos + 1) % hp.length;
+        return b;
     }
 
     /**
@@ -188,6 +188,27 @@ public class SimpleByteData extends ByteData {
         }
     }
 
+    /**
+     * 确定一定范围内的数据长度可读
+     *
+     * @param readByteLen 读取字节长度
+     */
+    private void checkReadableByte(int readByteLen) {
+        if (readByteLen > size) {
+            try {
+                throw new ByteDataException("illegal read length");
+            } catch (ByteDataException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    /**
+     * 设置某位置的字节内容
+     *
+     * @param i 索引位置
+     * @param b 要写入的字节
+     */
     private void setByte(int i, byte b) {
         if (i > hp.length - 1) {
             try {
@@ -197,5 +218,16 @@ public class SimpleByteData extends ByteData {
             }
         }
         hp[i] = b;
+    }
+
+    private byte getByte(int i) {
+        if (i > hp.length - 1) {
+            try {
+                throw new ByteDataException("index out of size");
+            } catch (ByteDataException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return hp[i];
     }
 }
