@@ -12,4 +12,10 @@ public abstract class ByteData implements Comparable<ByteData>{
 
     public abstract byte readByte();
 
+    public abstract void readBytes(byte[] bytes);
+
+    public abstract byte[] readBytes(int len);
+
+    public abstract byte[] readBytes();
+
 }

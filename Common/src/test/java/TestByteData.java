@@ -1,10 +1,12 @@
+import org.junit.Test;
 import xyz.ldqc.tightcall.buffer.ByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.exception.ByteDataException;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
-public class Test {
+public class TestByteData {
 
     @org.junit.Test
     public void testByteBuffet() {
@@ -29,7 +31,7 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testByteData() throws ByteDataException {
+    public void testByteData() {
         ByteBuffer buffer = ByteBuffer.allocate(10);
         // 写入数据到ByteBuffer
         buffer.put((byte) 1);
@@ -37,6 +39,7 @@ public class Test {
         buffer.put((byte) 3);
         buffer.put((byte) 4);
         ByteData byteData = new SimpleByteData(buffer);
+        byteData.writeByte((byte) 5);
     }
 
     @org.junit.Test
@@ -74,5 +77,68 @@ public class Test {
         System.out.println("byteData.readByte() = " + byteData.readByte());
 
         System.out.println("byteData.readByte() = " + byteData.readByte());
+    }
+
+    @org.junit.Test
+    public void testByteDataWriteBytes(){
+        ByteData byteData = new SimpleByteData(4);
+
+        byte[] bytes1 = new byte[]{1,2,3};
+
+        byte[] bytes2 = new byte[]{4, 5};
+
+
+        byteData.writeBytes(bytes1).writeBytes(bytes2);
+
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+
+
+        byteData.writeBytes(bytes1);
+
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+
+        byteData.writeBytes(bytes1).writeBytes(bytes1);
+
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+        System.out.println(byteData.readByte());
+
+        System.out.println(byteData.readByte());
+
+
+
+        byteData.writeBytes(bytes2);
+        System.out.println("byteData = " + byteData);
+    }
+
+    @Test
+    public void testByteDataReadBytes(){
+        ByteData byteData = new SimpleByteData(4);
+
+        byte[] bytes = new byte[]{1,2,3,4,5};
+
+        byteData.writeBytes(bytes);
+
+        byte[] readBytes = new byte[4];
+
+        byteData.readBytes(readBytes);
+
+        System.out.println(Arrays.toString(readBytes));
+
+        byteData.writeBytes(bytes);
+
+        byteData.readBytes(readBytes);
+
+        System.out.println(Arrays.toString(readBytes));
+
+        System.out.println(Arrays.toString(byteData.readBytes(1)));
+        System.out.println(Arrays.toString(byteData.readBytes(1)));
+
+
     }
 }

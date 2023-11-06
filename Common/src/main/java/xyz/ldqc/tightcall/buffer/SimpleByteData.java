@@ -130,18 +130,17 @@ public class SimpleByteData extends ByteData {
         // 分配新的字节数组
         byte[] _hp = alloc(targetCap);
         // 判断是否超过末尾循环
-        if (readPos > tail) {
+        if (tail >= 0 && readPos > tail) {
             // 尾部长度
             int tailLen = hp.length - readPos;
             // 复制第一部分
             System.arraycopy(hp, readPos, _hp, 0, tailLen);
             // 复制第二部分
-            System.arraycopy(hp, 0, _hp, tailLen , size - tailLen);
-            readPos = 0;
+            System.arraycopy(hp, 0, _hp, tailLen, size - tailLen);
         } else {
             System.arraycopy(hp, readPos, _hp, 0, size);
-            readPos = 0;
         }
+        readPos = 0;
         hp = _hp;
         tail = size - 1;
     }
@@ -158,7 +157,9 @@ public class SimpleByteData extends ByteData {
     @Override
     public ByteData writeBytes(byte[] bs) {
         ensureCapEnough(size + bs.length);
-        return null;
+        appendBytes(bs);
+        size+=bs.length;
+        return this;
     }
 
     @Override
@@ -168,6 +169,35 @@ public class SimpleByteData extends ByteData {
         size--;
         readPos = (readPos + 1) % hp.length;
         return b;
+    }
+
+    @Override
+    public void readBytes(byte[] bytes) {
+        int readLen = bytes.length;
+        checkReadableByte(readLen);
+        doReadBytes(bytes);
+        refreshRead(readLen);
+    }
+
+    /**
+     * 读取指定长度的数据并返回新的字节数组
+     * @param len 尧都区的长度
+     */
+    @Override
+    public byte[] readBytes(int len) {
+        checkReadableByte(len);
+        byte[] allocBytes = alloc(len);
+        doReadBytes(allocBytes);
+        refreshRead(len);
+        return allocBytes;
+    }
+
+    /**
+     * 读取所有数据并返回新的字节数组
+     */
+    @Override
+    public byte[] readBytes() {
+        return readBytes(size);
     }
 
     /**
@@ -229,5 +259,80 @@ public class SimpleByteData extends ByteData {
             }
         }
         return hp[i];
+    }
+
+
+    /**
+     * 执行读入操作
+     * @param bytes 要存入的数组
+     */
+    private void doReadBytes(byte[] bytes){
+        int readLen = bytes.length;
+        // 读取的数量从读指针开始如果超过了hp的大小，则需要分两部分读取
+        if (readPos + readLen > hp.length){
+            // 复制第一部分
+            int firstPartLen = hp.length - readPos;
+            System.arraycopy(hp, readPos, bytes, 0 ,firstPartLen);
+            // 复制第二部分
+            System.arraycopy(hp, 0, bytes, firstPartLen, readLen - firstPartLen);
+        }else {
+            // 因为没有被截断，可以直接全量复制
+            System.arraycopy(hp, readPos, bytes, 0, readLen);
+        }
+    }
+
+    /**
+     * 追加字节数组
+     */
+    private void appendBytes(byte[] bytes) {
+        if (tail >= readPos) {
+            // 如果尾指针在读指针的右边，则有可能会把要追加的数据分为两部分
+            if (tail + bytes.length >= hp.length){
+                // 如果超出则需要分两部分进行追加
+                int firstPartLen = hp.length - (tail + 1);
+                int _tail = bytes.length - firstPartLen - 1;
+                // 填充第一部分的的字节
+                fillBytes(tail + 1, bytes, 0, firstPartLen - 1);
+                // 填充剩余字节
+                fillBytes(0, bytes, firstPartLen, bytes.length - 1);
+                tail = _tail;
+            }else {
+                // 无需截断，直接填充
+                fillBytes(tail + 1, bytes, 0, bytes.length - 1);
+                tail = tail + bytes.length;
+            }
+        }else {
+            // 无需截断，直接填充
+            fillBytes(tail + 1, bytes, 0, bytes.length - 1);
+            tail = tail + bytes.length;
+        }
+    }
+
+    /**
+     * 填充字节
+     * @param startIndex hp开始的位置（包括）
+     * @param src 要填充的字节数组
+     * @param from 开始的位置
+     * @param to 结束的位置
+     */
+    private void fillBytes(int startIndex, byte[] src, int from, int to) {
+        int len = to - from + 1;
+        // 判断开始的位置与填充的长度是否合法
+        if (len < 0 || from < 0 || to >= src.length) {
+            try {
+                throw new ByteDataException("fill failed");
+            } catch (ByteDataException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.arraycopy(src, from, hp, startIndex, len);
+    }
+
+    /**
+     * 刷新读取指定长度后的信息
+     */
+    private void refreshRead(int readLen){
+        readPos = (readPos + readLen)%hp.length;
+        size -= readLen;
     }
 }
