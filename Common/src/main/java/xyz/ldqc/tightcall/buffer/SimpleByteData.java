@@ -200,6 +200,17 @@ public class SimpleByteData extends ByteData {
         return readBytes(size);
     }
 
+    @Override
+    public int getInt() {
+        byte[] bytes = readBytes(4);
+        return _getInt(bytes);
+    }
+
+    @Override
+    public String toString() {
+        return null;
+    }
+
     /**
      * 确保hp数组容量足够
      *
@@ -334,5 +345,20 @@ public class SimpleByteData extends ByteData {
     private void refreshRead(int readLen){
         readPos = (readPos + readLen)%hp.length;
         size -= readLen;
+    }
+
+    private int _getInt(byte[] bytes){
+        int len = bytes.length;
+        if (len != 4) {
+            try {
+                throw new ByteDataException("Illegal byte array length");
+            } catch (ByteDataException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return bytes[3] & 0xFF |
+                (bytes[2] & 0xFF) << 8 |
+                (bytes[1] & 0xFF) << 16 |
+                (bytes[0] & 0xFF) << 24;
     }
 }

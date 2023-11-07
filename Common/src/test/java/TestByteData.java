@@ -1,7 +1,6 @@
 import org.junit.Test;
 import xyz.ldqc.tightcall.buffer.ByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
-import xyz.ldqc.tightcall.exception.ByteDataException;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -80,10 +79,10 @@ public class TestByteData {
     }
 
     @org.junit.Test
-    public void testByteDataWriteBytes(){
+    public void testByteDataWriteBytes() {
         ByteData byteData = new SimpleByteData(4);
 
-        byte[] bytes1 = new byte[]{1,2,3};
+        byte[] bytes1 = new byte[]{1, 2, 3};
 
         byte[] bytes2 = new byte[]{4, 5};
 
@@ -111,16 +110,15 @@ public class TestByteData {
         System.out.println(byteData.readByte());
 
 
-
         byteData.writeBytes(bytes2);
         System.out.println("byteData = " + byteData);
     }
 
     @Test
-    public void testByteDataReadBytes(){
+    public void testByteDataReadBytes() {
         ByteData byteData = new SimpleByteData(4);
 
-        byte[] bytes = new byte[]{1,2,3,4,5};
+        byte[] bytes = new byte[]{1, 2, 3, 4, 5};
 
         byteData.writeBytes(bytes);
 
@@ -139,6 +137,17 @@ public class TestByteData {
         System.out.println(Arrays.toString(byteData.readBytes(1)));
         System.out.println(Arrays.toString(byteData.readBytes(1)));
 
+    }
+
+    @Test
+    public void testByteDataGetInt() {
+        ByteData byteData = new SimpleByteData();
+
+        byte[] bytes = new byte[]{0, 0, 1, 120};
+
+        byteData.writeBytes(bytes);
+
+        System.out.println(byteData.getInt());
 
     }
 }

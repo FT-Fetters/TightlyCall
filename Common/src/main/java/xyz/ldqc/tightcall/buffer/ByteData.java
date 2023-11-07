@@ -18,4 +18,8 @@ public abstract class ByteData implements Comparable<ByteData>{
 
     public abstract byte[] readBytes();
 
+    public abstract int getInt();
+
+    public abstract String toString();
+
 }
