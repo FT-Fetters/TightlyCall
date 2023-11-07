@@ -150,4 +150,23 @@ public class TestByteData {
         System.out.println(byteData.getInt());
 
     }
+
+    @Test
+    public void testByteDataToString(){
+        String testStr = "我ai你。~";
+
+        byte[] bytes = testStr.getBytes();
+
+        ByteData byteData = new SimpleByteData();
+
+        testStr = "123123dada";
+
+        byteData.writeBytes(bytes);
+
+        bytes = testStr.getBytes();
+
+        byteData.writeBytes(bytes);
+
+        System.out.println(byteData.readString());
+    }
 }

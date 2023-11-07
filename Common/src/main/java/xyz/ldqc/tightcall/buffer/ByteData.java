@@ -20,6 +20,6 @@ public abstract class ByteData implements Comparable<ByteData>{
 
     public abstract int getInt();
 
-    public abstract String toString();
+    public abstract String readString();
 
 }

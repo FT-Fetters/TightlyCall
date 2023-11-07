@@ -207,8 +207,14 @@ public class SimpleByteData extends ByteData {
     }
 
     @Override
+    public String readString() {
+        return toString();
+    }
+
+    @Override
     public String toString() {
-        return null;
+        byte[] bytes = this.readBytes();
+        return new String(bytes);
     }
 
     /**
