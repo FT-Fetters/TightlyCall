@@ -212,6 +212,11 @@ public class SimpleByteData extends ByteData {
     }
 
     @Override
+    public int remaining() {
+        return this.size;
+    }
+
+    @Override
     public String toString() {
         byte[] bytes = this.readBytes();
         return new String(bytes);
