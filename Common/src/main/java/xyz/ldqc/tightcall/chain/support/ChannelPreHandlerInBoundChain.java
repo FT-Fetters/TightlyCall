@@ -87,7 +87,7 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         // 版本号
         byte version = byteData.readByte();
         // 请求序列号
-        byte[] serialNumber = byteData.readBytes(3);
+        int serialNumber = byteData.getInt();
         // 正文长度
         int contentLen = byteData.getInt();
         CacheBody cacheBody = new CacheBody(contentLen, version, serialNumber);
@@ -148,13 +148,13 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
 
         private byte version;
 
-        private byte[] serialNumber;
+        private int serialNumber;
 
         public CacheBody(){
 
         }
 
-        public CacheBody(int len, byte version, byte[] serialNumber){
+        public CacheBody(int len, byte version, int serialNumber){
             this.len = len;
             this.version = version;
             this.serialNumber = serialNumber;
@@ -192,11 +192,11 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             this.version = version;
         }
 
-        public byte[] getSerialNumber() {
+        public int getSerialNumber() {
             return serialNumber;
         }
 
-        public void setSerialNumber(byte[] serialNumber) {
+        public void setSerialNumber(int serialNumber) {
             this.serialNumber = serialNumber;
         }
     }
