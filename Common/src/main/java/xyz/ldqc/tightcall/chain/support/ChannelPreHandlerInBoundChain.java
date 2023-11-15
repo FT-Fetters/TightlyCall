@@ -2,7 +2,7 @@ package xyz.ldqc.tightcall.chain.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.ldqc.tightcall.buffer.ByteData;
+import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.InboundChain;
@@ -52,9 +52,9 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         SocketChannel socketChannel = ((SocketChannel) channel);
         CacheBody cacheBody = cacheMap.get(channel);
         // 读取数据
-        ByteData byteData = readDataFromChanel(socketChannel);
+        AbstractByteData abstractByteData = readDataFromChanel(socketChannel);
         // 如果回传的数据是Null代表断开连接
-        if (byteData == null){
+        if (abstractByteData == null){
             selectionKey.cancel();
             cacheMap.remove(channel);
             try {
@@ -66,27 +66,27 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         }
         if (cacheBody == null){
             // 缓存为空代表是第一批的数据
-            handleHeadData(socketChannel, byteData);
+            handleHeadData(socketChannel, abstractByteData);
         }else if (cacheBody.getLen() == -1){
             // 已读取过但请求头未读取完成
-            ByteData bodyData = cacheBody.getTmpData();
-            bodyData.writeBytes(byteData.readBytes());
+            AbstractByteData bodyData = cacheBody.getTmpData();
+            bodyData.writeBytes(abstractByteData.readBytes());
             handleHeadData(socketChannel, bodyData);
         }else {
-            appendData(socketChannel, byteData);
+            appendData(socketChannel, abstractByteData);
         }
     }
 
-    private void handleHeadData(SocketChannel socketChannel, ByteData byteData){
-        if (byteData.remaining() < ProtocolConstant.PROTOCOL_HEAD_LEN){
+    private void handleHeadData(SocketChannel socketChannel, AbstractByteData abstractByteData){
+        if (abstractByteData.remaining() < ProtocolConstant.PROTOCOL_HEAD_LEN){
             // 读取到的字节长度小于PROTOCOL_HEAD_LEN代表首次的数据
-            logger.debug("byte data len: {}, str: {}", byteData.remaining(), byteData);
+            logger.debug("byte data len: {}, str: {}", abstractByteData.remaining(), abstractByteData);
             CacheBody cacheBody = new CacheBody();
-            cacheBody.setTmpData(byteData);
+            cacheBody.setTmpData(abstractByteData);
             cacheMap.put(socketChannel, cacheBody);
             return;
         }
-        byte[] magicNumber = byteData.readBytes(ProtocolConstant.MAGIC_NUMBER.length);
+        byte[] magicNumber = abstractByteData.readBytes(ProtocolConstant.MAGIC_NUMBER.length);
         // 判断魔数是否相同，否则协议不统一则直接抛出异常
         if (!ByteUtil.compareByteArray(magicNumber, ProtocolConstant.MAGIC_NUMBER)){
             try {
@@ -98,23 +98,23 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             }
         }
         // 版本号
-        byte version = byteData.readByte();
+        byte version = abstractByteData.readByte();
         // 请求序列号
-        int serialNumber = byteData.getInt();
+        int serialNumber = abstractByteData.getInt();
         // 正文长度
-        int contentLen = byteData.getInt();
+        int contentLen = abstractByteData.getInt();
         CacheBody cacheBody = new CacheBody(contentLen, version, serialNumber);
-        if (byteData.remaining() > 0){
-            cacheBody.setData(byteData);
+        if (abstractByteData.remaining() > 0){
+            cacheBody.setData(abstractByteData);
             // 如果一次性读取则直接doChain
-            if (byteData.remaining() == contentLen){
+            if (abstractByteData.remaining() == contentLen){
                 cacheMap.remove(socketChannel);
                 nextChain.doChain(socketChannel, cacheBody);
             }
         }
     }
 
-    private void appendData(SocketChannel socketChannel, ByteData byteData){
+    private void appendData(SocketChannel socketChannel, AbstractByteData abstractByteData){
         CacheBody cacheBody = cacheMap.get(socketChannel);
         if (cacheBody == null){
             try {
@@ -123,8 +123,8 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
                 throw new RuntimeException(e);
             }
         }
-        ByteData bodyData = cacheBody.getData();
-        bodyData.writeBytes(byteData.readBytes());
+        AbstractByteData bodyData = cacheBody.getData();
+        bodyData.writeBytes(abstractByteData.readBytes());
         if (bodyData.remaining() == cacheBody.getLen()){
             cacheMap.remove(socketChannel);
             nextChain.doChain(socketChannel, cacheBody);
@@ -134,7 +134,7 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
     /**
      * 从channel读取数据
      */
-    private ByteData readDataFromChanel(SocketChannel socketChannel){
+    private AbstractByteData readDataFromChanel(SocketChannel socketChannel){
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         try {
             if (socketChannel.read(buffer) == -1) {
@@ -156,9 +156,9 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
     private static class CacheBody {
         private int len = -1;
 
-        private ByteData data;
+        private AbstractByteData data;
 
-        private ByteData tmpData;
+        private AbstractByteData tmpData;
 
         private byte version;
 
@@ -182,19 +182,19 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             this.len = len;
         }
 
-        public ByteData getData() {
+        public AbstractByteData getData() {
             return data;
         }
 
-        public void setData(ByteData data) {
+        public void setData(AbstractByteData data) {
             this.data = data;
         }
 
-        public ByteData getTmpData() {
+        public AbstractByteData getTmpData() {
             return tmpData;
         }
 
-        public void setTmpData(ByteData tmpData) {
+        public void setTmpData(AbstractByteData tmpData) {
             this.tmpData = tmpData;
         }
 

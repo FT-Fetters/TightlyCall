@@ -1,19 +1,18 @@
 package xyz.ldqc.tightcall.buffer;
 
-import java.nio.ByteBuffer;
-
 /**
  * java.nio.ByteBuffer 增强类
+ * @author Fetters
  */
-public abstract class ByteData implements Comparable<ByteData>{
+public abstract class AbstractByteData implements Comparable<AbstractByteData>{
 
     /**
      * 写入单个字节
      * @param b 要写入的字节
      * @return self
      */
-    public abstract ByteData writeByte(byte b);
-    public abstract ByteData writeBytes(byte[] bs);
+    public abstract AbstractByteData writeByte(byte b);
+    public abstract AbstractByteData writeBytes(byte[] bs);
 
     public abstract byte readByte();
 
