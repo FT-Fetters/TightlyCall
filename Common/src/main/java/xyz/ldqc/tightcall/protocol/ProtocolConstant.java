@@ -23,7 +23,7 @@ public class ProtocolConstant {
      * 协议请求头的长度<br/>
      * 魔数6 版本号1 请求序号3 请求长度4
      */
-    public static final int PROTOCOL_HEAD_LEN = 6 + 1 + 3 + 4;
+    public static final int PROTOCOL_HEAD_LEN = 6 + 1 + 4 + 4;
 
 
 }

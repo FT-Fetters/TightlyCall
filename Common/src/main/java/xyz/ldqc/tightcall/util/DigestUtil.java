@@ -2,11 +2,16 @@ package xyz.ldqc.tightcall.util;
 
 import xyz.ldqc.tightcall.exception.DigestException;
 
+/**
+ * @author Fetters
+ */
 public class DigestUtil {
+
+    private static final int INT_OCCUPIES_BYTE_LEN = 4;
 
     public static int byte2int(byte[] bytes) {
         int len = bytes.length;
-        if (len != 4) {
+        if (len != INT_OCCUPIES_BYTE_LEN) {
             try {
                 throw new DigestException("Illegal byte array length");
             } catch (DigestException e) {

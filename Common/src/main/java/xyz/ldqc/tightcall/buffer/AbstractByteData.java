@@ -1,7 +1,7 @@
 package xyz.ldqc.tightcall.buffer;
 
 /**
- * java.nio.ByteBuffer 增强类
+ * 字节数组 增强类
  * @author Fetters
  */
 public abstract class AbstractByteData implements Comparable<AbstractByteData>{
