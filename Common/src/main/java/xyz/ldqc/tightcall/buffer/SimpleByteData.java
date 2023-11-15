@@ -5,7 +5,10 @@ import xyz.ldqc.tightcall.util.IntegerUtils;
 
 import java.nio.ByteBuffer;
 
-public class SimpleByteData extends ByteData {
+/**
+ * @author Fetters
+ */
+public class SimpleByteData extends AbstractByteData {
 
     /**
      * 默认最大空间
@@ -104,7 +107,7 @@ public class SimpleByteData extends ByteData {
      * @param o the object to be compared.
      */
     @Override
-    public int compareTo(ByteData o) {
+    public int compareTo(AbstractByteData o) {
         return 0;
     }
 
@@ -146,7 +149,7 @@ public class SimpleByteData extends ByteData {
     }
 
     @Override
-    public ByteData writeByte(byte b) {
+    public AbstractByteData writeByte(byte b) {
         ensureCapEnough(size + 1);
         this.setByte((tail + 1) % hp.length, b);
         size++;
@@ -155,7 +158,7 @@ public class SimpleByteData extends ByteData {
     }
 
     @Override
-    public ByteData writeBytes(byte[] bs) {
+    public AbstractByteData writeBytes(byte[] bs) {
         ensureCapEnough(size + bs.length);
         appendBytes(bs);
         size+=bs.length;

@@ -1,12 +1,12 @@
 import org.junit.Test;
-import xyz.ldqc.tightcall.buffer.ByteData;
+import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.concurrent.locks.LockSupport;
 
-public class TestByteData {
+public class TestAbstractByteData {
 
 
     @org.junit.Test
@@ -46,8 +46,8 @@ public class TestByteData {
         buffer.put((byte) 2);
         buffer.put((byte) 3);
         buffer.put((byte) 4);
-        ByteData byteData = new SimpleByteData(buffer);
-        byteData.writeByte((byte) 5);
+        AbstractByteData abstractByteData = new SimpleByteData(buffer);
+        abstractByteData.writeByte((byte) 5);
     }
 
     @org.junit.Test
@@ -68,95 +68,95 @@ public class TestByteData {
     @org.junit.Test
     public void testByteDataWriteSingleByte() {
         // 不根据ByteBuffer进行构造
-        ByteData byteData = new SimpleByteData(4);
-        byteData.writeByte(((byte) 1))
+        AbstractByteData abstractByteData = new SimpleByteData(4);
+        abstractByteData.writeByte(((byte) 1))
                 .writeByte(((byte) 2))
                 .writeByte(((byte) 3));
 
-        System.out.println("byteData.readByte() = " + byteData.readByte());
-        System.out.println("byteData.readByte() = " + byteData.readByte());
-        byteData.writeByte(((byte) 4))
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
+        abstractByteData.writeByte(((byte) 4))
                 .writeByte(((byte) 5))
                 .writeByte(((byte) 6))
                 .writeByte(((byte) 7));
-        System.out.println("byteData.readByte() = " + byteData.readByte());
-        System.out.println("byteData.readByte() = " + byteData.readByte());
-        System.out.println("byteData.readByte() = " + byteData.readByte());
-        System.out.println("byteData.readByte() = " + byteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
 
-        System.out.println("byteData.readByte() = " + byteData.readByte());
+        System.out.println("byteData.readByte() = " + abstractByteData.readByte());
     }
 
     @org.junit.Test
     public void testByteDataWriteBytes() {
-        ByteData byteData = new SimpleByteData(4);
+        AbstractByteData abstractByteData = new SimpleByteData(4);
 
         byte[] bytes1 = new byte[]{1, 2, 3};
 
         byte[] bytes2 = new byte[]{4, 5};
 
 
-        byteData.writeBytes(bytes1).writeBytes(bytes2);
+        abstractByteData.writeBytes(bytes1).writeBytes(bytes2);
 
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-
-
-        byteData.writeBytes(bytes1);
-
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-
-        byteData.writeBytes(bytes1).writeBytes(bytes1);
-
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-        System.out.println(byteData.readByte());
-
-        System.out.println(byteData.readByte());
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
 
 
-        byteData.writeBytes(bytes2);
-        System.out.println("byteData = " + byteData);
+        abstractByteData.writeBytes(bytes1);
+
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+
+        abstractByteData.writeBytes(bytes1).writeBytes(bytes1);
+
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+        System.out.println(abstractByteData.readByte());
+
+        System.out.println(abstractByteData.readByte());
+
+
+        abstractByteData.writeBytes(bytes2);
+        System.out.println("byteData = " + abstractByteData);
     }
 
     @Test
     public void testByteDataReadBytes() {
-        ByteData byteData = new SimpleByteData(4);
+        AbstractByteData abstractByteData = new SimpleByteData(4);
 
         byte[] bytes = new byte[]{1, 2, 3, 4, 5};
 
-        byteData.writeBytes(bytes);
+        abstractByteData.writeBytes(bytes);
 
         byte[] readBytes = new byte[4];
 
-        byteData.readBytes(readBytes);
+        abstractByteData.readBytes(readBytes);
 
         System.out.println(Arrays.toString(readBytes));
 
-        byteData.writeBytes(bytes);
+        abstractByteData.writeBytes(bytes);
 
-        byteData.readBytes(readBytes);
+        abstractByteData.readBytes(readBytes);
 
         System.out.println(Arrays.toString(readBytes));
 
-        System.out.println(Arrays.toString(byteData.readBytes(1)));
-        System.out.println(Arrays.toString(byteData.readBytes(1)));
+        System.out.println(Arrays.toString(abstractByteData.readBytes(1)));
+        System.out.println(Arrays.toString(abstractByteData.readBytes(1)));
 
     }
 
     @Test
     public void testByteDataGetInt() {
-        ByteData byteData = new SimpleByteData();
+        AbstractByteData abstractByteData = new SimpleByteData();
 
         byte[] bytes = new byte[]{0, 0, 1, 120};
 
-        byteData.writeBytes(bytes);
+        abstractByteData.writeBytes(bytes);
 
-        System.out.println(byteData.getInt());
+        System.out.println(abstractByteData.getInt());
 
     }
 
@@ -166,16 +166,16 @@ public class TestByteData {
 
         byte[] bytes = testStr.getBytes();
 
-        ByteData byteData = new SimpleByteData();
+        AbstractByteData abstractByteData = new SimpleByteData();
 
         testStr = "123123dada";
 
-        byteData.writeBytes(bytes);
+        abstractByteData.writeBytes(bytes);
 
         bytes = testStr.getBytes();
 
-        byteData.writeBytes(bytes);
+        abstractByteData.writeBytes(bytes);
 
-        System.out.println(byteData.readString());
+        System.out.println(abstractByteData.readString());
     }
 }
