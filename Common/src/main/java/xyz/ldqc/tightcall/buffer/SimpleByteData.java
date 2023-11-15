@@ -88,13 +88,13 @@ public class SimpleByteData extends ByteData {
         }
         // 计算需要分配的数组大小
         int byteLen = IntegerUtils.setAllBitsToOne(remaining) + 1;
-        hp = alloc(byteLen);
+        this.hp = alloc(byteLen);
         // 从ByteBuffer获取字节数组存入hp中
         byteBuffer.get(hp, 0, remaining);
-        tail = remaining - 1;
-        readPos = 0;
+        this.tail = remaining - 1;
+        this.readPos = 0;
         this.maxCapacity = maxCapacity;
-        size = remaining;
+        this.size = remaining;
     }
 
 
@@ -208,7 +208,7 @@ public class SimpleByteData extends ByteData {
 
     @Override
     public String readString() {
-        return toString();
+        return new String(readBytes());
     }
 
     @Override
@@ -218,8 +218,9 @@ public class SimpleByteData extends ByteData {
 
     @Override
     public String toString() {
-        byte[] bytes = this.readBytes();
-        return new String(bytes);
+        byte[] allocBytes = alloc(size);
+        doReadBytes(allocBytes);
+        return new String(allocBytes);
     }
 
     /**

@@ -1,5 +1,7 @@
 package xyz.ldqc.tightcall.chain.support;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.buffer.ByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.chain.Chain;
@@ -20,6 +22,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Fetters
  */
 public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(ChannelPreHandlerInBoundChain.class);
+
 
     private final ConcurrentHashMap<Channel, CacheBody> cacheMap = new ConcurrentHashMap<>();
 
@@ -52,6 +57,11 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         if (byteData == null){
             selectionKey.cancel();
             cacheMap.remove(channel);
+            try {
+                logger.info("{} disconnect", socketChannel.getRemoteAddress());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return;
         }
         if (cacheBody == null){
@@ -59,7 +69,7 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             handleHeadData(socketChannel, byteData);
         }else if (cacheBody.getLen() == -1){
             // 已读取过但请求头未读取完成
-            ByteData bodyData = cacheBody.getData();
+            ByteData bodyData = cacheBody.getTmpData();
             bodyData.writeBytes(byteData.readBytes());
             handleHeadData(socketChannel, bodyData);
         }else {
@@ -70,6 +80,7 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
     private void handleHeadData(SocketChannel socketChannel, ByteData byteData){
         if (byteData.remaining() < ProtocolConstant.PROTOCOL_HEAD_LEN){
             // 读取到的字节长度小于PROTOCOL_HEAD_LEN代表首次的数据
+            logger.debug("byte data len: {}, str: {}", byteData.remaining(), byteData);
             CacheBody cacheBody = new CacheBody();
             cacheBody.setTmpData(byteData);
             cacheMap.put(socketChannel, cacheBody);
@@ -81,7 +92,9 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             try {
                 throw new ProtocolException("unknown protocol");
             } catch (ProtocolException e) {
-                throw new RuntimeException(e);
+                cacheMap.remove(socketChannel);
+                logger.error(e.getMessage());
+                return;
             }
         }
         // 版本号
@@ -127,7 +140,8 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             if (socketChannel.read(buffer) == -1) {
                 return null;
             }
-            return new SimpleByteData(buffer);
+            SimpleByteData simpleByteData = new SimpleByteData(buffer);
+            return simpleByteData;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

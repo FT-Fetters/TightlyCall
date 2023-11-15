@@ -1,18 +1,19 @@
 package xyz.ldqc.tightcall.server.exec.support;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.exception.ServerException;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.Chainable;
 import xyz.ldqc.tightcall.server.exec.ServerExec;
+import xyz.ldqc.tightcall.server.load.LoadBalance;
+import xyz.ldqc.tightcall.server.load.support.RandomLoadBalance;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.*;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * @author Fetters
@@ -38,15 +39,16 @@ public class NioServerExec implements ServerExec, Chainable {
 
     private Chain chainHead;
 
-    private int port;
+    private final int port;
 
-    private int execNum;
+    private final int execNum;
 
     AcceptSelectorThread acceptSelectorThread;
 
 
     public NioServerExec() {
-        new NioServerExec(DEFAULT_PORT, DEFAULT_EXEC_NUM);
+        this.port = DEFAULT_PORT;
+        this.execNum = DEFAULT_EXEC_NUM;
     }
 
     public NioServerExec(int port, int execNum) {
@@ -108,7 +110,7 @@ public class NioServerExec implements ServerExec, Chainable {
     }
 
     private void start0() {
-        this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum);
+        this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum, this.chainHead);
         this.acceptSelectorThread.start();
     }
 
@@ -123,30 +125,86 @@ public class NioServerExec implements ServerExec, Chainable {
      */
     private static class AcceptSelectorThread extends Thread {
 
+        private static final Logger logger = LoggerFactory.getLogger(AcceptSelectorThread.class);
+
+
         private final int port;
 
         private final int execNum;
 
         private Selector selector;
 
-        private ServerSocketChannel ssc;
-
-        private SelectionKey acceptKey;
-
         private Worker[] workers;
 
-        private ExecutorService workerThreadPool;
+        private final Chain workChain;
 
-        public AcceptSelectorThread(int port, int execNum) {
+        private boolean terminate = false;
+
+        private final LoadBalance<Worker> loadBalance;
+
+        public AcceptSelectorThread(int port, int execNum, Chain workChain) {
+            this(port,execNum,workChain,new RandomLoadBalance<>());
+        }
+
+        public AcceptSelectorThread(int port, int execNum, Chain workChain, LoadBalance<Worker> loadBalance) {
             this.port = port;
             this.execNum = execNum;
+            this.workChain = workChain;
+            this.loadBalance = loadBalance;
         }
 
         @Override
         public void run() {
-            super.run();
             init();
             wakeWorker();
+            doLoop();
+        }
+
+        // 终止
+        public void terminate(){
+            this.terminate = true;
+            for (Worker worker : workers) {
+                worker.terminate();
+            }
+        }
+
+        /**
+         * 开始accept线程循环
+         */
+        private void doLoop(){
+            while (!terminate){
+                try {
+                    selector.select();
+                    Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                    watchAcceptKeys(selectionKeys);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        /**
+         * 查看每一个accept key
+         */
+        private void watchAcceptKeys(Set<SelectionKey> selectionKeys){
+            Iterator<SelectionKey> iter = selectionKeys.iterator();
+            while (iter.hasNext()){
+                SelectionKey key = iter.next();
+                iter.remove();
+                if (key.isAcceptable()){
+                    try {
+                        ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
+                        SocketChannel sc = serverSocketChannel.accept();
+                        sc.configureBlocking(false);
+                        logger.info("new connected {}", sc.getRemoteAddress());
+
+                        Worker worker = loadBalance.load();
+                        worker.distributeWork(sc);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
         }
 
         /**
@@ -155,12 +213,12 @@ public class NioServerExec implements ServerExec, Chainable {
         private void init() {
             Thread.currentThread().setName("nio-exec-accept");
             try {
+                ServerSocketChannel ssc = ServerSocketChannel.open();
                 this.selector = Selector.open();
-                this.ssc = ServerSocketChannel.open();
                 // 设置非阻塞
                 ssc.configureBlocking(false);
                 // 设置感兴趣的事件
-                this.acceptKey = ssc.register(selector, SelectionKey.OP_ACCEPT, null);
+                SelectionKey acceptKey = ssc.register(selector, SelectionKey.OP_ACCEPT, null);
                 // 绑定端口
                 ssc.bind(new InetSocketAddress(this.port));
             } catch (IOException e) {
@@ -172,15 +230,20 @@ public class NioServerExec implements ServerExec, Chainable {
             // 初始化工作线程
             workers = new Worker[execNum];
             // 初始化工作线程池
-            workerThreadPool = Executors.newFixedThreadPool(execNum);
+            ExecutorService workerThreadPool = Executors.newFixedThreadPool(execNum);
             // 初始化每一个工人
             for (int i = 0; i < execNum; i++) {
                 workers[i] = new Worker(i, workerThreadPool);
+                workers[i].setChainHead(workChain);
             }
+            // 将工人加入负载均衡
+            this.loadBalance.addAll(workers);
         }
     }
 
-    private static class Worker implements Runnable {
+    private static class Worker implements Runnable, Chainable{
+
+        private static final Logger logger = LoggerFactory.getLogger(Worker.class);
 
         private boolean terminate = false;
 
@@ -188,6 +251,11 @@ public class NioServerExec implements ServerExec, Chainable {
 
         private Selector selector;
 
+        private Chain chainHead;
+
+        /**
+         * 工作线程池
+         */
         private final ExecutorService workerTheadPool;
 
         private final ConcurrentLinkedQueue<SocketChannel> socketChannelQueue = new ConcurrentLinkedQueue<>();
@@ -242,6 +310,9 @@ public class NioServerExec implements ServerExec, Chainable {
          */
         private void initThread() {
             Thread.currentThread().setName("nio-exec-worker-" + number);
+            Thread.currentThread().setUncaughtExceptionHandler(
+                    (thread, throwable)-> logger.error("ThreadPool {} got exception", thread, throwable)
+            );
         }
 
         private void startWork() {
@@ -277,13 +348,8 @@ public class NioServerExec implements ServerExec, Chainable {
         }
 
         private void readableKey(SelectionKey key) {
-            try (SocketChannel channel = (SocketChannel) key.channel()) {
-
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+            SocketChannel channel = (SocketChannel) key.channel();
+            chainHead.doChain(channel, key);
         }
 
 
@@ -291,7 +357,8 @@ public class NioServerExec implements ServerExec, Chainable {
          * 前置工作，为了将socket注册到该selector
          */
         private void preWork() {
-            try (SocketChannel sc = socketChannelQueue.poll()) {
+            try {
+                SocketChannel sc = socketChannelQueue.poll();
                 if (sc != null) {
                     sc.register(selector, SelectionKey.OP_READ, null);
                 }
@@ -302,5 +369,9 @@ public class NioServerExec implements ServerExec, Chainable {
         }
 
 
+        @Override
+        public void setChainHead(Chain chain) {
+            this.chainHead = chain;
+        }
     }
 }

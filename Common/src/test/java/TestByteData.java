@@ -4,20 +4,28 @@ import xyz.ldqc.tightcall.buffer.SimpleByteData;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.concurrent.locks.LockSupport;
 
 public class TestByteData {
+
 
     @org.junit.Test
     public void testByteBuffet() {
         ByteBuffer buffer = ByteBuffer.allocate(10);
 
-        // 写入数据到ByteBuffer
         buffer.put((byte) 1);
         buffer.put((byte) 2);
         buffer.put((byte) 3);
 
+        SimpleByteData simpleByteData = new SimpleByteData(buffer, 16);
+        System.out.println("simpleByteData.remaining() = " + simpleByteData.remaining());
+
+
+        System.out.println();
+        System.out.println("simpleByteData.remaining() = " + simpleByteData.remaining());
+
         // 切换到读模式
-        buffer.flip();
+//        buffer.flip();
 
         // 读取字节数组
         byte[] byteArray = new byte[buffer.remaining()];
@@ -27,6 +35,7 @@ public class TestByteData {
         for (byte b : byteArray) {
             System.out.println(b);
         }
+        LockSupport.park();
     }
 
     @org.junit.Test
