@@ -1,2 +1,3 @@
 .idea
-/Common/target
+/Common/target/
+/Common/log/
