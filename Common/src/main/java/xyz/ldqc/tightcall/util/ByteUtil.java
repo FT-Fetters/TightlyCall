@@ -5,6 +5,7 @@ import com.alibaba.fastjson2.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.ByteBuffer;
 
 /**
  * @author Fetters
@@ -31,6 +32,9 @@ public class ByteUtil {
      * 将对象转化为字节数组
      */
     public static byte[] obj2ByteArray(Object obj){
+        if (obj instanceof String){
+            return ((String) obj).getBytes();
+        }
         if (obj instanceof Serializable){
             try {
                 // 创建字节数组输出流

@@ -29,11 +29,14 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
 
     private final ConcurrentHashMap<Channel, CacheBody> cacheMap = new ConcurrentHashMap<>();
 
-    private final Chain nextChain;
+    private Chain nextChain;
 
-    public ChannelPreHandlerInBoundChain(Chain nextChain) {
-        this.nextChain = nextChain;
+
+    public ChannelPreHandlerInBoundChain() {
+
     }
+
+
 
 
     @Override
@@ -138,12 +141,17 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
     private AbstractByteData readDataFromChanel(SocketChannel socketChannel){
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         try {
-            if (socketChannel.read(buffer) == -1) {
+            int readLen = socketChannel.read(buffer);
+            if ( readLen == -1) {
                 return null;
+            }
+            if (readLen == 0){
+                return new SimpleByteData();
             }
             return new SimpleByteData(buffer);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            logger.info("remote {} force close connection", socketChannel);
+            return null;
         }
     }
 
@@ -151,6 +159,11 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
     @Override
     public void doChain(Channel channel, Object obj) {
         doHandler(channel, obj);
+    }
+
+    @Override
+    public void setNextChain(Chain chain) {
+        this.nextChain = chain;
     }
 
 }

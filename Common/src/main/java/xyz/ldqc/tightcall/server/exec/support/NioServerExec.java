@@ -2,6 +2,8 @@ package xyz.ldqc.tightcall.server.exec.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import xyz.ldqc.tightcall.chain.ChainGroup;
+import xyz.ldqc.tightcall.chain.ChannelChainGroup;
 import xyz.ldqc.tightcall.exception.ServerException;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.Chainable;
@@ -37,7 +39,7 @@ public class NioServerExec implements ServerExec, Chainable {
      */
     private static final int MAX_PORT = 65535;
 
-    private Chain chainHead;
+    private ChannelChainGroup chainGroup;
 
     private final int port;
 
@@ -110,13 +112,14 @@ public class NioServerExec implements ServerExec, Chainable {
     }
 
     private void start0() {
-        this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum, this.chainHead);
+        this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum, this.chainGroup);
         this.acceptSelectorThread.start();
     }
 
+
     @Override
-    public void setChainHead(Chain chain) {
-        this.chainHead = chain;
+    public void setChainGroup(ChainGroup group) {
+        this.chainGroup = (ChannelChainGroup) group;
     }
 
 
@@ -136,20 +139,20 @@ public class NioServerExec implements ServerExec, Chainable {
 
         private Worker[] workers;
 
-        private final Chain workChain;
+        private final ChannelChainGroup chainGroup;
 
         private boolean terminate = false;
 
         private final LoadBalance<Worker> loadBalance;
 
-        public AcceptSelectorThread(int port, int execNum, Chain workChain) {
-            this(port,execNum,workChain,new RandomLoadBalance<>());
+        public AcceptSelectorThread(int port, int execNum, ChannelChainGroup chainGroup) {
+            this(port, execNum, chainGroup, new RandomLoadBalance<>());
         }
 
-        public AcceptSelectorThread(int port, int execNum, Chain workChain, LoadBalance<Worker> loadBalance) {
+        public AcceptSelectorThread(int port, int execNum, ChannelChainGroup chainGroup, LoadBalance<Worker> loadBalance) {
             this.port = port;
             this.execNum = execNum;
-            this.workChain = workChain;
+            this.chainGroup = chainGroup;
             this.loadBalance = loadBalance;
         }
 
@@ -161,7 +164,7 @@ public class NioServerExec implements ServerExec, Chainable {
         }
 
         // 终止
-        public void terminate(){
+        public void terminate() {
             this.terminate = true;
             for (Worker worker : workers) {
                 worker.terminate();
@@ -171,8 +174,8 @@ public class NioServerExec implements ServerExec, Chainable {
         /**
          * 开始accept线程循环
          */
-        private void doLoop(){
-            while (!terminate){
+        private void doLoop() {
+            while (!terminate) {
                 try {
                     selector.select();
                     Set<SelectionKey> selectionKeys = selector.selectedKeys();
@@ -186,12 +189,12 @@ public class NioServerExec implements ServerExec, Chainable {
         /**
          * 查看每一个accept key
          */
-        private void watchAcceptKeys(Set<SelectionKey> selectionKeys){
+        private void watchAcceptKeys(Set<SelectionKey> selectionKeys) {
             Iterator<SelectionKey> iter = selectionKeys.iterator();
-            while (iter.hasNext()){
+            while (iter.hasNext()) {
                 SelectionKey key = iter.next();
                 iter.remove();
-                if (key.isAcceptable()){
+                if (key.isAcceptable()) {
                     try {
                         ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
                         SocketChannel sc = serverSocketChannel.accept();
@@ -234,14 +237,14 @@ public class NioServerExec implements ServerExec, Chainable {
             // 初始化每一个工人
             for (int i = 0; i < execNum; i++) {
                 workers[i] = new Worker(i, workerThreadPool);
-                workers[i].setChainHead(workChain);
+                workers[i].setChainGroup(chainGroup);
             }
             // 将工人加入负载均衡
             this.loadBalance.addAll(workers);
         }
     }
 
-    private static class Worker implements Runnable, Chainable{
+    private static class Worker implements Runnable, Chainable {
 
         private static final Logger logger = LoggerFactory.getLogger(Worker.class);
 
@@ -251,7 +254,7 @@ public class NioServerExec implements ServerExec, Chainable {
 
         private Selector selector;
 
-        private Chain chainHead;
+        private ChannelChainGroup chainGroup;
 
         /**
          * 工作线程池
@@ -293,7 +296,7 @@ public class NioServerExec implements ServerExec, Chainable {
             try {
                 selector = Selector.open();
                 // 提交至工作线程
-                workerTheadPool.submit(this);
+                workerTheadPool.execute(this);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -311,7 +314,7 @@ public class NioServerExec implements ServerExec, Chainable {
         private void initThread() {
             Thread.currentThread().setName("nio-exec-worker-" + number);
             Thread.currentThread().setUncaughtExceptionHandler(
-                    (thread, throwable)-> logger.error("ThreadPool {} got exception", thread, throwable)
+                    (thread, throwable) -> logger.error("ThreadPool {} got exception", thread, throwable)
             );
         }
 
@@ -349,7 +352,7 @@ public class NioServerExec implements ServerExec, Chainable {
 
         private void readableKey(SelectionKey key) {
             SocketChannel channel = (SocketChannel) key.channel();
-            chainHead.doChain(channel, key);
+            chainGroup.doChain(channel, key);
         }
 
 
@@ -370,8 +373,8 @@ public class NioServerExec implements ServerExec, Chainable {
 
 
         @Override
-        public void setChainHead(Chain chain) {
-            this.chainHead = chain;
+        public void setChainGroup(ChainGroup group) {
+            this.chainGroup = (ChannelChainGroup) group;
         }
     }
 }

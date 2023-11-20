@@ -3,6 +3,7 @@ package xyz.ldqc.tightcall.chain.support;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.buffer.AbstractByteData;
+import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.OutboundChain;
 import xyz.ldqc.tightcall.protocol.CacheBody;
 import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
@@ -24,6 +25,11 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
     @Override
     public void doChain(Channel channel, Object obj) {
         doHandler(channel, obj);
+    }
+
+    @Override
+    public void setNextChain(Chain chain) {
+
     }
 
     @Override
@@ -70,6 +76,8 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
 
     private void sendByteBuffer(SocketChannel socketChannel, ByteBuffer buffer){
         try {
+            // 需要切换到读模式才能让socketChannel读取到才能发送成功
+            buffer.flip();
             socketChannel.write(buffer);
         } catch (IOException e) {
             logger.error(e.getMessage());

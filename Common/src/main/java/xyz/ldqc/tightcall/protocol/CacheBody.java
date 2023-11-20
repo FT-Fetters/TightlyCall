@@ -1,6 +1,8 @@
 package xyz.ldqc.tightcall.protocol;
 
 import xyz.ldqc.tightcall.buffer.AbstractByteData;
+import xyz.ldqc.tightcall.buffer.SimpleByteData;
+import xyz.ldqc.tightcall.util.SnowflakeUtil;
 
 /**
  * @author Fetters
@@ -24,6 +26,22 @@ public class CacheBody {
         this.len = len;
         this.version = version;
         this.serialNumber = serialNumber;
+    }
+
+    public CacheBody(byte[] data){
+        this.len = data.length;
+        this.version = ((byte) 1);
+        this.serialNumber = ((int) SnowflakeUtil.getInstance().nextId());
+        SimpleByteData byteData = new SimpleByteData();
+        byteData.writeBytes(data);
+        this.data = byteData;
+    }
+
+    public CacheBody(AbstractByteData byteData){
+        this.len = byteData.remaining();
+        this.version = ((byte) 1);
+        this.serialNumber = ((int) SnowflakeUtil.getInstance().nextId());
+        this.data = byteData;
     }
 
     public int getLen() {

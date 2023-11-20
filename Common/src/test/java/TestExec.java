@@ -1,14 +1,22 @@
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import xyz.ldqc.tightcall.buffer.AbstractByteData;
+import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.InboundChain;
 import xyz.ldqc.tightcall.chain.support.ChannelPostHandlerOutBoundChain;
 import xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain;
+import xyz.ldqc.tightcall.chain.support.ChannelResultPoolHandlerInBoundChain;
+import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
+import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
 import xyz.ldqc.tightcall.protocol.CacheBody;
+import xyz.ldqc.tightcall.protocol.ProtocolConstant;
+import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
 import xyz.ldqc.tightcall.server.exec.support.NioServerExec;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
 
+import java.net.InetSocketAddress;
 import java.nio.channels.Channel;
 import java.util.concurrent.locks.LockSupport;
 
@@ -19,25 +27,41 @@ public class TestExec {
     @Test
     public void testNioServerExec(){
         NioServerExec nioServerExec = new NioServerExec(6770, 1);
-        ChannelPostHandlerOutBoundChain channelPostHandlerOutBoundChain = new ChannelPostHandlerOutBoundChain();
-        TestChain testChain = new TestChain(channelPostHandlerOutBoundChain);
-        ChannelPreHandlerInBoundChain channelPreHandlerInBoundChain = new ChannelPreHandlerInBoundChain(testChain);
-        nioServerExec.setChainHead(channelPreHandlerInBoundChain);
+        DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
+        chainGroup.addLast(new ChannelPreHandlerInBoundChain());
+        chainGroup.addLast(new TestChain());
+        chainGroup.addLast(new ChannelPostHandlerOutBoundChain());
+        nioServerExec.setChainGroup(chainGroup);
         nioServerExec.start();
         LockSupport.park();
     }
 
+    @Test
+    public void testNioClientExec() throws InterruptedException {
+        NioClientExec nioClientExec = new NioClientExec(new InetSocketAddress("localhost", 6770));
+        DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
+        chainGroup.addLast(new ChannelPreHandlerInBoundChain());
+        nioClientExec.setChainGroup(chainGroup);
+        nioClientExec.start();
+        log.debug("send result: {}", nioClientExec.writeAndWait("test write"));
+    }
+
     private static class TestChain implements InboundChain, ChannelHandler{
 
-        private final Chain nextChain;
+        private Chain nextChain;
 
-        public TestChain(Chain nextChain){
-            this.nextChain = nextChain;
+        public TestChain(){
+
         }
 
         @Override
         public void doChain(Channel channel, Object obj) {
             doHandler(channel, obj);
+        }
+
+        @Override
+        public void setNextChain(Chain chain) {
+            this.nextChain = chain;
         }
 
         @Override

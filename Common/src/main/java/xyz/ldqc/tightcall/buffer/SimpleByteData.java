@@ -79,8 +79,8 @@ public class SimpleByteData extends AbstractByteData {
 
 
     public SimpleByteData(ByteBuffer byteBuffer, int maxCapacity) {
+        int remaining = byteBuffer.position();
         byteBuffer.flip();
-        int remaining = byteBuffer.remaining();
         // 如果传入的ByteBuffer内容过长
         if (remaining > maxCapacity) {
             try {
