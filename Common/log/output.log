@@ -1,0 +1,923 @@
+09:33:06.452 [main] INFO  TestExec - 测试
+09:33:06.458 [main] ERROR TestExec - 123213
+09:35:23.094 [main] INFO  TestExec - 测试
+09:35:23.101 [main] ERROR TestExec - 123213
+09:35:32.100 [main] INFO  TestExec - 测试
+09:35:32.106 [main] ERROR TestExec - 123213
+09:36:36.507 [main] INFO  TestExec - 测试
+09:36:36.514 [main] ERROR TestExec - 123213
+09:36:49.881 [main] INFO  TestExec - 测试
+09:36:49.888 [main] ERROR TestExec - 123213
+09:36:58.532 [main] INFO  TestExec - 测试
+09:36:58.539 [main] ERROR TestExec - 123213
+2023-11-14 09:45:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:60702
+2023-11-14 09:46:009 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:60709
+2023-11-14 09:54:050 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:60777
+2023-11-14 09:55:050 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:60803
+2023-11-14 09:56:033 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61146
+2023-11-14 09:56:057 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61165
+2023-11-14 10:06:027 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61294
+2023-11-14 10:08:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61309
+2023-11-14 10:08:037 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61320
+2023-11-14 10:24:021 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61517
+2023-11-14 10:24:026 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61520
+2023-11-14 10:24:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61522
+2023-11-14 10:24:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61523
+2023-11-14 10:24:041 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61524
+2023-11-14 10:24:046 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61527
+2023-11-14 10:24:051 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61528
+2023-11-14 10:24:056 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61529
+2023-11-14 10:25:001 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61531
+2023-11-14 10:25:006 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61532
+2023-11-14 10:25:011 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61534
+2023-11-14 10:25:016 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61537
+2023-11-14 10:25:021 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61538
+2023-11-14 10:25:026 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61539
+2023-11-14 10:25:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61540
+2023-11-14 10:25:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61544
+2023-11-14 10:25:041 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61545
+2023-11-14 10:25:046 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61549
+2023-11-14 10:25:051 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61553
+2023-11-14 10:25:056 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61554
+2023-11-14 10:26:001 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61555
+2023-11-14 10:26:006 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61559
+2023-11-14 10:26:011 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61561
+2023-11-14 10:26:016 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61565
+2023-11-14 10:26:021 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61567
+2023-11-14 10:26:026 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61569
+2023-11-14 10:28:027 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61626
+2023-11-14 10:28:032 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61629
+2023-11-14 10:28:034 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61632
+2023-11-14 10:28:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61635
+2023-11-14 10:28:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61636
+2023-11-14 10:28:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61637
+2023-11-14 10:28:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61640
+2023-11-14 10:28:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61641
+2023-11-14 10:28:037 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61642
+2023-11-14 10:28:042 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61645
+2023-11-14 10:30:020 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61673
+2023-11-14 11:19:029 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:64407
+2023-11-14 11:21:017 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:64561
+2023-11-14 11:34:049 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:64764
+2023-11-14 11:51:004 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65162
+2023-11-14 11:54:039 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65204
+2023-11-14 11:58:055 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65297
+2023-11-14 11:59:023 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65311
+2023-11-14 12:00:011 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65351
+2023-11-14 12:00:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65358
+2023-11-14 13:46:055 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50175
+2023-11-14 13:47:030 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50200
+2023-11-14 13:53:006 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50305
+2023-11-14 14:02:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50429
+2023-11-14 14:04:041 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50505
+2023-11-14 14:05:004 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50509
+2023-11-14 14:05:045 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50520
+2023-11-14 14:23:007 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54686
+2023-11-14 15:07:033 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56768
+2023-11-14 15:12:008 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56843
+2023-11-14 15:16:042 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57051
+2023-11-14 15:17:018 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57068
+2023-11-14 15:18:023 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57094
+2023-11-14 15:18:028 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57124
+2023-11-14 15:18:030 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57125
+2023-11-14 15:20:025 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57164
+2023-11-14 15:22:037 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57219
+2023-11-14 15:23:034 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57270
+2023-11-14 15:24:021 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57281
+2023-11-14 15:24:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57297
+2023-11-14 15:32:051 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57447
+2023-11-14 15:41:017 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57747
+2023-11-14 15:41:044 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57767
+2023-11-14 15:46:039 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:58233
+2023-11-14 15:47:011 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:58260
+2023-11-14 15:49:056 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:58324
+2023-11-14 15:59:023 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:58976
+2023-11-14 16:01:026 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59763
+2023-11-14 16:02:019 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59781
+2023-11-14 16:04:013 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59836
+2023-11-14 16:06:018 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59886
+2023-11-14 16:13:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:60202
+2023-11-15 09:11:051 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54437
+2023-11-15 09:14:057 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54545
+2023-11-15 09:15:015 [nio-exec-worker-1] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:16:020 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54955
+2023-11-15 09:16:021 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:16:021 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:16:021 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:16:022 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:16:022 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:16:022 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:16:023 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:16:024 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:16:024 [nio-exec-worker-1] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:16:038 [nio-exec-worker-1] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:21:014 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55647
+2023-11-15 09:21:014 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:21:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:21:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:21:024 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:22:004 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55661
+2023-11-15 09:22:005 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:22:005 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:22:006 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:22:006 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:22:006 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:22:007 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:22:008 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:22:008 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:22:008 [nio-exec-worker-1] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:22:015 [nio-exec-worker-1] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:23:049 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55734
+2023-11-15 09:25:043 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55777
+2023-11-15 09:25:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:25:046 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:25:046 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:25:046 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:25:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:25:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:25:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:25:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:25:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:25:052 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:45:023 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56438
+2023-11-15 09:45:024 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:45:024 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:45:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:45:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:45:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:45:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:45:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:45:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:45:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:45:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:45:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:45:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:45:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:45:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:45:031 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:46:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:46:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:46:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:46:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:010 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:010 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:027 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56463
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:035 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:038 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:040 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:042 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:044 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:053 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:47:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 09:47:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 09:47:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8
+2023-11-15 09:47:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9
+2023-11-15 09:47:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10
+2023-11-15 09:47:056 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11
+2023-11-15 09:47:056 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12
+2023-11-15 09:47:056 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13
+2023-11-15 09:47:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14
+2023-11-15 09:47:057 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 09:48:008 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - /127.0.0.1:56463 disconnect
+2023-11-15 09:59:003 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56520
+2023-11-15 09:59:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1
+2023-11-15 09:59:006 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2
+2023-11-15 09:59:006 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3
+2023-11-15 09:59:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4
+2023-11-15 09:59:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5
+2023-11-15 09:59:016 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - /127.0.0.1:56520 disconnect
+2023-11-15 10:04:018 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56845
+2023-11-15 10:05:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6
+2023-11-15 10:06:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7
+2023-11-15 10:07:042 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56951
+2023-11-15 10:07:049 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 10:07:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL1
+2023-11-15 10:08:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL1
+2023-11-15 10:09:004 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - /127.0.0.1:56951 disconnect
+2023-11-15 10:12:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:56996
+2023-11-15 10:12:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: d
+2023-11-15 10:12:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: dw
+2023-11-15 10:12:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: dwa
+2023-11-15 10:12:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: dwas
+2023-11-15 10:12:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: dwasd
+2023-11-15 10:12:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: dwasdw
+2023-11-15 10:12:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: dwasdws
+2023-11-15 10:12:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: dwasdwsx
+2023-11-15 10:12:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: dwasdwsxa
+2023-11-15 10:12:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: dwasdwsxaw
+2023-11-15 10:12:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: dwasdwsxawd
+2023-11-15 10:12:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: dwasdwsxawdw
+2023-11-15 10:12:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: dwasdwsxawdwa
+2023-11-15 10:12:005 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 10:12:006 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: d
+2023-11-15 10:12:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: dw
+2023-11-15 10:12:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: dwa
+2023-11-15 10:12:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: dwas
+2023-11-15 10:12:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: dwasd
+2023-11-15 10:12:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: dwasdc
+2023-11-15 10:12:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: dwasdcs
+2023-11-15 10:12:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: dwasdcsc
+2023-11-15 10:12:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: dwasdcscx
+2023-11-15 10:12:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: dwasdcscxz
+2023-11-15 10:12:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: dwasdcscxzc
+2023-11-15 10:12:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: dwasdcscxzcx
+2023-11-15 10:12:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: dwasdcscxzcxz
+2023-11-15 10:12:010 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 10:12:010 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: c
+2023-11-15 10:22:053 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57186
+2023-11-15 10:22:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57189
+2023-11-15 10:23:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: s
+2023-11-15 10:23:007 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: w
+2023-11-15 10:23:011 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: ws
+2023-11-15 10:23:011 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: wsd
+2023-11-15 10:23:013 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: ss
+2023-11-15 10:23:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: ssa
+2023-11-15 10:23:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: ssaw
+2023-11-15 14:33:010 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53414
+2023-11-15 14:33:013 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: T
+2023-11-15 14:33:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: T_
+2023-11-15 14:33:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: T_C
+2023-11-15 14:33:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: T_CA
+2023-11-15 14:33:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: T_CAL
+2023-11-15 14:33:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 14:33:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL1
+2023-11-15 14:33:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL11
+2023-11-15 14:33:038 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: T_CALL111
+2023-11-15 14:33:038 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: T_CALL1111
+2023-11-15 14:45:002 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53548
+2023-11-15 14:45:048 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53568
+2023-11-15 14:45:050 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: T
+2023-11-15 14:45:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: T_
+2023-11-15 14:45:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: T_C
+2023-11-15 14:45:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: T_CA
+2023-11-15 14:45:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: T_CAL
+2023-11-15 14:45:052 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 14:46:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL0
+2023-11-15 14:46:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL00
+2023-11-15 14:46:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: T_CALL000
+2023-11-15 14:46:028 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: T_CALL0000
+2023-11-15 14:46:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: T_CALL00000
+2023-11-15 14:46:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: T_CALL000000
+2023-11-15 14:46:029 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: T_CALL0000000
+2023-11-15 14:49:048 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53672
+2023-11-15 14:49:049 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: T
+2023-11-15 14:49:050 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: T_
+2023-11-15 14:49:050 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: T_C
+2023-11-15 14:49:050 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: T_CA
+2023-11-15 14:49:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: T_CAL
+2023-11-15 14:49:051 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 14:49:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL0
+2023-11-15 14:49:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL00
+2023-11-15 14:49:053 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: T_CALL000
+2023-11-15 14:49:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: T_CALL0000
+2023-11-15 14:49:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: T_CALL00000
+2023-11-15 14:49:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: T_CALL000000
+2023-11-15 14:49:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: T_CALL0000000
+2023-11-15 14:50:053 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53794
+2023-11-15 14:50:054 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: T
+2023-11-15 14:50:055 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: T_
+2023-11-15 14:50:056 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: T_C
+2023-11-15 14:50:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: T_CA
+2023-11-15 14:50:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: T_CAL
+2023-11-15 14:50:057 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 14:50:059 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL0
+2023-11-15 14:50:059 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL00
+2023-11-15 14:51:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: T_CALL000
+2023-11-15 14:51:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: T_CALL0000
+2023-11-15 14:51:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: T_CALL00000
+2023-11-15 14:51:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: T_CALL000000
+2023-11-15 14:51:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: T_CALL0000000
+2023-11-15 14:52:002 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53824
+2023-11-15 14:52:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: t
+2023-11-15 14:52:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: t_
+2023-11-15 14:52:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: t_c
+2023-11-15 14:52:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: t_ca
+2023-11-15 14:52:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: t_cal
+2023-11-15 14:52:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: t_calD
+2023-11-15 14:52:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: t_calDD
+2023-11-15 14:52:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: t_calDDD
+2023-11-15 14:52:008 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: t_calDDDD
+2023-11-15 14:52:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: t_calDDDDD
+2023-11-15 14:52:009 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: t_calDDDDDD
+2023-11-15 14:52:010 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: t_calDDDDDDD
+2023-11-15 14:52:010 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: t_calDDDDDDDW
+2023-11-15 14:52:010 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: t_calDDDDDDDWA
+2023-11-15 14:52:011 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 14:52:012 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: t
+2023-11-15 14:52:014 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: tD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: tDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: tDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: tDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: tDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: tDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: tDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: tDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: tDDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: tDDDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: tDDDDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: tDDDDDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: tDDDDDDDDDDDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: D
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: DD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: DDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: DDDD
+2023-11-15 14:52:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: DDDDD
+2023-11-15 14:52:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: DDDDDD
+2023-11-15 14:52:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: DDDDDDD
+2023-11-15 14:52:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: DDDDDDDD
+2023-11-15 14:52:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: DDDDDDDDD
+2023-11-15 14:52:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: DDDDDDDDDD
+2023-11-15 14:52:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: DDDDDDDDDDD
+2023-11-15 14:52:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: DDDDDDDDDDDD
+2023-11-15 14:52:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: DDDDDDDDDDDDD
+2023-11-15 14:52:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: DDDDDDDDDDDDDD
+2023-11-15 14:52:019 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 14:52:022 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: T
+2023-11-15 14:52:022 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: T_
+2023-11-15 14:52:023 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: T_C
+2023-11-15 14:52:023 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: T_CA
+2023-11-15 14:52:023 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: T_CAL
+2023-11-15 14:52:023 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: T_CALL
+2023-11-15 14:52:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: T_CALL0
+2023-11-15 14:52:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: T_CALL00
+2023-11-15 14:52:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: T_CALL000
+2023-11-15 14:52:025 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: T_CALL0000
+2023-11-15 14:52:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: T_CALL00000
+2023-11-15 14:52:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: T_CALL000000
+2023-11-15 14:52:026 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: T_CALL0000000
+2023-11-15 14:52:027 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: T_CALL00000000
+2023-11-15 17:39:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: S
+2023-11-15 17:39:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: SS
+2023-11-15 17:39:039 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: SSS
+2023-11-15 17:39:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: SSSS
+2023-11-15 17:39:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: SSSSS
+2023-11-15 17:39:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: SSSSSS
+2023-11-15 17:39:040 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: SSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: SSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: SSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: SSSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: SSSSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: SSSSSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: SSSSSSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: SSSSSSSSSSSSSS
+2023-11-15 17:39:041 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 17:39:041 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: S
+2023-11-15 17:39:042 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: SS
+2023-11-15 17:39:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: SSS
+2023-11-15 17:39:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: SSSS
+2023-11-15 17:39:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: SSSSS
+2023-11-15 17:39:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: SSSSSS
+2023-11-15 17:39:043 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: SSSSSSS
+2023-11-15 17:39:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: SSSSSSSS
+2023-11-15 17:39:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: SSSSSSSSS
+2023-11-15 17:39:044 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: SSSSSSSSSS
+2023-11-15 17:39:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: SSSSSSSSSSS
+2023-11-15 17:39:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: SSSSSSSSSSSS
+2023-11-15 17:39:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: SSSSSSSSSSSSS
+2023-11-15 17:39:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: SSSSSSSSSSSSSS
+2023-11-15 17:39:045 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 17:39:045 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: S
+2023-11-15 17:39:046 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: SS
+2023-11-15 17:39:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: SSS
+2023-11-15 17:39:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: SSSS
+2023-11-15 17:39:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: SSSSD
+2023-11-15 17:39:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: SSSSDW
+2023-11-15 17:39:047 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: SSSSDWA
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: SSSSDWAS
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: SSSSDWASD
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: SSSSDWASDA
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: SSSSDWASDAW
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: SSSSDWASDAWS
+2023-11-15 17:39:048 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: SSSSDWASDAWSD
+2023-11-15 17:39:049 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: SSSSDWASDAWSDW
+2023-11-15 17:39:049 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 17:39:050 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: 	
+2023-11-15 17:41:016 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: 	s
+2023-11-15 17:41:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: 	sd
+2023-11-15 17:41:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: 	sdw
+2023-11-15 17:41:017 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: 	sdwa
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: 	sdwas
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: 	sdwasd
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: 	sdwasdw
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: 	sdwasdwa
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: 	sdwasdwas
+2023-11-15 17:41:018 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: 	sdwasdwasd
+2023-11-15 17:41:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: 	sdwasdwasdw
+2023-11-15 17:41:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: 	sdwasdwasdwa
+2023-11-15 17:41:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: 	sdwasdwasdwas
+2023-11-15 17:41:019 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-15 17:41:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: w
+2023-11-15 17:41:019 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: wa
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: was
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: wasd
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: wasdw
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: wasdwa
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: wasdwas
+2023-11-15 17:41:020 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: wasdwasd
+2023-11-17 16:16:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:53718
+2023-11-17 16:16:059 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: d
+2023-11-17 16:17:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: da
+2023-11-17 16:17:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: das
+2023-11-17 16:17:000 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: dasi
+2023-11-17 16:17:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: dasix
+2023-11-17 16:17:001 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: dasixm
+2023-11-17 16:17:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: dasixma
+2023-11-17 16:17:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: dasixmad
+2023-11-17 16:17:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: dasixmadi
+2023-11-17 16:17:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: dasixmadid
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: dasixmadidj
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: dasixmadidji
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: dasixmadidjia
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: dasixmadidjias
+2023-11-17 16:17:003 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 1, str: x
+2023-11-17 16:17:003 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 2, str: xk
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 3, str: xka
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 4, str: xkad
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 5, str: xkadj
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 6, str: xkadjw
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 7, str: xkadjwi
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 8, str: xkadjwia
+2023-11-17 16:17:004 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 9, str: xkadjwiao
+2023-11-17 16:17:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 10, str: xkadjwiaod
+2023-11-17 16:17:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 11, str: xkadjwiaodk
+2023-11-17 16:17:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 12, str: xkadjwiaodka
+2023-11-17 16:17:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 13, str: xkadjwiaodkas
+2023-11-17 16:17:005 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 14, str: xkadjwiaodkasx
+2023-11-17 16:17:005 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 16:49:002 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:62766
+2023-11-17 16:49:004 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 16:50:016 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:62815
+2023-11-17 16:51:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:62846
+2023-11-17 16:52:007 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:62972
+2023-11-17 16:52:044 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 16:53:037 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:63085
+2023-11-17 16:54:028 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 16:56:014 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65342
+2023-11-17 17:02:015 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 0, str: 
+2023-11-17 17:04:054 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49453
+2023-11-17 17:06:002 [nio-exec-worker-0] DEBUG x.l.t.c.s.ChannelPreHandlerInBoundChain - byte data len: 0, str: 
+2023-11-17 17:06:028 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:52364
+2023-11-17 17:07:010 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 17:07:043 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:52453
+2023-11-17 17:10:015 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 17:10:048 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:52626
+2023-11-17 17:22:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59186
+2023-11-17 17:25:023 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 17:26:034 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59383
+2023-11-17 17:28:013 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:59543
+2023-11-17 17:29:009 [nio-exec-worker-0] ERROR x.l.t.c.s.ChannelPreHandlerInBoundChain - unknown protocol
+2023-11-17 17:30:057 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:57531
+2023-11-17 17:43:036 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49883
+2023-11-17 17:44:051 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49922
+2023-11-17 17:45:027 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61238
+2023-11-17 17:47:043 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61350
+2023-11-17 17:49:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61446
+2023-11-17 17:50:032 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:61500
+2023-11-17 17:54:035 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:58030
+2023-11-17 17:54:040 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.NullPointerException: null
+	at TestExec$TestChain.doHandler(TestExec.java:76)
+	at TestExec$TestChain.doChain(TestExec.java:59)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleHeadData(ChannelPreHandlerInBoundChain.java:115)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:72)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:83)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+2023-11-17 18:03:055 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:65518
+2023-11-20 09:21:005 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49213
+2023-11-20 09:25:015 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 09:29:038 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49528
+2023-11-20 09:31:048 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 09:36:045 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49730
+2023-11-20 09:37:037 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 09:38:037 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49781
+2023-11-20 09:39:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49809
+2023-11-20 09:41:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49861
+2023-11-20 09:45:041 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:49971
+2023-11-20 09:48:004 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50085
+2023-11-20 09:48:043 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 09:50:003 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50135
+2023-11-20 09:51:049 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 09:52:041 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50192
+2023-11-20 10:03:014 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:50412
+2023-11-20 10:08:046 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51062
+2023-11-20 10:09:019 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:09:019 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 10:11:043 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51145
+2023-11-20 10:11:055 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:11:056 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 10:12:032 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51160
+2023-11-20 10:12:054 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51183
+2023-11-20 10:12:056 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:12:057 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 10:17:023 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51309
+2023-11-20 10:17:025 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:17:025 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 10:19:006 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51356
+2023-11-20 10:19:030 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:19:042 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51380
+2023-11-20 10:20:041 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:20:058 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51419
+2023-11-20 10:21:053 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:22:007 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:51448
+2023-11-20 10:22:035 [main] DEBUG TestExec - send result: �� t 
+test writeHello TightlyCall
+2023-11-20 10:22:036 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 11:04:031 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54455
+2023-11-20 11:04:047 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 11:10:002 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:54593
+2023-11-20 11:10:008 [main] DEBUG TestExec - send result: test writeHello TightlyCall
+2023-11-20 11:10:008 [nio-exec-worker-0] ERROR x.l.t.s.e.s.NioServerExec$Worker - ThreadPool Thread[nio-exec-worker-0,5,main] got exception
+java.lang.RuntimeException: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:152)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.handleSocketChannel(ChannelPreHandlerInBoundChain.java:58)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doHandler(ChannelPreHandlerInBoundChain.java:43)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.doChain(ChannelPreHandlerInBoundChain.java:159)
+	at xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup.doChain(DefaultChannelChainGroup.java:87)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.readableKey(NioServerExec.java:355)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.focusKey(NioServerExec.java:349)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork0(NioServerExec.java:343)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.doWork(NioServerExec.java:332)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.startWork(NioServerExec.java:323)
+	at xyz.ldqc.tightcall.server.exec.support.NioServerExec$Worker.run(NioServerExec.java:308)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain.readDataFromChanel(ChannelPreHandlerInBoundChain.java:143)
+	... 13 common frames omitted
+2023-11-20 11:18:000 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55671
+2023-11-20 11:18:014 [main] DEBUG TestExec - send result: test writeHello TightlyCall
+2023-11-20 11:18:015 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - remote java.nio.channels.SocketChannel[connected local=/127.0.0.1:6770 remote=/127.0.0.1:55671] force close connection
+2023-11-20 11:18:015 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - /127.0.0.1:55671 disconnect
+2023-11-20 11:19:002 [nio-exec-accept] INFO  x.l.t.s.e.s.NioServerExec$AcceptSelectorThread - new connected /127.0.0.1:55710
+2023-11-20 11:19:003 [main] DEBUG TestExec - send result: test writeHello TightlyCall
+2023-11-20 11:19:004 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - remote java.nio.channels.SocketChannel[connected local=/127.0.0.1:6770 remote=/127.0.0.1:55710] force close connection
+2023-11-20 11:19:004 [nio-exec-worker-0] INFO  x.l.t.c.s.ChannelPreHandlerInBoundChain - /127.0.0.1:55710 disconnect
