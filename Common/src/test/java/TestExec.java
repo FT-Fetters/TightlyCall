@@ -13,6 +13,7 @@ import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
 import xyz.ldqc.tightcall.protocol.CacheBody;
 import xyz.ldqc.tightcall.protocol.ProtocolConstant;
 import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
+import xyz.ldqc.tightcall.server.ServerApplication;
 import xyz.ldqc.tightcall.server.exec.support.NioServerExec;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
 
@@ -37,7 +38,7 @@ public class TestExec {
     }
 
     @Test
-    public void testNioClientExec() throws InterruptedException {
+    public void testNioClientExec() {
         NioClientExec nioClientExec = new NioClientExec(new InetSocketAddress("localhost", 6770));
         DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
         chainGroup.addLast(new ChannelPreHandlerInBoundChain());
@@ -75,5 +76,16 @@ public class TestExec {
             cacheBody.setLen(cacheBody.getLen() + bytes.length);
             nextChain.doChain(channel, cacheBody);
         }
+    }
+
+    @Test
+    public void testServerApplication(){
+        ServerApplication serverApplication = ServerApplication.builder()
+                .bind(6770)
+                .execNum(8)
+                .executor(NioServerExec.class)
+                .chain(new DefaultChannelChainGroup().addLast(new TestChain()))
+                .boot();
+        LockSupport.park();
     }
 }

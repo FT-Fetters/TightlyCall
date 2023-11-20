@@ -25,7 +25,9 @@ import java.util.concurrent.Executors;
 /**
  * @author Fetters
  */
-public class NioServerExec implements ServerExec, Chainable {
+public class NioServerExec implements ServerExec {
+
+    private static final Logger logger = LoggerFactory.getLogger(NioServerExec.class);
 
     /**
      * 默认端口
@@ -55,6 +57,11 @@ public class NioServerExec implements ServerExec, Chainable {
 
     public NioServerExec() {
         this.port = DEFAULT_PORT;
+        this.execNum = DEFAULT_EXEC_NUM;
+    }
+
+    public NioServerExec(int port){
+        this.port = port;
         this.execNum = DEFAULT_EXEC_NUM;
     }
 
@@ -120,6 +127,7 @@ public class NioServerExec implements ServerExec, Chainable {
         // 开启接收连接线程
         this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum, this.chainGroup);
         this.acceptSelectorThread.start();
+        logger.info("server running on port {}", port);
     }
 
 
