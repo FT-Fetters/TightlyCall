@@ -1,5 +1,7 @@
 package xyz.ldqc.tightcall.client.message;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.pool.ResultPool;
 import xyz.ldqc.tightcall.protocol.CacheBody;
@@ -17,8 +19,16 @@ import java.nio.channels.SocketChannel;
  */
 public class MessageWriteThread extends Thread {
 
+    private final static Logger logger = LoggerFactory.getLogger(MessageWriteThread.class);
+
+    /**
+     * 消息队列，用于存储消息，等待该线程读取消息
+     */
     private final MessageQueue<CacheBody> queue;
 
+    /**
+     * 结果池，用于发送消息后返回的结果存储位置，使得调用线程能同步获取结果
+     */
     private final ResultPool<Integer, Object> resultPool;
 
     private final SocketChannel target;
@@ -39,10 +49,12 @@ public class MessageWriteThread extends Thread {
     }
 
     public CacheBody write(Object o) {
+        // 判断是否为为CacheBody对象，如果是则直接放入消息队列
         if (o instanceof CacheBody) {
             this.queue.offer(((CacheBody) o));
             return ((CacheBody) o);
         }
+        // 如果不是CacheBody则转化后再放入队列
         byte[] objByteArray = ByteUtil.obj2ByteArray(o);
         CacheBody cacheBody = new CacheBody(objByteArray);
         this.queue.offer(cacheBody);
@@ -51,6 +63,7 @@ public class MessageWriteThread extends Thread {
 
     public Object writeAndWait(Object o) {
         CacheBody cacheBody = write(o);
+        // 同步获取结果
         return resultPool.getResult(cacheBody.getSerialNumber());
     }
 
@@ -58,8 +71,10 @@ public class MessageWriteThread extends Thread {
     public void run() {
         initThread();
         while (!terminate) {
+            // 阻塞消费消息队列中的消息
             CacheBody body = queue.consume();
             if (body != null) {
+                // 将ByteData转化为字节数组
                 byte[] bytes = byteData2ByteArray(body);
                 doWrite(bytes);
             }
@@ -70,6 +85,11 @@ public class MessageWriteThread extends Thread {
         Thread.currentThread().setName("msg-write");
     }
 
+    /**
+     * 将CacheBody中的数据转化为符合协议的字节数组
+     * @param body CacheBody
+     * @return 符合协议的字节数组
+     */
     private byte[] byteData2ByteArray(CacheBody body) {
         AbstractByteData data = body.getData();
         int serialNumber = body.getSerialNumber();
@@ -77,7 +97,9 @@ public class MessageWriteThread extends Thread {
     }
 
     private void doWrite(byte[] data) {
+        // 数据总长度
         int totalLen = data.length;
+        // 剩余发送的长度
         int remaining = totalLen;
         while (remaining > 0) {
             int offset = totalLen - remaining;
@@ -92,7 +114,8 @@ public class MessageWriteThread extends Thread {
             try {
                 target.write(buffer);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                logger.error("send message error: {}", e.getMessage());
+                return;
             }
         }
     }

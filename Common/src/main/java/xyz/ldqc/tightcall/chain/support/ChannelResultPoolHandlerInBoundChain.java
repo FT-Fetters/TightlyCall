@@ -23,6 +23,7 @@ public class ChannelResultPoolHandlerInBoundChain implements OutboundChain {
 
     @Override
     public void doChain(Channel channel, Object obj) {
+        // 如果是CacheBody则直接解析序列号和数据并放入结果池中
         if (obj instanceof CacheBody){
             CacheBody cacheBody = (CacheBody) obj;
             int serialNumber = cacheBody.getSerialNumber();

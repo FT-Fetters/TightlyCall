@@ -6,5 +6,9 @@ package xyz.ldqc.tightcall.chain;
  */
 public interface Chainable {
 
+    /**
+     * 为可调用链类设置调用链组
+     * @param group 调用链组
+     */
     public void setChainGroup(ChainGroup group);
 }

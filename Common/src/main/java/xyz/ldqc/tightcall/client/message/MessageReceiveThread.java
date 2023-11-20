@@ -18,8 +18,6 @@ import java.util.Set;
  */
 public class MessageReceiveThread extends Thread{
 
-    private final SocketChannel channel;
-
     private final Selector selector;
 
     private final ChannelChainGroup chainGroup;
@@ -27,14 +25,15 @@ public class MessageReceiveThread extends Thread{
     private boolean terminate = false;
 
     public MessageReceiveThread(SocketChannel channel, ResultPool<Integer, Object> resultPool, ChainGroup group){
-        this.channel = channel;
         try {
+            // 将channel注册到该selector
             this.selector = Selector.open();
             channel.register(this.selector, SelectionKey.OP_READ);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         this.chainGroup = (ChannelChainGroup) group;
+        // 给调用链组的出站添加结果处理链
         this.chainGroup.addLast(new ChannelResultPoolHandlerInBoundChain(resultPool));
         this.start();
     }

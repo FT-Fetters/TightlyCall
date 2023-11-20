@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class BlockingMessageQueue<T> implements MessageQueue<T> {
 
-    private BlockingQueue<T> queue = new LinkedBlockingQueue<>();
+    private final BlockingQueue<T> queue = new LinkedBlockingQueue<>();
 
     public BlockingMessageQueue (){
 

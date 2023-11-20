@@ -5,6 +5,7 @@ import xyz.ldqc.tightcall.server.handler.Handler;
 import java.nio.channels.Channel;
 
 /**
+ * 调用链点
  * @author Fetters
  */
 public interface Chain {

@@ -20,6 +20,7 @@ import java.nio.channels.SocketChannel;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 接收消息的前置处理链，用于获取符合协议的数据
  * @author Fetters
  */
 public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandler {

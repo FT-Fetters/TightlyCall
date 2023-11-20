@@ -6,6 +6,7 @@ import java.nio.channels.SocketChannel;
 import java.util.LinkedList;
 
 /**
+ * 调用链组
  * @author Fetters
  */
 public class DefaultChannelChainGroup implements ChannelChainGroup {

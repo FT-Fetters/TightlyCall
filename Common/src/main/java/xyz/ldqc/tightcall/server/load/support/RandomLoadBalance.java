@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * 负载均衡，随机负载
  * @author Fetters
  */
 public class RandomLoadBalance<T> implements LoadBalance<T> {

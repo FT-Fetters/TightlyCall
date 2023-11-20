@@ -3,19 +3,24 @@ package xyz.ldqc.tightcall.server.exec.support;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.ChainGroup;
+import xyz.ldqc.tightcall.chain.Chainable;
 import xyz.ldqc.tightcall.chain.ChannelChainGroup;
 import xyz.ldqc.tightcall.exception.ServerException;
-import xyz.ldqc.tightcall.chain.Chain;
-import xyz.ldqc.tightcall.chain.Chainable;
 import xyz.ldqc.tightcall.server.exec.ServerExec;
 import xyz.ldqc.tightcall.server.load.LoadBalance;
 import xyz.ldqc.tightcall.server.load.support.RandomLoadBalance;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.channels.*;
-import java.util.*;
-import java.util.concurrent.*;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Fetters
@@ -112,6 +117,7 @@ public class NioServerExec implements ServerExec, Chainable {
     }
 
     private void start0() {
+        // 开启接收连接线程
         this.acceptSelectorThread = new AcceptSelectorThread(this.port, this.execNum, this.chainGroup);
         this.acceptSelectorThread.start();
     }

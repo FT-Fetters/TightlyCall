@@ -15,13 +15,16 @@ import java.util.Random;
 public class ProtocolDataFactory {
 
     /**
-     * 将要构造的字节数组转化为符合协议的自己数组
+     * 将要构造的字节数组转化为符合协议的字节数组
      */
     public static byte[] create(byte[] data) {
         int serialNum = (int) SnowflakeUtil.getInstance().nextId();
         return create(data, serialNum);
     }
 
+    /**
+     * 将要构造的字节数组转化为符合协议的字节数组，并指定指定的序列号
+     */
     public static byte[] create(byte[] data, int serialNum) {
         SimpleByteData byteData = new SimpleByteData();
         // 写入魔数

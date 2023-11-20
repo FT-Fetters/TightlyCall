@@ -16,6 +16,7 @@ import java.nio.channels.Channel;
 import java.nio.channels.SocketChannel;
 
 /**
+ * 调用链的出站后置处理链点，用于发送数据
  * @author Fetters
  */
 public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHandler {
@@ -44,14 +45,19 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
             return;
         }
 
+        // 如果是CacheBody
         if (obj instanceof CacheBody){
             handleCacheBody(socketChannel, obj);
             return;
         }
 
+        // 其它对象的处理方法
         handleOtherObj(socketChannel, obj);
     }
 
+    /**
+     * 处理CacheBody，解析后直接发送
+     */
     private void handleCacheBody(SocketChannel socketChannel, Object obj){
         CacheBody cacheBody = (CacheBody) obj;
         AbstractByteData data = cacheBody.getData();

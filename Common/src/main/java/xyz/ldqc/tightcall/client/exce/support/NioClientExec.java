@@ -2,7 +2,6 @@ package xyz.ldqc.tightcall.client.exce.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.ChainGroup;
 import xyz.ldqc.tightcall.chain.Chainable;
 import xyz.ldqc.tightcall.chain.ChannelChainGroup;
@@ -12,7 +11,6 @@ import xyz.ldqc.tightcall.client.message.MessageWriteThread;
 import xyz.ldqc.tightcall.client.message.support.BlockingMessageQueue;
 import xyz.ldqc.tightcall.pool.ResultPool;
 import xyz.ldqc.tightcall.pool.support.BlockResultPool;
-import xyz.ldqc.tightcall.protocol.CacheBody;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -41,7 +39,6 @@ public class NioClientExec implements ClientExec, Chainable {
 
     private MessageReceiveThread receiver;
 
-    private boolean terminate = false;
 
     public NioClientExec(InetSocketAddress socketAddress) {
         this.socketAddress = socketAddress;
@@ -53,7 +50,8 @@ public class NioClientExec implements ClientExec, Chainable {
     }
 
     private void terminate() {
-        this.terminate = true;
+        receiver.terminate();
+        writer.terminate();
     }
 
 

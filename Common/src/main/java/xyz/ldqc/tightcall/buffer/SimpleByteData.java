@@ -131,20 +131,20 @@ public class SimpleByteData extends AbstractByteData {
         // 将目标大小设为原来的1.5倍
         int targetCap = n + (n >> 1);
         // 分配新的字节数组
-        byte[] _hp = alloc(targetCap);
+        byte[] hp0 = alloc(targetCap);
         // 判断是否超过末尾循环
         if (tail >= 0 && readPos > tail) {
             // 尾部长度
             int tailLen = hp.length - readPos;
             // 复制第一部分
-            System.arraycopy(hp, readPos, _hp, 0, tailLen);
+            System.arraycopy(hp, readPos, hp0, 0, tailLen);
             // 复制第二部分
-            System.arraycopy(hp, 0, _hp, tailLen, size - tailLen);
+            System.arraycopy(hp, 0, hp0, tailLen, size - tailLen);
         } else {
-            System.arraycopy(hp, readPos, _hp, 0, size);
+            System.arraycopy(hp, readPos, hp0, 0, size);
         }
         readPos = 0;
-        hp = _hp;
+        hp = hp0;
         tail = size - 1;
     }
 
@@ -206,7 +206,7 @@ public class SimpleByteData extends AbstractByteData {
     @Override
     public int getInt() {
         byte[] bytes = readBytes(4);
-        return _getInt(bytes);
+        return getInt0(bytes);
     }
 
     @Override
@@ -316,12 +316,12 @@ public class SimpleByteData extends AbstractByteData {
             if (tail + bytes.length >= hp.length){
                 // 如果超出则需要分两部分进行追加
                 int firstPartLen = hp.length - (tail + 1);
-                int _tail = bytes.length - firstPartLen - 1;
+                int tail0 = bytes.length - firstPartLen - 1;
                 // 填充第一部分的的字节
                 fillBytes(tail + 1, bytes, 0, firstPartLen - 1);
                 // 填充剩余字节
                 fillBytes(0, bytes, firstPartLen, bytes.length - 1);
-                tail = _tail;
+                tail = tail0;
             }else {
                 // 无需截断，直接填充
                 fillBytes(tail + 1, bytes, 0, bytes.length - 1);
@@ -362,9 +362,9 @@ public class SimpleByteData extends AbstractByteData {
         size -= readLen;
     }
 
-    private int _getInt(byte[] bytes){
+    private int getInt0(byte[] bytes){
         int len = bytes.length;
-        if (len != 4) {
+        if (len != Integer.BYTES) {
             try {
                 throw new ByteDataException("Illegal byte array length");
             } catch (ByteDataException e) {
