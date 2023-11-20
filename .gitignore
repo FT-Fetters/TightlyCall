@@ -2,3 +2,6 @@
 /Common/target/
 /Common/log/
 /Common.iml
+/Registry.iml
+/RemoteCall.iml
+/TightlyCall.iml
