@@ -17,13 +17,13 @@ public class ServerApplication {
         this.exec = exec;
     }
 
-    public static Builder builder(){
-        return new Builder();
+    public static ServerApplicationBuilder builder(){
+        return new ServerApplicationBuilder();
     }
 
 
 
-    public static class Builder {
+    public static class ServerApplicationBuilder {
 
         private int port = -1;
 
@@ -32,22 +32,22 @@ public class ServerApplication {
 
         private ChainGroup chainGroup;
 
-        public Builder bind(int port) {
+        public ServerApplicationBuilder bind(int port) {
             this.port = port;
             return this;
         }
 
-        public Builder execNum(int execNum) {
+        public ServerApplicationBuilder execNum(int execNum) {
             this.execNum = execNum;
             return this;
         }
 
-        public Builder executor(Class<? extends ServerExec> execClazz) {
+        public ServerApplicationBuilder executor(Class<? extends ServerExec> execClazz) {
             this.execClazz = execClazz;
             return this;
         }
 
-        public Builder chain(ChainGroup chainGroup) {
+        public ServerApplicationBuilder chain(ChainGroup chainGroup) {
             this.chainGroup = chainGroup;
             return this;
         }
@@ -63,13 +63,12 @@ public class ServerApplication {
                 }else {
                     exec = new NioServerExec(port);
                 }
-                chainGroup.addHead(new ChannelPreHandlerInBoundChain()).addLast(new ChannelPostHandlerOutBoundChain());
-
-                exec.setChainGroup(chainGroup);
+                if (chainGroup != null){
+                    chainGroup.addHead(new ChannelPreHandlerInBoundChain()).addLast(new ChannelPostHandlerOutBoundChain());
+                }
             }
-
-
             if (exec != null){
+                exec.setChainGroup(chainGroup);
                 exec.start();
             }
             return new ServerApplication(exec);

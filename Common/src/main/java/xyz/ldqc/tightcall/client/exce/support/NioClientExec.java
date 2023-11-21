@@ -3,7 +3,6 @@ package xyz.ldqc.tightcall.client.exce.support;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.ChainGroup;
-import xyz.ldqc.tightcall.chain.Chainable;
 import xyz.ldqc.tightcall.chain.ChannelChainGroup;
 import xyz.ldqc.tightcall.client.exce.ClientExec;
 import xyz.ldqc.tightcall.client.message.MessageReceiveThread;
@@ -21,7 +20,7 @@ import java.nio.channels.SocketChannel;
 /**
  * @author Fetters
  */
-public class NioClientExec implements ClientExec, Chainable {
+public class NioClientExec implements ClientExec {
 
     private static final Logger logger = LoggerFactory.getLogger(NioClientExec.class);
 

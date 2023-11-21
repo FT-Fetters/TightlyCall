@@ -1,10 +1,12 @@
 package xyz.ldqc.tightcall.client.exce;
 
+import xyz.ldqc.tightcall.chain.Chainable;
+
 /**
  * 客户端执行器接口
  * @author Fetters
  */
-public interface ClientExec {
+public interface ClientExec extends Chainable {
 
 
     /**
