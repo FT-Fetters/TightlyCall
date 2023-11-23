@@ -6,9 +6,11 @@ import xyz.ldqc.tightcall.registry.index.IndexService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public abstract class MapIndexRoom implements IndexRoom {
+/**
+ * @author Fetters
+ */
+public abstract class AbstractMapIndexRoom implements IndexRoom {
 
     protected Map<String, IndexService> map;
 

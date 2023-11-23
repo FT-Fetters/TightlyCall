@@ -2,6 +2,9 @@ package xyz.ldqc.tightcall.registry;
 
 import xyz.ldqc.tightcall.registry.index.IndexRoom;
 
+/**
+ * @author Fetters
+ */
 public class RegistryServerApplication {
 
     public void run() {

@@ -1,11 +1,13 @@
 package xyz.ldqc.tightcall.registry.index.support;
 
 import java.util.HashMap;
-import java.util.List;
 
-public class HashMapIndexRoom extends MapIndexRoom{
+/**
+ * @author Fetters
+ */
+public class HashMapIndexRoom extends AbstractMapIndexRoom {
 
-    public HashMapIndexRoom(){
+    public HashMapIndexRoom() {
         map = new HashMap<>();
     }
 
