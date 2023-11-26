@@ -7,16 +7,16 @@ import xyz.ldqc.tightcall.server.handler.ChannelHandler;
 import java.nio.channels.Channel;
 
 /**
- * 过滤器，遇到指定的类才会继续执行否则直接返回
+ * 过滤器，遇到指定的类才会继续执行否则直接跳到下一级
  * @author Fetters
  */
-public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements InboundChain, ChannelHandler {
+public abstract class AbstractChannelFilterSkipHandlerInBoundChain implements InboundChain, ChannelHandler {
 
     private final Class<?> clazz;
 
     private Chain nextChain;
 
-    public AbstractChannelFilterBlockHandlerInBoundChain(Class<?> clazz){
+    public AbstractChannelFilterSkipHandlerInBoundChain(Class<?> clazz){
         this.clazz = clazz;
     }
 
@@ -24,6 +24,9 @@ public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements I
     @Override
     public void doChain(Channel channel, Object obj) {
         if (!clazz.isAssignableFrom(obj.getClass())){
+            if (nextChain != null){
+                nextChain.doChain(channel, obj);
+            }
             return;
         }
         doHandler(channel, obj);
