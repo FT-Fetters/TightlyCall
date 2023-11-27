@@ -14,4 +14,6 @@ public interface ServiceScanner {
      * @return 扫描结果
      */
     List<ServiceDefinition> doScan();
+
+    void setPackagePath(String packagePath);
 }
