@@ -1,5 +1,6 @@
 package xyz.ldqc.tightcall.provider.scanner;
 
+import xyz.ldqc.tightcall.provider.aware.ProviderApplicationAware;
 import xyz.ldqc.tightcall.provider.service.ServiceDefinition;
 
 import java.util.List;

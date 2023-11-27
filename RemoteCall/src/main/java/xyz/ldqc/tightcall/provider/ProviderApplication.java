@@ -35,10 +35,15 @@ public class ProviderApplication {
             serviceScanner.setPackagePath(packageName);
             List<ServiceDefinition> definitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
+            register.setProviderApplication(this);
             register.doReg(definitions);
         } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Class<?> getBootClazz(){
+        return bootClazz;
     }
 
 

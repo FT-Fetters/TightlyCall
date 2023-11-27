@@ -2,6 +2,7 @@ package xyz.ldqc.tightcall.provider.scanner.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import xyz.ldqc.tightcall.provider.ProviderApplication;
 import xyz.ldqc.tightcall.provider.annotation.OpenMapping;
 import xyz.ldqc.tightcall.provider.annotation.OpenService;
 import xyz.ldqc.tightcall.provider.scanner.ServiceScanner;

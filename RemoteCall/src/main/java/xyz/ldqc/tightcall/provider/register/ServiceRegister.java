@@ -1,5 +1,6 @@
 package xyz.ldqc.tightcall.provider.register;
 
+import xyz.ldqc.tightcall.provider.aware.ProviderApplicationAware;
 import xyz.ldqc.tightcall.provider.service.ServiceDefinition;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * @author Fetters
  */
-public interface ServiceRegister {
+public interface ServiceRegister extends ProviderApplicationAware {
 
     public void doReg(ServiceDefinition serviceDefinition);
 

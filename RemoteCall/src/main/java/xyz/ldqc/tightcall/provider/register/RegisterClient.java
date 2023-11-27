@@ -22,7 +22,7 @@ public class RegisterClient {
         this.serviceName = serviceName;
     }
 
-    public RegisterClientBuilder builder(){
+    public static RegisterClientBuilder builder(){
         return new RegisterClientBuilder();
     }
 
