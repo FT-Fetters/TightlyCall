@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.OutboundChain;
+import xyz.ldqc.tightcall.exception.ChainException;
 import xyz.ldqc.tightcall.protocol.CacheBody;
 import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
-import xyz.ldqc.tightcall.util.ByteUtil;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -48,11 +48,7 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
         // 如果是CacheBody
         if (obj instanceof CacheBody){
             handleCacheBody(socketChannel, obj);
-            return;
         }
-
-        // 其它对象的处理方法
-        handleOtherObj(socketChannel, obj);
     }
 
     /**
@@ -60,23 +56,18 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
      */
     private void handleCacheBody(SocketChannel socketChannel, Object obj){
         CacheBody cacheBody = (CacheBody) obj;
+        if (cacheBody == null){
+            throw new ChainException("cache body can not be null");
+        }
         AbstractByteData data = cacheBody.getData();
+        if (data == null){
+            return;
+        }
         byte[] bytes = data.readBytes();
         int serialNumber = cacheBody.getSerialNumber();
         byte[] dataArray = ProtocolDataFactory.create(bytes, serialNumber);
         ByteBuffer byteBuffer = ByteBuffer.allocate(dataArray.length);
         byteBuffer.put(dataArray);
-        sendByteBuffer(socketChannel, byteBuffer);
-    }
-
-    private void handleOtherObj(SocketChannel socketChannel, Object obj){
-        byte[] objArray = obj2array(obj);
-        if (objArray == null){
-            return;
-        }
-        byte[] data = ProtocolDataFactory.create(objArray);
-        ByteBuffer byteBuffer = ByteBuffer.allocate(data.length);
-        byteBuffer.put(data);
         sendByteBuffer(socketChannel, byteBuffer);
     }
 
@@ -90,22 +81,6 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
         }
     }
 
-    /**
-     * 对象转字节数组
-     */
-    private byte[] obj2array(Object obj){
-        if (obj == null){
-            return null;
-        }
-        byte[] byteArr;
-        if (obj instanceof String){
-            String objStr = (String) obj;
-            byteArr = objStr.getBytes();
-        }else {
-            byteArr = ByteUtil.obj2ByteArray(obj);
-        }
-        return byteArr;
-    }
 
     /**
      * 检查Channel是否为SocketChannel，转化后并返回

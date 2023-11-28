@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.ChainGroup;
 import xyz.ldqc.tightcall.chain.ChannelChainGroup;
+import xyz.ldqc.tightcall.chain.support.ChannelPostHandlerOutBoundChain;
 import xyz.ldqc.tightcall.client.exce.ClientExec;
 import xyz.ldqc.tightcall.client.message.MessageReceiveThread;
-import xyz.ldqc.tightcall.client.message.MessageWriteThread;
-import xyz.ldqc.tightcall.client.message.support.BlockingMessageQueue;
 import xyz.ldqc.tightcall.pool.ResultPool;
 import xyz.ldqc.tightcall.pool.support.BlockResultPool;
+import xyz.ldqc.tightcall.protocol.CacheBody;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -30,8 +30,6 @@ public class NioClientExec implements ClientExec {
 
     private Selector selector;
 
-    private MessageWriteThread writer;
-
     private ResultPool<Integer, Object> resultPool;
 
     private ChannelChainGroup chainGroup;
@@ -50,15 +48,14 @@ public class NioClientExec implements ClientExec {
 
     private void terminate() {
         receiver.terminate();
-        writer.terminate();
     }
 
 
     @Override
     public void start() {
         doConnect();
-        initWriter();
         initReceiver();
+        initOutBound();
     }
 
     @Override
@@ -66,7 +63,7 @@ public class NioClientExec implements ClientExec {
         if (this.channel == null) {
             throw new RuntimeException("not connected yet");
         }
-        writer.write(o);
+        chainGroup.doOutBoundChain(channel, o);
     }
 
     @Override
@@ -74,7 +71,14 @@ public class NioClientExec implements ClientExec {
         if (this.channel == null) {
             throw new RuntimeException("not connected yet");
         }
-        return writer.writeAndWait(o);
+        CacheBody cacheBody;
+        if (o instanceof CacheBody) {
+            cacheBody = ((CacheBody) o);
+        }else {
+            cacheBody = new CacheBody(o);
+        }
+        chainGroup.doOutBoundChain(channel, cacheBody);
+        return resultPool.getResult(cacheBody.getSerialNumber());
     }
 
     private void doConnect() {
@@ -90,12 +94,13 @@ public class NioClientExec implements ClientExec {
         }
     }
 
-    private void initWriter() {
-        this.resultPool = new BlockResultPool<>();
-        this.writer = new MessageWriteThread(new BlockingMessageQueue<>(), resultPool, channel);
-    }
 
     private void initReceiver() {
+        this.resultPool = new BlockResultPool<>();
         this.receiver = new MessageReceiveThread(channel, resultPool, chainGroup);
+    }
+
+    private void initOutBound(){
+        chainGroup.addLast(new ChannelPostHandlerOutBoundChain());
     }
 }

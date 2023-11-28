@@ -1,10 +1,10 @@
-package xyz.ldqc.tightcall.registry.serializer.support;
+package xyz.ldqc.tightcall.serializer.support;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import org.objenesis.strategy.StdInstantiatorStrategy;
-import xyz.ldqc.tightcall.registry.serializer.Serializer;
+import xyz.ldqc.tightcall.serializer.Serializer;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

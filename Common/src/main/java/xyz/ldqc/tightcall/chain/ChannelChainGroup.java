@@ -15,4 +15,11 @@ public interface ChannelChainGroup extends ChainGroup{
      */
     void doChain(SocketChannel socketChannel, Object o);
 
+    /**
+     * 调用出站调用链
+     * @param socketChannel 要传递的SocketChannel
+     * @param o 附加对象
+     */
+    void doOutBoundChain(SocketChannel socketChannel, Object o);
+
 }

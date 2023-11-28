@@ -33,7 +33,7 @@ public class MessageReceiveThread extends Thread{
             throw new RuntimeException(e);
         }
         this.chainGroup = (ChannelChainGroup) group;
-        // 给调用链组的出站添加结果处理链
+        // 给调用链组添加结果处理链
         this.chainGroup.addLast(new ChannelResultPoolHandlerInBoundChain(resultPool));
         this.start();
     }

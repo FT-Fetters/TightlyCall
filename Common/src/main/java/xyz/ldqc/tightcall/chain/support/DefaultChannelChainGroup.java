@@ -88,4 +88,15 @@ public class DefaultChannelChainGroup implements ChannelChainGroup {
             first.doChain(socketChannel, o);
         }
     }
+
+    @Override
+    public void doOutBoundChain(SocketChannel socketChannel, Object o) {
+        if (outBoundChainList.isEmpty()){
+            return;
+        }
+        Chain outBoundFirst = outBoundChainList.getFirst();
+        if (outBoundFirst != null){
+            outBoundFirst.doChain(socketChannel, o);
+        }
+    }
 }

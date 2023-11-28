@@ -14,9 +14,19 @@ public class CacheBody {
 
     private AbstractByteData tmpData;
 
+    private Object tmpObj;
+
     private byte version;
 
     private int serialNumber;
+
+    public Object getTmpObj() {
+        return tmpObj;
+    }
+
+    public void setTmpObj(Object tmpObj) {
+        this.tmpObj = tmpObj;
+    }
 
     public CacheBody() {
 
@@ -42,6 +52,12 @@ public class CacheBody {
         this.version = ((byte) 1);
         this.serialNumber = ((int) SnowflakeUtil.getInstance().nextId());
         this.data = byteData;
+    }
+
+    public CacheBody(Object o){
+        this.version = ((byte) 1);
+        this.serialNumber = ((int) SnowflakeUtil.getInstance().nextId());
+        this.tmpObj = o;
     }
 
     public int getLen() {
