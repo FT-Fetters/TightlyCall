@@ -100,6 +100,11 @@ public class SimpleByteData extends AbstractByteData {
         this.size = remaining;
     }
 
+    public SimpleByteData(byte[] bytes){
+        this(bytes.length);
+        this.writeBytes(bytes);
+    }
+
 
     /**
      * 比较方法

@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.util;
 
 import com.alibaba.fastjson2.JSONObject;
+import xyz.ldqc.tightcall.serializer.support.KryoSerializer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -32,30 +33,7 @@ public class ByteUtil {
      * 将对象转化为字节数组
      */
     public static byte[] obj2ByteArray(Object obj){
-        if (obj instanceof String){
-            return ((String) obj).getBytes();
-        }
-        if (obj instanceof Serializable){
-            try {
-                // 创建字节数组输出流
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                // 创建对象输出流
-                ObjectOutputStream oos = new ObjectOutputStream(bos);
-                // 将对象写入对象输出流
-                oos.writeObject(obj);
-                oos.flush();
-                // 获取字节数组
-                byte[] bytes = bos.toByteArray();
-                // 关闭流
-                oos.close();
-                bos.close();
-                return bytes;
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-        JSONObject objJson = JSONObject.from(obj);
-        return objJson.toJSONString().getBytes();
+        return KryoSerializer.serializer().serialize(obj);
     }
 
     public static byte[] int2ByteArray(int num){

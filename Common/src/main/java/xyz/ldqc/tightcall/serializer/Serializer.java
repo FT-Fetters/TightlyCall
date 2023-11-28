@@ -1,4 +1,4 @@
-package xyz.ldqc.tightcall.registry.serializer;
+package xyz.ldqc.tightcall.serializer;
 
 /**
  * @author Fetters

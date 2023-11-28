@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
  * @author Fetters
  */
 @Retention(RetentionPolicy.RUNTIME)
-public @interface OpenClient {
+public @interface OpenRegClient {
 
     String host();
 

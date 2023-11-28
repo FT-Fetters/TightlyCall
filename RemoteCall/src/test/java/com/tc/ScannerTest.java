@@ -2,7 +2,7 @@ package com.tc;
 
 import org.junit.Test;
 import xyz.ldqc.tightcall.provider.scanner.support.DefaultServiceScanner;
-import xyz.ldqc.tightcall.provider.service.ServiceDefinition;
+import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 import xyz.ldqc.tightcall.util.PackageUtil;
 
 import java.io.IOException;

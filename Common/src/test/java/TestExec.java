@@ -1,22 +1,21 @@
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.InboundChain;
+import xyz.ldqc.tightcall.chain.OutboundChain;
 import xyz.ldqc.tightcall.chain.support.ChannelPostHandlerOutBoundChain;
 import xyz.ldqc.tightcall.chain.support.ChannelPreHandlerInBoundChain;
-import xyz.ldqc.tightcall.chain.support.ChannelResultPoolHandlerInBoundChain;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
 import xyz.ldqc.tightcall.client.ClientApplication;
 import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
 import xyz.ldqc.tightcall.protocol.CacheBody;
-import xyz.ldqc.tightcall.protocol.ProtocolConstant;
-import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
+import xyz.ldqc.tightcall.serializer.support.KryoSerializer;
 import xyz.ldqc.tightcall.server.ServerApplication;
 import xyz.ldqc.tightcall.server.exec.support.NioServerExec;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
+import xyz.ldqc.tightcall.server.handler.Handler;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.Channel;
@@ -73,6 +72,7 @@ public class TestExec {
             }
             CacheBody cacheBody = (CacheBody) obj;
             byte[] bytes = "Hello TightlyCall".getBytes();
+            log.info("receive msg: {}", cacheBody.getData().toString());
             cacheBody.getData().writeBytes(bytes);
             cacheBody.setLen(cacheBody.getLen() + bytes.length);
             nextChain.doChain(channel, cacheBody);
@@ -94,9 +94,42 @@ public class TestExec {
     public void testClientApplication(){
         ClientApplication clientApplication = ClientApplication.builder()
                 .address(new InetSocketAddress("localhost", 6770))
-                .chain(new DefaultChannelChainGroup())
+                .chain(new DefaultChannelChainGroup().addLast(new ChannelEncoderHandlerOutBoundChain()))
                 .executor(NioClientExec.class)
                 .boot();
-        log.debug("send result: {}", clientApplication.writeAndWait("test write"));
+        Object o = clientApplication.writeAndWait("test write");
+        log.debug("send result: {}", o);
+    }
+
+    private static class ChannelEncoderHandlerOutBoundChain implements ChannelHandler, OutboundChain {
+
+        private Chain nextChain;
+
+        @Override
+        public void doChain(Channel channel, Object obj) {
+            doHandler(channel, obj);
+        }
+
+        @Override
+        public void setNextChain(Chain chain) {
+            this.nextChain = chain;
+        }
+
+        @Override
+        public void doHandler(Channel channel, Object obj) {
+            if (obj instanceof CacheBody){
+                CacheBody cacheBody = (CacheBody) obj;
+                if (cacheBody.getData() == null && cacheBody.getTmpObj() != null){
+                    byte[] bytes = KryoSerializer.serializer().serialize(cacheBody.getTmpObj());
+                    SimpleByteData byteData = new SimpleByteData();
+                    byteData.writeBytes(bytes);
+                    cacheBody.setData(byteData);
+                    cacheBody.setLen(bytes.length);
+                }
+            }
+            if (nextChain != null){
+                nextChain.doChain(channel, obj);
+            }
+        }
     }
 }

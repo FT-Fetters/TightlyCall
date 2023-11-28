@@ -11,33 +11,20 @@ public class RegisterRequest extends AbstractRequest {
     private String serviceName;
 
     /**
-     * 目标host
-     */
-    private String targetHost;
-
-    /**
      * 目标端口
      */
-    private String targetPort;
+    private int targetPort;
 
     /**
      * 目标url
      */
-    private String url;
+    private ServiceDefinition serviceDefinition;
 
-    public String getTargetHost() {
-        return targetHost;
-    }
-
-    public void setTargetHost(String targetHost) {
-        this.targetHost = targetHost;
-    }
-
-    public String getTargetPort() {
+    public int getTargetPort() {
         return targetPort;
     }
 
-    public void setTargetPort(String targetPort) {
+    public void setTargetPort(int targetPort) {
         this.targetPort = targetPort;
     }
 
@@ -53,11 +40,11 @@ public class RegisterRequest extends AbstractRequest {
         this.serviceName = serviceName;
     }
 
-    public String getUrl() {
-        return url;
+    public ServiceDefinition getServiceDefinition() {
+        return serviceDefinition;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setServiceDefinition(ServiceDefinition serviceDefinition) {
+        this.serviceDefinition = serviceDefinition;
     }
 }

@@ -1,4 +1,4 @@
-package xyz.ldqc.tightcall.provider.service;
+package xyz.ldqc.tightcall.registry.server.request;
 
 import java.lang.reflect.Method;
 
