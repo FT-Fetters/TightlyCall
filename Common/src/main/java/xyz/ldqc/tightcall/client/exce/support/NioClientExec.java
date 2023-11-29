@@ -59,25 +59,23 @@ public class NioClientExec implements ClientExec {
     }
 
     @Override
-    public void write(Object o) {
-        if (this.channel == null) {
-            throw new RuntimeException("not connected yet");
-        }
-        chainGroup.doOutBoundChain(channel, o);
-    }
-
-    @Override
-    public Object writeAndWait(Object o) {
+    public CacheBody write(Object o) {
         if (this.channel == null) {
             throw new RuntimeException("not connected yet");
         }
         CacheBody cacheBody;
-        if (o instanceof CacheBody) {
+        if (CacheBody.class.isAssignableFrom(o.getClass())) {
             cacheBody = ((CacheBody) o);
         }else {
             cacheBody = new CacheBody(o);
         }
         chainGroup.doOutBoundChain(channel, cacheBody);
+        return cacheBody;
+    }
+
+    @Override
+    public Object writeAndWait(Object o) {
+        CacheBody cacheBody = write(o);
         return resultPool.getResult(cacheBody.getSerialNumber());
     }
 

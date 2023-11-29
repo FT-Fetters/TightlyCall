@@ -14,7 +14,7 @@ public abstract class AbstractChannelFilterSkipHandlerInBoundChain implements In
 
     private final Class<?> clazz;
 
-    private Chain nextChain;
+    protected Chain nextChain;
 
     public AbstractChannelFilterSkipHandlerInBoundChain(Class<?> clazz){
         this.clazz = clazz;

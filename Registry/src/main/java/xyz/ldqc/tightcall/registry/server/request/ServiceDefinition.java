@@ -9,41 +9,43 @@ public class ServiceDefinition {
 
     private String path;
 
-    private Class<?> clazz;
+    private String clazz;
 
-    private Method method;
+    private String method;
 
-    private Class<?>[] paramTypes;
+    private String[] paramTypes;
 
     public String getPath() {
         return path;
+    }
+
+    public String getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
+    }
+
+    public String[] getParamTypes() {
+        return paramTypes;
+    }
+
+    public void setParamTypes(String[] paramTypes) {
+        this.paramTypes = paramTypes;
     }
 
     public void setPath(String path) {
         this.path = path;
     }
 
-    public Class<?> getClazz() {
-        return clazz;
-    }
 
-    public void setClazz(Class<?> clazz) {
-        this.clazz = clazz;
-    }
-
-    public Method getMethod() {
+    public String getMethod() {
         return method;
     }
 
-    public void setMethod(Method method) {
+    public void setMethod(String method) {
         this.method = method;
     }
 
-    public Class<?>[] getParamTypes() {
-        return paramTypes;
-    }
-
-    public void setParamTypes(Class<?>[] paramTypes) {
-        this.paramTypes = paramTypes;
-    }
 }

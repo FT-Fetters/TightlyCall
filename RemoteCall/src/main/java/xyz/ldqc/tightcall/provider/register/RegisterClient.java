@@ -5,6 +5,7 @@ import xyz.ldqc.tightcall.client.ClientApplication;
 import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
 import xyz.ldqc.tightcall.exception.RegisterClientException;
 import xyz.ldqc.tightcall.protocol.ProtocolDataFactory;
+import xyz.ldqc.tightcall.provider.chain.ChannelRequestOutBoundChain;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 import xyz.ldqc.tightcall.registry.server.request.RegisterRequest;
 
@@ -72,7 +73,7 @@ public class RegisterClient {
             }
             ClientApplication clientApplication = ClientApplication.builder()
                     .address(target)
-                    .chain(new DefaultChannelChainGroup())
+                    .chain(new DefaultChannelChainGroup().addLast(new ChannelRequestOutBoundChain()))
                     .executor(NioClientExec.class)
                     .boot();
             return new RegisterClient(clientApplication, this.serviceName, providerPort);

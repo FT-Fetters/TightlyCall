@@ -19,11 +19,11 @@ public class ChannelRequestOutBoundChain implements ChannelHandler, OutboundChai
 
     @Override
     public void doChain(Channel channel, Object obj) {
-        if (obj instanceof CacheBody){
+        if (obj.getClass().isAssignableFrom(CacheBody.class) ){
             CacheBody cacheBody = (CacheBody) obj;
             if (cacheBody.getData() == null
                     && cacheBody.getTmpObj() != null
-                    && cacheBody.getTmpObj().getClass().isAssignableFrom(AbstractRequest.class)
+                    && AbstractRequest.class.isAssignableFrom(cacheBody.getTmpObj().getClass())
             ){
                 doHandler(channel, obj);
             }

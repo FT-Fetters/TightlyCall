@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.client.exce;
 
 import xyz.ldqc.tightcall.chain.Chainable;
+import xyz.ldqc.tightcall.protocol.CacheBody;
 
 /**
  * 客户端执行器接口
@@ -18,7 +19,7 @@ public interface ClientExec extends Chainable {
      * 写入消息
      * @param o 消息对象
      */
-    void write(Object o);
+    CacheBody write(Object o);
 
     /**
      * 写入消息并同步等待回传结果

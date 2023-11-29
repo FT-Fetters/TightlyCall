@@ -12,9 +12,4 @@ public class ChannelRequestFilterBlockHandlerInBoundChain extends AbstractChanne
     public ChannelRequestFilterBlockHandlerInBoundChain() {
         super(AbstractRequest.class);
     }
-
-    @Override
-    public void doHandler(Channel channel, Object obj) {
-
-    }
 }

@@ -10,11 +10,11 @@ import java.nio.channels.Channel;
  * 过滤器，遇到指定的类才会继续执行否则直接返回
  * @author Fetters
  */
-public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements InboundChain, ChannelHandler {
+public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements InboundChain {
 
     private final Class<?> clazz;
 
-    private Chain nextChain;
+    protected Chain nextChain;
 
     public AbstractChannelFilterBlockHandlerInBoundChain(Class<?> clazz){
         this.clazz = clazz;
@@ -26,7 +26,7 @@ public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements I
         if (!clazz.isAssignableFrom(obj.getClass())){
             return;
         }
-        doHandler(channel, obj);
+        nextChain.doChain(channel, obj);
     }
 
     @Override

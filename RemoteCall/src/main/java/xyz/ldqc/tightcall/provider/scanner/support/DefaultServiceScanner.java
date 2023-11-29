@@ -6,13 +6,16 @@ import xyz.ldqc.tightcall.provider.annotation.OpenMapping;
 import xyz.ldqc.tightcall.provider.annotation.OpenService;
 import xyz.ldqc.tightcall.provider.scanner.ServiceScanner;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
+import xyz.ldqc.tightcall.util.ClassUtil;
 import xyz.ldqc.tightcall.util.PackageUtil;
 import xyz.ldqc.tightcall.util.Path;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Fetters
@@ -93,10 +96,12 @@ public class DefaultServiceScanner implements ServiceScanner {
         String pathValue = openMapping.value();
         path.append(pathValue);
         ServiceDefinition serviceDefinition = new ServiceDefinition();
-        serviceDefinition.setClazz(clazz);
+        serviceDefinition.setClazz(clazz.getName());
         serviceDefinition.setPath(path.getPath());
-        serviceDefinition.setMethod(method);
-        serviceDefinition.setParamTypes(method.getParameterTypes());
+        serviceDefinition.setMethod(method.getName());
+        serviceDefinition.setParamTypes(ClassUtil.getMethodParamTypes(method));
         return serviceDefinition;
     }
+
+
 }
