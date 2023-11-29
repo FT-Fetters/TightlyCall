@@ -1,5 +1,7 @@
 package xyz.ldqc.tightcall.provider.register;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
 import xyz.ldqc.tightcall.client.ClientApplication;
 import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
@@ -15,6 +17,8 @@ import java.net.InetSocketAddress;
  * @author Fetters
  */
 public class RegisterClient {
+
+    private static final Logger log = LoggerFactory.getLogger(RegisterClient.class);
 
     private final ClientApplication client;
 
@@ -34,6 +38,7 @@ public class RegisterClient {
 
     public void register(ServiceDefinition serviceDefinition){
         RegisterRequest registerRequest = buildRegisterRequest(serviceDefinition);
+        log.info("register {}", registerRequest.getServiceDefinition().getClazz());
         client.write(registerRequest);
     }
 
