@@ -2,6 +2,8 @@ package xyz.ldqc.tightcall.registry.server.support;
 
 import xyz.ldqc.tightcall.chain.ChainGroup;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
+import xyz.ldqc.tightcall.registry.index.IndexRoom;
+import xyz.ldqc.tightcall.registry.index.support.HashMapIndexRoom;
 import xyz.ldqc.tightcall.registry.server.RegisterServer;
 import xyz.ldqc.tightcall.registry.server.chain.ChannelConvertHandlerInBoundChain;
 import xyz.ldqc.tightcall.registry.server.chain.ChannelRegReqHandlerInBoundChain;
@@ -18,6 +20,8 @@ public class DefaultRegisterServer implements RegisterServer {
     private final int port;
 
     private ServerApplication serverApplication;
+
+    private final IndexRoom indexRoom = new HashMapIndexRoom();
 
     public DefaultRegisterServer(int port){
         this.port = port;
@@ -38,7 +42,7 @@ public class DefaultRegisterServer implements RegisterServer {
         DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
         chainGroup.addLast(new ChannelConvertHandlerInBoundChain(KryoSerializer.serializer()))
                 .addLast(new ChannelRequestFilterBlockHandlerInBoundChain())
-                .addLast(new ChannelRegReqHandlerInBoundChain());
+                .addLast(new ChannelRegReqHandlerInBoundChain(indexRoom));
         return chainGroup;
     }
 }

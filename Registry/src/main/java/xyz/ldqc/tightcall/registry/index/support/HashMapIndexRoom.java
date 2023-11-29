@@ -1,5 +1,7 @@
 package xyz.ldqc.tightcall.registry.index.support;
 
+import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
+
 import java.util.HashMap;
 
 /**
@@ -10,8 +12,5 @@ public class HashMapIndexRoom extends AbstractMapIndexRoom {
     public HashMapIndexRoom() {
         map = new HashMap<>();
     }
-
-
-
 
 }

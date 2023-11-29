@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.registry.server.request;
 
 import java.lang.reflect.Method;
+import java.net.InetSocketAddress;
 
 /**
  * @author Fetters
@@ -14,6 +15,8 @@ public class ServiceDefinition {
     private String method;
 
     private String[] paramTypes;
+
+    private InetSocketAddress address;
 
     public String getPath() {
         return path;
@@ -48,4 +51,11 @@ public class ServiceDefinition {
         this.method = method;
     }
 
+    public InetSocketAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(InetSocketAddress address) {
+        this.address = address;
+    }
 }
