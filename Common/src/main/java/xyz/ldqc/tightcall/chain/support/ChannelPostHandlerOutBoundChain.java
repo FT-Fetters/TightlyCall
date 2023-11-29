@@ -23,6 +23,7 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
 
     private static final Logger logger = LoggerFactory.getLogger(ChannelPostHandlerOutBoundChain.class);
 
+
     @Override
     public void doChain(Channel channel, Object obj) {
         doHandler(channel, obj);
@@ -66,18 +67,32 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
         byte[] bytes = data.readBytes();
         int serialNumber = cacheBody.getSerialNumber();
         byte[] dataArray = ProtocolDataFactory.create(bytes, serialNumber);
-        ByteBuffer byteBuffer = ByteBuffer.allocate(dataArray.length);
-        byteBuffer.put(dataArray);
-        sendByteBuffer(socketChannel, byteBuffer);
+        doWrite(socketChannel, dataArray);
     }
 
-    private void sendByteBuffer(SocketChannel socketChannel, ByteBuffer buffer){
-        try {
-            // 需要切换到读模式才能让socketChannel读取到才能发送成功
+
+    private void doWrite(SocketChannel target ,byte[] data) {
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        // 数据总长度
+        int totalLen = data.length;
+        // 剩余发送的长度
+        int remaining = totalLen;
+        while (remaining > 0) {
+            int offset = totalLen - remaining;
+            // 本次写入的字节数
+            int len = Math.min(buffer.remaining(), remaining);
+            // 切换到写模式
+            buffer.clear();
+            buffer.put(data, offset, len);
+            // 切换到读模式
             buffer.flip();
-            socketChannel.write(buffer);
-        } catch (IOException e) {
-            logger.error(e.getMessage());
+            remaining -= len;
+            try {
+                target.write(buffer);
+            } catch (IOException e) {
+                logger.error("send message error: {}", e.getMessage());
+                return;
+            }
         }
     }
 
