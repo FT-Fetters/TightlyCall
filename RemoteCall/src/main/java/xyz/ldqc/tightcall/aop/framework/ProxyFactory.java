@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.aop.framework;
 
-import com.ldqc.lans.aop.AdvisedSupport;
+
+import xyz.ldqc.tightcall.aop.AdvisedSupport;
 
 /**
  * 代理工厂主要解决是关于JDK和Cglib两种代理的选择问题

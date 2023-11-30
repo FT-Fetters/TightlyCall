@@ -1,8 +1,8 @@
 package xyz.ldqc.tightcall.aop.aspectj;
 
-import com.ldqc.lans.aop.Pointcut;
-import com.ldqc.lans.aop.PointcutAdvisor;
+import xyz.ldqc.tightcall.aop.Pointcut;
 import org.aopalliance.aop.Advice;
+import xyz.ldqc.tightcall.aop.PointcutAdvisor;
 
 /**
  * 使用AspectJ pointcut 表达式的advisor
