@@ -10,6 +10,7 @@ import xyz.ldqc.tightcall.protocol.CacheBody;
 import java.nio.channels.Channel;
 
 /**
+ * 结果池存放链点，用于将结果存入结果池中
  * @author Fetters
  */
 public class ChannelResultPoolHandlerInBoundChain implements InboundChain {

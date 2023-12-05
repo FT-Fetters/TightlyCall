@@ -53,18 +53,29 @@ public class SimpleByteData extends AbstractByteData {
         this(DEFAULT_INIT_CAPACITY, DEFAULT_MAX_CAPACITY);
     }
 
+    /**
+     * 指定初始大小的构造
+     * @param capacity 初始大小
+     */
     public SimpleByteData(int capacity) {
         this(capacity, DEFAULT_MAX_CAPACITY);
     }
 
+    /**
+     * 指定初始大小及最大容量的构造
+     * @param capacity 初始容量
+     * @param maxCapacity 最大容量
+     */
     public SimpleByteData(int capacity, int maxCapacity) {
         if (capacity > maxCapacity) {
+            // 当初始容量大于最大容量，抛出异常，创建对象失败
             try {
                 throw new ByteDataException("capacity can not greater than max capacity");
             } catch (ByteDataException e) {
                 throw new RuntimeException(e);
             }
         }
+        // 分配堆内存并初始化属性
         this.hp = alloc(capacity);
         this.maxCapacity = maxCapacity;
         tail = -1;
@@ -72,12 +83,20 @@ public class SimpleByteData extends AbstractByteData {
         size = 0;
     }
 
-
+    /**
+     * 通过ByteBuffer创建ByteData对象，不指定最大容量，设置未默认最大容量
+     * @param byteBuffer 要传入的ByteBuffer
+     */
     public SimpleByteData(ByteBuffer byteBuffer) {
         this(byteBuffer, DEFAULT_MAX_CAPACITY);
     }
 
 
+    /**
+     * 通过ByteBuffer创建ByteData对象，并指定最大容量
+     * @param byteBuffer 要初始化的ByteBuffer
+     * @param maxCapacity 最大容量
+     */
     public SimpleByteData(ByteBuffer byteBuffer, int maxCapacity) {
         int remaining = byteBuffer.position();
         byteBuffer.flip();
@@ -100,7 +119,12 @@ public class SimpleByteData extends AbstractByteData {
         this.size = remaining;
     }
 
+    /**
+     * 通过传入字节数组初始化构造函数
+     * @param bytes 传入的字节数组
+     */
     public SimpleByteData(byte[] bytes){
+        // 先通过指定大小容量构造函数创建对象，再通过写入的方法写入数据
         this(bytes.length);
         this.writeBytes(bytes);
     }

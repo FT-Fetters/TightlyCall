@@ -23,6 +23,7 @@ public abstract class AbstractChannelFilterBlockHandlerInBoundChain implements I
 
     @Override
     public void doChain(Channel channel, Object obj) {
+        // 如果传入的对象不是要求的类的子类或者相同类则直接返回不会继续执行调用链
         if (!clazz.isAssignableFrom(obj.getClass())){
             return;
         }
