@@ -1,10 +1,10 @@
-package xyz.ldqc.tightcall.provider.scanner.support;
+package xyz.ldqc.tightcall.scanner.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.provider.annotation.OpenMapping;
 import xyz.ldqc.tightcall.provider.annotation.OpenService;
-import xyz.ldqc.tightcall.provider.scanner.ServiceScanner;
+import xyz.ldqc.tightcall.scanner.ServiceScanner;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 import xyz.ldqc.tightcall.util.ClassUtil;
 import xyz.ldqc.tightcall.util.PackageUtil;
@@ -13,9 +13,7 @@ import xyz.ldqc.tightcall.util.Path;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Fetters

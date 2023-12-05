@@ -1,14 +1,16 @@
-package com.tc.service.open;
+package com.tc.prov.service;
 
 import xyz.ldqc.tightcall.provider.annotation.OpenMapping;
 import xyz.ldqc.tightcall.provider.annotation.OpenService;
 
 @OpenService
-@OpenMapping("/service/b")
-public class ServiceB {
+@OpenMapping("/service/a")
+public class ServiceA {
 
     @OpenMapping("/test")
-    public String test(String ab, int i){
-        return "123";
+    public String test(boolean b){
+        return "223";
     }
+
+
 }

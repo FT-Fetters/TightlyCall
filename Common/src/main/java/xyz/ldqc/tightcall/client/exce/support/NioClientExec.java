@@ -46,8 +46,14 @@ public class NioClientExec implements ClientExec {
         this.chainGroup = (ChannelChainGroup) group;
     }
 
-    private void terminate() {
+    @Override
+    public void terminate() {
         receiver.terminate();
+        try {
+            channel.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

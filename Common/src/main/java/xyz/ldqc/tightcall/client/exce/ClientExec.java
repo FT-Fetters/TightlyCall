@@ -27,4 +27,6 @@ public interface ClientExec extends Chainable {
      * @return 消息结果
      */
     Object writeAndWait(Object o);
+
+    void terminate();
 }

@@ -13,13 +13,13 @@ import java.nio.channels.Channel;
 /**
  * @author Fetters
  */
-public class ChannelConvertHandlerInBoundChain implements InboundChain, ChannelHandler {
+public class ChannelConvertRequestHandlerInBoundChain implements InboundChain, ChannelHandler {
 
     private Chain nextChain;
 
     private final Serializer serializer;
 
-    public ChannelConvertHandlerInBoundChain(Serializer serializer){
+    public ChannelConvertRequestHandlerInBoundChain(Serializer serializer){
         this.serializer = serializer;
     }
 

@@ -30,6 +30,10 @@ public class ClientApplication {
         exec.write(o);
     }
 
+    public void terminate(){
+        exec.terminate();
+    }
+
     public static class ClientApplicationBuilder {
 
         private InetSocketAddress socketAddress;
