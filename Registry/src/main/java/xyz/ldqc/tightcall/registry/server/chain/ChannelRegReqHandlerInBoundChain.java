@@ -43,7 +43,8 @@ public class ChannelRegReqHandlerInBoundChain extends AbstractChannelFilterSkipH
             InetSocketAddress remoteAddress = ((InetSocketAddress) socketChannel.getRemoteAddress());
             String host = remoteAddress.getHostString();
             int port = regReq.getTargetPort();
-            service.setAddress(new InetSocketAddress(host, port));
+            service.setHost(host);
+            service.setPort(port);
         } catch (IOException e) {
             log.error("set address fail");
         }

@@ -9,7 +9,11 @@ public class ServiceA {
 
     @OpenMapping("/test")
     public String test(boolean b){
-        return "223";
+        if (b){
+            return "is true";
+        }else {
+            return "is false";
+        }
     }
 
 

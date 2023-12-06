@@ -4,9 +4,11 @@ import xyz.ldqc.tightcall.chain.ChainGroup;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
 import xyz.ldqc.tightcall.client.ClientApplication;
 import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
+import xyz.ldqc.tightcall.common.response.CallResponse;
+import xyz.ldqc.tightcall.consumer.call.chain.ChannelCallResponseHandlerInBoundChain;
 import xyz.ldqc.tightcall.provider.chain.ChannelRequestOutBoundChain;
 import xyz.ldqc.tightcall.registry.server.chain.ChannelConvertResponseHandlerInBoundChain;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelResponseFilterBlockHandlerOutBoundChain;
+import xyz.ldqc.tightcall.registry.server.chain.ChannelResponseFilterBlockHandlerInBoundChain;
 import xyz.ldqc.tightcall.registry.server.response.AbstractResponse;
 import xyz.ldqc.tightcall.serializer.support.KryoSerializer;
 
@@ -33,8 +35,8 @@ public class CallClient {
     }
 
 
-    public AbstractResponse doCall(Object req){
-        return (AbstractResponse) clientApplication.writeAndWait(req);
+    public CallResponse doCall(Object req){
+        return (CallResponse) clientApplication.writeAndWait(req);
     }
 
     public static class CallClientBuilder{
@@ -58,9 +60,9 @@ public class CallClient {
 
         private ChainGroup buildCallClientChainGroup(){
             DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
-            chainGroup.addLast(new ChannelResponseFilterBlockHandlerOutBoundChain());
             chainGroup.addLast(new ChannelConvertResponseHandlerInBoundChain(KryoSerializer.serializer()));
-//            chainGroup.addLast(new ChannelResponseHandlerInBoundChain());
+            chainGroup.addLast(new ChannelResponseFilterBlockHandlerInBoundChain());
+            chainGroup.addLast(new ChannelCallResponseHandlerInBoundChain());
             chainGroup.addLast(new ChannelRequestOutBoundChain());
             return chainGroup;
         }

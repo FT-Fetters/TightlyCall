@@ -45,11 +45,10 @@ public class ClientMethodInterceptor implements MethodInterceptor {
         String targetServiceName = tightlyCallClient.serviceName();
         Path path = getPath(o, method);
         ServiceDefinition targetService = getTargetService(targetServiceName, path);
-        InetSocketAddress targetAddress = targetService.getAddress();
+        InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(targetService.getHost(), targetService.getPort());
         CallRequest callRequest = buildCallRequest(targetService, args);
-//        Object response = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
 
-        return targetService.getPath();
+        return CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
 
     }
 

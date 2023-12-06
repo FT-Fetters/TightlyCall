@@ -1,5 +1,8 @@
 package xyz.ldqc.tightcall.consumer.call;
 
+import xyz.ldqc.tightcall.common.response.CallResponse;
+import xyz.ldqc.tightcall.registry.server.response.AbstractResponse;
+
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,14 +23,15 @@ public class CallClientPool {
     }
 
     public Object doCall(InetSocketAddress target, Object req){
+        target = new InetSocketAddress(target.getHostString(), target.getPort());
         CallClient callClient = pool.get(target);
         if (callClient == null){
             callClient = newConnect(target);
             pool.put(target, callClient);
         }
-        Object response = callClient.doCall(req);
+        CallResponse response = callClient.doCall(req);
         heartThread.updateCallTime(target);
-        return response;
+        return response.getBody();
     }
 
     private CallClient newConnect(InetSocketAddress target){

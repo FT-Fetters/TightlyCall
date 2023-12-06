@@ -11,5 +11,13 @@ public class CallResponse extends AbstractResponse {
         this.type = "CALL";
     }
 
+    private Object body;
 
+    public Object getBody() {
+        return body;
+    }
+
+    public void setBody(Object body) {
+        this.body = body;
+    }
 }

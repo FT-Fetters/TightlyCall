@@ -40,6 +40,7 @@ public class ChannelConvertResponseHandlerInBoundChain implements InboundChain, 
         }
         CacheBody cacheBody = (CacheBody) obj;
         AbstractResponse response = handlerCacheBody(cacheBody);
+        response.setSerialNumber(cacheBody.getSerialNumber());
         nextChain.doChain(channel, response);
     }
 

@@ -17,6 +17,7 @@ public class ConsumerTest {
         ConsumerApplication consumerApplication = ConsumerApplication.run(ConsumerTest.class);
         ServiceA serviceA = consumerApplication.getCallClient(ServiceA.class);
         System.out.println(serviceA.test(true));
+        System.out.println(serviceA.test(false));
         LockSupport.park();
     }
 }

@@ -16,7 +16,9 @@ public class ServiceDefinition {
 
     private String[] paramTypes;
 
-    private InetSocketAddress address;
+    private String host;
+
+    private int port;
 
     public String getPath() {
         return path;
@@ -51,11 +53,19 @@ public class ServiceDefinition {
         this.method = method;
     }
 
-    public InetSocketAddress getAddress() {
-        return address;
+    public String getHost() {
+        return host;
     }
 
-    public void setAddress(InetSocketAddress address) {
-        this.address = address;
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 }
