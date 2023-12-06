@@ -119,6 +119,11 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         }
     }
 
+    /**
+     * 当数据未读取完成时，需要从缓存中读取出来并追加数据
+     * @param socketChannel 正在发送的channel
+     * @param abstractByteData 追加的数据
+     */
     private void appendData(SocketChannel socketChannel, AbstractByteData abstractByteData){
         CacheBody cacheBody = cacheMap.get(socketChannel);
         if (cacheBody == null){

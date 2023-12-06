@@ -18,22 +18,36 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
 /**
+ * NIO客户端执行器
  * @author Fetters
  */
 public class NioClientExec implements ClientExec {
 
     private static final Logger logger = LoggerFactory.getLogger(NioClientExec.class);
 
+    /**
+     * 连接的目标服务器地址
+     */
     private final InetSocketAddress socketAddress;
 
+    /**
+     * 当前客户端channel
+     */
     private SocketChannel channel;
 
-    private Selector selector;
-
+    /**
+     * 结果池
+     */
     private ResultPool<Integer, Object> resultPool;
 
+    /**
+     * 调用链组
+     */
     private ChannelChainGroup chainGroup;
 
+    /**
+     * 消息接收线程
+     */
     private MessageReceiveThread receiver;
 
 
@@ -46,8 +60,14 @@ public class NioClientExec implements ClientExec {
         this.chainGroup = (ChannelChainGroup) group;
     }
 
-    private void terminate() {
+    @Override
+    public void terminate() {
         receiver.terminate();
+        try {
+            channel.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -84,7 +104,7 @@ public class NioClientExec implements ClientExec {
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.connect(socketAddress);
             socketChannel.configureBlocking(false);
-            this.selector = Selector.open();
+            Selector selector = Selector.open();
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
             this.channel = socketChannel;
         } catch (IOException e) {

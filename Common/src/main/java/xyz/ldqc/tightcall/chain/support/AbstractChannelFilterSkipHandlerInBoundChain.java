@@ -23,6 +23,7 @@ public abstract class AbstractChannelFilterSkipHandlerInBoundChain implements In
 
     @Override
     public void doChain(Channel channel, Object obj) {
+        // 如果传入的对象不是指定的类的子类或者相同类，则直接跳入下一个链点，否则则执行非抽象类的doHanlder方法
         if (!clazz.isAssignableFrom(obj.getClass())){
             if (nextChain != null){
                 nextChain.doChain(channel, obj);

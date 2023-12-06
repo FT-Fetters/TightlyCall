@@ -1,7 +1,7 @@
 package xyz.ldqc.tightcall.util;
 
 /**
- * @author LENOVO
+ * @author Fetters
  */
 public class Path {
 
@@ -12,6 +12,10 @@ public class Path {
     private static final char DELIMITER = '/';
 
     private String path;
+
+    public Path(){
+        this.path = "/";
+    }
 
     public Path(String path){
         this.path = "";

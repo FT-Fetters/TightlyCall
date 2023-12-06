@@ -1,11 +1,17 @@
 package xyz.ldqc.tightcall.provider;
 
+import xyz.ldqc.tightcall.exception.ProviderException;
 import xyz.ldqc.tightcall.provider.annotation.OpenScan;
+import xyz.ldqc.tightcall.provider.annotation.ProviderConfig;
 import xyz.ldqc.tightcall.provider.register.ServiceRegister;
 import xyz.ldqc.tightcall.provider.register.ServiceRegisterFactory;
-import xyz.ldqc.tightcall.provider.scanner.ServiceScanner;
+import xyz.ldqc.tightcall.provider.server.ProviderServer;
+import xyz.ldqc.tightcall.provider.service.MethodInvoker;
+import xyz.ldqc.tightcall.provider.service.ServiceContainer;
+import xyz.ldqc.tightcall.scanner.ServiceScanner;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -14,6 +20,8 @@ import java.util.List;
 public class ProviderApplication {
 
     private final Class<?> bootClazz;
+
+    private ProviderServer providerServer;
 
     private ProviderApplication(Class<?> bootClazz){
         this.bootClazz = bootClazz;
@@ -30,16 +38,29 @@ public class ProviderApplication {
         String packageName = scan.packageName();
         Class<? extends ServiceScanner> scannerClazz = scan.scanner();
         ServiceRegisterFactory.Type type = scan.type();
+        List<ServiceDefinition> serviceDefinitions = null;
         try {
-            ServiceScanner serviceScanner = scannerClazz.newInstance();
+            ServiceScanner serviceScanner = scannerClazz.getConstructor().newInstance();
             serviceScanner.setPackagePath(packageName);
-            List<ServiceDefinition> definitions = serviceScanner.doScan();
+            serviceDefinitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
             register.setProviderApplication(this);
-            register.doReg(definitions);
-        } catch (InstantiationException | IllegalAccessException e) {
+            register.doReg(serviceDefinitions);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
+        bootProviderServer(serviceDefinitions);
+    }
+
+    private void bootProviderServer(List<ServiceDefinition> serviceDefinitions){
+        ProviderConfig providerConfig = bootClazz.getAnnotation(ProviderConfig.class);
+        if (providerConfig == null){
+            throw new ProviderException("cannot find provider config");
+        }
+        this.providerServer = ProviderServer.builder()
+                .serviceContainer(new ServiceContainer(serviceDefinitions, new MethodInvoker()))
+                .port(providerConfig.port())
+                .boot();
     }
 
     public Class<?> getBootClazz(){

@@ -6,10 +6,12 @@ import xyz.ldqc.tightcall.chain.InboundChain;
 import xyz.ldqc.tightcall.chain.OutboundChain;
 import xyz.ldqc.tightcall.pool.ResultPool;
 import xyz.ldqc.tightcall.protocol.CacheBody;
+import xyz.ldqc.tightcall.protocol.SerialNumber;
 
 import java.nio.channels.Channel;
 
 /**
+ * 结果池存放链点，用于将结果存入结果池中
  * @author Fetters
  */
 public class ChannelResultPoolHandlerInBoundChain implements InboundChain {
@@ -28,6 +30,9 @@ public class ChannelResultPoolHandlerInBoundChain implements InboundChain {
             int serialNumber = cacheBody.getSerialNumber();
             AbstractByteData data = cacheBody.getData();
             resultPool.put(serialNumber, data);
+        }else if (obj instanceof SerialNumber){
+            int serialNumber = ((SerialNumber) obj).getSerialNumber();
+            resultPool.put(serialNumber, obj);
         }
     }
 

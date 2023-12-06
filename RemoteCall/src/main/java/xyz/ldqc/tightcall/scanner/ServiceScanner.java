@@ -1,4 +1,4 @@
-package xyz.ldqc.tightcall.provider.scanner;
+package xyz.ldqc.tightcall.scanner;
 
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 

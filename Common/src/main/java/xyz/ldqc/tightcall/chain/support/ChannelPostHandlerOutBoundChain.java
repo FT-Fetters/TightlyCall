@@ -88,7 +88,9 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
             buffer.flip();
             remaining -= len;
             try {
-                target.write(buffer);
+                int writeLen = target.write(buffer);
+                remaining += len - writeLen;
+                logger.debug("write len: {}", writeLen);
             } catch (IOException e) {
                 logger.error("send message error: {}", e.getMessage());
                 return;
