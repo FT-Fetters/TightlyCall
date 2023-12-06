@@ -4,10 +4,10 @@ import xyz.ldqc.tightcall.chain.ChainGroup;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
 import xyz.ldqc.tightcall.client.ClientApplication;
 import xyz.ldqc.tightcall.client.exce.support.NioClientExec;
-import xyz.ldqc.tightcall.consumer.call.chain.ChannelResponseRequestHandlerInBoundChain;
 import xyz.ldqc.tightcall.provider.chain.ChannelRequestOutBoundChain;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelConvertRequestHandlerInBoundChain;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelRequestFilterBlockHandlerInBoundChain;
+import xyz.ldqc.tightcall.registry.server.chain.ChannelConvertResponseHandlerInBoundChain;
+import xyz.ldqc.tightcall.registry.server.chain.ChannelResponseFilterBlockHandlerOutBoundChain;
+import xyz.ldqc.tightcall.registry.server.response.AbstractResponse;
 import xyz.ldqc.tightcall.serializer.support.KryoSerializer;
 
 import java.net.InetSocketAddress;
@@ -33,8 +33,8 @@ public class CallClient {
     }
 
 
-    public Object doCall(Object req){
-        return clientApplication.writeAndWait(req);
+    public AbstractResponse doCall(Object req){
+        return (AbstractResponse) clientApplication.writeAndWait(req);
     }
 
     public static class CallClientBuilder{
@@ -58,9 +58,9 @@ public class CallClient {
 
         private ChainGroup buildCallClientChainGroup(){
             DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
-            chainGroup.addLast(new ChannelRequestFilterBlockHandlerInBoundChain());
-            chainGroup.addLast(new ChannelConvertRequestHandlerInBoundChain(KryoSerializer.serializer()));
-            chainGroup.addLast(new ChannelResponseRequestHandlerInBoundChain());
+            chainGroup.addLast(new ChannelResponseFilterBlockHandlerOutBoundChain());
+            chainGroup.addLast(new ChannelConvertResponseHandlerInBoundChain(KryoSerializer.serializer()));
+//            chainGroup.addLast(new ChannelResponseHandlerInBoundChain());
             chainGroup.addLast(new ChannelRequestOutBoundChain());
             return chainGroup;
         }

@@ -7,7 +7,7 @@ import xyz.ldqc.tightcall.consumer.proxy.ClientProxy;
 import xyz.ldqc.tightcall.exception.ConsumerException;
 
 import java.net.InetSocketAddress;
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author Fetters
@@ -18,6 +18,8 @@ public class ConsumerApplication {
 
     private DiscoveryClient discoveryClient;
 
+    private Map<Class<?>, Object> callClientProxy;
+
     private ConsumerApplication(Class<?> bootClazz) {
         this.bootClazz = bootClazz;
     }
@@ -26,6 +28,18 @@ public class ConsumerApplication {
         ConsumerApplication consApp = new ConsumerApplication(clazz);
         consApp.loadBootClass();
         return consApp;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T getCallClient(Class<T> clientClass){
+        if (callClientProxy == null){
+            return null;
+        }
+        Object client = callClientProxy.get(clientClass);
+        if (client == null){
+            return null;
+        }
+        return ((T) client);
     }
 
     private void loadBootClass(){
@@ -48,11 +62,13 @@ public class ConsumerApplication {
 
     private void proxyService(){
         TightlyCallScan scanConfig = this.bootClazz.getAnnotation(TightlyCallScan.class);
+        if (scanConfig == null){
+            throw new ConsumerException("unknown tightly call scan path");
+        }
         String packageName = scanConfig.packageName();
         Class<? extends ClientProxy> proxyClass = scanConfig.proxy();
         ClientProxy clientProxy = initClientProxy(proxyClass, packageName);
-        List<Object> proxyClient = clientProxy.doProxy();
-
+        callClientProxy = clientProxy.doProxy();
     }
 
     private ClientProxy initClientProxy(Class<? extends ClientProxy> proxyClass, String packageName){

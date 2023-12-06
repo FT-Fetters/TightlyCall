@@ -9,4 +9,7 @@ public interface IndexRoom {
     List<String> listAllServiceName();
 
     void register(String serviceName, ServiceDefinition serviceDefinition);
+
+    IndexServiceBucket getBucket(String serviceName);
+
 }

@@ -1,11 +1,11 @@
-package xyz.ldqc.tightcall.registry.server.request;
+package xyz.ldqc.tightcall.registry.server.response;
 
 import xyz.ldqc.tightcall.protocol.SerialNumber;
 
 /**
  * @author Fetters
  */
-public abstract class AbstractRequest implements SerialNumber {
+public class AbstractResponse implements SerialNumber {
 
     protected String type;
 
@@ -13,6 +13,10 @@ public abstract class AbstractRequest implements SerialNumber {
 
     public String getType(){
         return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

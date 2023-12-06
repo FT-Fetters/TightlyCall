@@ -34,4 +34,9 @@ public abstract class AbstractMapIndexRoom implements IndexRoom {
         log.info("register service: {}, path: {}", serviceName, serviceDefinition.getPath());
         indexServiceBucket.register(serviceDefinition);
     }
+
+    @Override
+    public IndexServiceBucket getBucket(String serviceName) {
+        return map.get(serviceName);
+    }
 }

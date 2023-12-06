@@ -4,8 +4,8 @@ import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.InboundChain;
 import xyz.ldqc.tightcall.protocol.CacheBody;
+import xyz.ldqc.tightcall.registry.server.response.AbstractResponse;
 import xyz.ldqc.tightcall.serializer.Serializer;
-import xyz.ldqc.tightcall.registry.server.request.AbstractRequest;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
 
 import java.nio.channels.Channel;
@@ -13,13 +13,13 @@ import java.nio.channels.Channel;
 /**
  * @author Fetters
  */
-public class ChannelConvertRequestHandlerInBoundChain implements InboundChain, ChannelHandler {
+public class ChannelConvertResponseHandlerInBoundChain implements InboundChain, ChannelHandler {
 
     private Chain nextChain;
 
     private final Serializer serializer;
 
-    public ChannelConvertRequestHandlerInBoundChain(Serializer serializer){
+    public ChannelConvertResponseHandlerInBoundChain(Serializer serializer){
         this.serializer = serializer;
     }
 
@@ -39,12 +39,11 @@ public class ChannelConvertRequestHandlerInBoundChain implements InboundChain, C
             return;
         }
         CacheBody cacheBody = (CacheBody) obj;
-        AbstractRequest request = handlerCacheBody(cacheBody);
-        request.setSerialNumber(cacheBody.getSerialNumber());
-        nextChain.doChain(channel, request);
+        AbstractResponse response = handlerCacheBody(cacheBody);
+        nextChain.doChain(channel, response);
     }
 
-    private AbstractRequest handlerCacheBody(CacheBody cacheBody){
+    private AbstractResponse handlerCacheBody(CacheBody cacheBody){
         AbstractByteData byteData = cacheBody.getData();
         byte[] bytes = byteData.readBytes();
         return serializer.deserialize(bytes);

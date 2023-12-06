@@ -5,9 +5,7 @@ import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
 import xyz.ldqc.tightcall.registry.index.IndexRoom;
 import xyz.ldqc.tightcall.registry.index.support.HashMapIndexRoom;
 import xyz.ldqc.tightcall.registry.server.RegisterServer;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelConvertRequestHandlerInBoundChain;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelRegReqHandlerInBoundChain;
-import xyz.ldqc.tightcall.registry.server.chain.ChannelRequestFilterBlockHandlerInBoundChain;
+import xyz.ldqc.tightcall.registry.server.chain.*;
 import xyz.ldqc.tightcall.serializer.support.KryoSerializer;
 import xyz.ldqc.tightcall.server.ServerApplication;
 import xyz.ldqc.tightcall.server.exec.support.NioServerExec;
@@ -42,7 +40,10 @@ public class DefaultRegisterServer implements RegisterServer {
         DefaultChannelChainGroup chainGroup = new DefaultChannelChainGroup();
         chainGroup.addLast(new ChannelConvertRequestHandlerInBoundChain(KryoSerializer.serializer()))
                 .addLast(new ChannelRequestFilterBlockHandlerInBoundChain())
-                .addLast(new ChannelRegReqHandlerInBoundChain(indexRoom));
+                .addLast(new ChannelDiscoveryReqHandlerInBoundChain(indexRoom))
+                .addLast(new ChannelRegReqHandlerInBoundChain(indexRoom))
+                .addLast(new ChannelResponseFilterBlockHandlerOutBoundChain())
+                .addLast(new ChannelResponseConvertCacheBodyHandlerOutBoundChain(KryoSerializer.serializer()));
         return chainGroup;
     }
 }
