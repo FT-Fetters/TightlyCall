@@ -6,6 +6,7 @@ import xyz.ldqc.tightcall.provider.register.ServiceRegisterFactory;
 import xyz.ldqc.tightcall.scanner.ServiceScanner;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -31,13 +32,13 @@ public class ProviderApplication {
         Class<? extends ServiceScanner> scannerClazz = scan.scanner();
         ServiceRegisterFactory.Type type = scan.type();
         try {
-            ServiceScanner serviceScanner = scannerClazz.newInstance();
+            ServiceScanner serviceScanner = scannerClazz.getConstructor().newInstance();
             serviceScanner.setPackagePath(packageName);
             List<ServiceDefinition> definitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
             register.setProviderApplication(this);
             register.doReg(definitions);
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
