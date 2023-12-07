@@ -79,10 +79,10 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
         int remaining = totalLen;
         while (remaining > 0) {
             int offset = totalLen - remaining;
-            // 本次写入的字节数
-            int len = Math.min(buffer.remaining(), remaining);
             // 切换到写模式
             buffer.clear();
+            // 本次写入的字节数
+            int len = Math.min(buffer.remaining(), remaining);
             buffer.put(data, offset, len);
             // 切换到读模式
             buffer.flip();

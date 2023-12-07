@@ -24,9 +24,7 @@ public class RegistryServerApplication {
      * 注册中心应用建造者模式
      */
     public static class Builder {
-
-        private static final int MAX_PORT = 65535;
-
+        private static final int PORT_MAX_VALUE = 65535;
         private IndexRoom indexRoom;
 
         private int port;
@@ -48,27 +46,32 @@ public class RegistryServerApplication {
             return this;
         }
 
-        public RegistryServerApplication boot(){
-            if (indexRoom == null){
+        public RegistryServerApplication boot() {
+            validate();
 
-            }
-
-            if (port <= 0 || port > MAX_PORT){
-                throw new RegisterServerException("error port");
-            }
-
-            if (registerServerClass == null){
-                throw new RegisterServerException("null register server class");
-            }
-            RegisterServer registerServer0 = null;
-            if (registerServerClass.isAssignableFrom(DefaultRegisterServer.class)){
-                registerServer0 = defaultServer();
-            }
-            if (registerServer0 == null){
-                throw new RegisterServerException("boot fail");
-            }
+            RegisterServer registerServer0 = getRegisterServerOrDefault();
             registerServer0.run();
             return new RegistryServerApplication(registerServer0);
+        }
+
+        private void validate() {
+            if (port <= 0 || port > PORT_MAX_VALUE) {
+                throw new RegisterServerException("error port");
+            }
+            if (registerServerClass == null) {
+                throw new RegisterServerException("null register server class");
+            }
+        }
+
+        private RegisterServer getRegisterServerOrDefault() {
+            RegisterServer registerServer0 = null;
+            if (registerServerClass.isAssignableFrom(DefaultRegisterServer.class)) {
+                registerServer0 = defaultServer();
+            }
+            if (registerServer0 == null) {
+                throw new RegisterServerException("boot fail");
+            }
+            return registerServer0;
         }
 
         private DefaultRegisterServer defaultServer(){

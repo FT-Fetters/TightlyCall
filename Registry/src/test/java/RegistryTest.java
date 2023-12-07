@@ -9,7 +9,6 @@ public class RegistryTest {
 
     @Test
     public void test(){
-//        RegistryServerApplication.builder();
         Class<? extends RegisterServer> c = DefaultRegisterServer.class;
     }
 
