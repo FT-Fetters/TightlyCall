@@ -1,6 +1,7 @@
 # TightlyCall
 
-轻量级、易于使用的远程调用框架
+轻量级、易于使用的远程调用框架  
+[Readme en](README.md)
 
 ## 描述
 

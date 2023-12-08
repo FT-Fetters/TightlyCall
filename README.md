@@ -1,6 +1,7 @@
 # TightlyCall
 
-Lightweight, easy-to-use remote call framework
+Lightweight, easy-to-use remote call framework  
+[Readme 中文](README_zh_cn.md)
 
 ## Description
 
