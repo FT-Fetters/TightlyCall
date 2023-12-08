@@ -7,7 +7,7 @@ Lightweight, easy-to-use remote call framework
 Based on NIO to implement service communication.  
 The client and server of TCP communication are developed in imitation of the form of netty.  
 The usage method is inspired by OpenFeign 's Http client.  
-Although it has not been integrated into Springboot 's SIP, it can still be used in Springboot.
+Although it has not been integrated into Springboot 's SPI, it can still be used in Springboot.
 
 ## Getting Started
 
