@@ -9,11 +9,18 @@ public class ServiceA {
 
     @OpenMapping("/test")
     public String test(boolean b){
+        StringBuilder sb = new StringBuilder();
+
         if (b){
-            return "is true";
+            for (int i = 0; i < 1000; i++) {
+                sb.append("true");
+            }
         }else {
-            return "is false";
+            for (int i = 0; i < 1000; i++) {
+                sb.append("false");
+            }
         }
+        return sb.toString();
     }
 
 

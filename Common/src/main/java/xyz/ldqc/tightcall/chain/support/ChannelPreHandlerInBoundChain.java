@@ -109,6 +109,7 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
         // 正文长度
         int contentLen = abstractByteData.getInt();
         CacheBody cacheBody = new CacheBody(contentLen, version, serialNumber);
+        cacheMap.put(socketChannel, cacheBody);
         if (abstractByteData.remaining() > 0){
             cacheBody.setData(abstractByteData);
             // 如果一次性读取则直接doChain
