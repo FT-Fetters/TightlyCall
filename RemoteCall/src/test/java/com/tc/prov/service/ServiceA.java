@@ -15,13 +15,12 @@ public class ServiceA {
             for (int i = 0; i < 1000; i++) {
                 sb.append("true");
             }
-            return sb.toString();
         }else {
             for (int i = 0; i < 1000; i++) {
                 sb.append("false");
             }
-            return sb.toString();
         }
+        return sb.toString();
     }
 
 

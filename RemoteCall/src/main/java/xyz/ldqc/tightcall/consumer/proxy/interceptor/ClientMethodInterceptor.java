@@ -13,6 +13,7 @@ import xyz.ldqc.tightcall.exception.RegisterClientException;
 import xyz.ldqc.tightcall.registry.server.request.ServiceDefinition;
 import xyz.ldqc.tightcall.util.Path;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -34,7 +35,8 @@ public class ClientMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
-        if (!checkCallable(method)){
+        OpenMapping methodMapping = checkCallable(method);
+        if (methodMapping == null){
             return null;
         }
         Class<?>[] interfaces = o.getClass().getInterfaces();
@@ -43,7 +45,7 @@ public class ClientMethodInterceptor implements MethodInterceptor {
             throw new ClientException("cannot find tightly call client");
         }
         String targetServiceName = tightlyCallClient.serviceName();
-        Path path = getPath(o, method);
+        Path path = getPath(o, methodMapping);
         ServiceDefinition targetService = getTargetService(targetServiceName, path);
         InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(targetService.getHost(), targetService.getPort());
         CallRequest callRequest = buildCallRequest(targetService, args);
@@ -52,9 +54,18 @@ public class ClientMethodInterceptor implements MethodInterceptor {
 
     }
 
-    private boolean checkCallable(Method method){
+    private OpenMapping checkCallable(Method method){
         OpenMapping annotation = method.getAnnotation(OpenMapping.class);
-        return annotation != null;
+        if (annotation == null){
+            Annotation[] annotations = method.getAnnotations();
+            for (Annotation an : annotations) {
+                if (OpenMapping.class.isAssignableFrom(an.getClass())) {
+                    annotation = (OpenMapping) an;
+                    break;
+                }
+            }
+        }
+        return annotation;
     }
 
     private CallRequest buildCallRequest(ServiceDefinition serviceDefinition, Object[] args){
@@ -94,7 +105,7 @@ public class ClientMethodInterceptor implements MethodInterceptor {
         return tightlyCallClient;
     }
 
-    private Path getPath(Object o, Method method){
+    private Path getPath(Object o, OpenMapping methodMapping){
         Path path = new Path();
         Class<?>[] interfaces = o.getClass().getInterfaces();
         OpenMapping objOpenMapping = null;
@@ -108,7 +119,6 @@ public class ClientMethodInterceptor implements MethodInterceptor {
         if (objOpenMapping != null){
             path.append(objOpenMapping.value());
         }
-        OpenMapping methodMapping = method.getAnnotation(OpenMapping.class);
         if (methodMapping == null){
             throw new ProxyException("error path");
         }

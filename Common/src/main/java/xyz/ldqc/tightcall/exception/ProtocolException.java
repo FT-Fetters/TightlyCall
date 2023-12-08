@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.exception;
 
 /**
+ * 协议异常
  * @author Fetters
  */
 public class ProtocolException extends Exception{
