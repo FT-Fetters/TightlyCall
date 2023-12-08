@@ -1,33 +1,31 @@
 # TightlyCall
 
-Lightweight, easy-to-use remote call framework
+轻量级、易于使用的远程调用框架
 
-## Description
+## 描述
 
-Based on NIO to implement service communication.  
-The client and server of TCP communication are developed in imitation of the form of netty.  
-The usage method is inspired by OpenFeign 's Http client.  
-Although it has not been integrated into Springboot 's SPI, it can still be used in Springboot.
+基于 NIO 实现服务通信。TCP 通信的客户端和服务器开发模仿了 Netty 的形式。使用方法受到 OpenFeign 的 HTTP 客户端的启发。尽管尚未集成到
+Spring Boot 的 SPI 中，但仍可在 Spring Boot 中使用。
 
-## Getting Started
+## 入门指南
 
-Since it has not been uploaded to the Maven repository, it needs to be installed locally.
+由于尚未上传到 Maven 仓库，需要在本地安装。
 
-### Step 1
+### 步骤 1
 
-pull project from GitHub  
-current newest branch iss dev-1.0.1
+从 GitHub 上拉取项目  
+当前最新分支为 dev-1.0.1
 
 ```shell
 mvn clean -f pom.xml
 mvn install -f pom.xml
 ```
 
-after run these command, the jar will install in local maven repository.
+运行这些命令后，JAR 包将安装在本地 Maven 仓库中。
 
-### Step 2
+### 步骤 2
 
-import pom
+导入 POM 文件
 
 Common
 
@@ -62,18 +60,18 @@ RemoteCall
 </dependency>
 ```
 
-### Step 3
+### 步骤 3
 
-After completing the above steps, you can enter the formal code development😀  
-The example here will integrate Springboot. If you don't want to use Springboot, the steps are similar.  
-Create a module for registry, is very simply
+完成上述步骤后，您可以开始正式的代码开发😀  
+这里的示例将集成到 Spring Boot 中。如果您不想使用 Spring Boot，则步骤类似。  
+创建一个注册中心模块非常简单
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        // registry
+        // 注册中心
         RegistryServerApplication.builder()
-                .bind(1234) // port
+                .bind(1234) // 端口
                 .registerServer(DefaultRegisterServer.class)
                 .indexRoom(null)
                 .boot();
@@ -81,10 +79,9 @@ public class Main {
 }
 ```
 
-and boot it, now you get a registry for tightly call, see, it is very easy.
+启动它，现在您就拥有了一个用于TightlyCall的注册中心，看，非常简单。
 
-Now create a module for the service provider, the steps are a little more complicated than the previous step, but still
-very simple😁.
+现在创建一个服务提供者模块，比上一步骤稍微复杂一些，但仍然非常简单😁。
 
 ```java
 
@@ -100,11 +97,10 @@ public class ProviderClient {
 }
 ```
 
-Using @Component and @Bean to make spring can manage it.  
-@OpenRegClient is used to configure the connected registry, and service name.  
-@OpenScan is used to set the path of the service-providing package scan and some other configurations.  
-Next, you can complete writing the classes and codes for the services to be provided. Note that you need to create
-classes under the defined package scan path. This is the code for a simple service provider class:
+使用 @Component 和 @Bean 让 Spring 管理它。  
+@OpenRegClient 用于配置连接的注册中心和服务名称。  
+@OpenScan 用于设置服务提供包扫描的路径和其他一些配置。  
+接下来，您可以完成要提供的服务的类和代码的编写。请注意，您需要在定义的包扫描路径下创建类。这是一个简单的服务提供者类的代码示例：
 
 ```java
 package org.example.provider.service.tc;
@@ -122,9 +118,9 @@ public class ServiceTest {
 }
 ```
 
-It defines a service with an access path of /service/test, and provider is done.  
-The last step is how to remote call this service, it's simple too.  
-First we also need to create a bean so that Springboot can manage the client of Tightly call.
+它定义了一个访问路径为 /service/test 的服务，提供者就完成了。  
+最后一步是如何远程调用这个服务，这也很简单。  
+首先，我们还需要创建一个 bean，以便 Spring Boot 可以管理 Tightly call 的客户端。
 
 ```java
 package org.example.consumer.client;
@@ -147,8 +143,7 @@ public class ConsumerClient {
 }
 ```
 
-Then create an interface class to define the method information of the accessed service, it must in the package where we
-set up.
+然后创建一个接口类来定义访问服务的方法信息，它必须在我们设置的包中。
 
 ```java
 package org.example.consumer.open;
@@ -164,7 +159,7 @@ public interface ServiceTest {
 }
 ```
 
-Next, we can call this service. In order to call this service, we need to create a Controller to access it.
+接下来，我们可以调用这个服务。为了调用这个服务，我们需要创建一个 Controller 来访问它。
 
 ```java
 package org.example.consumer.rest;
@@ -194,6 +189,5 @@ public class TestController {
 }
 ```
 
-In the end, boot the three service.
-Request the interface we defined: http://localhost:8081/test/test
-and we can see the result.
+最后，启动这三个服务。请求我们定义的接口：
+http://localhost:8081/test/test，我们就可以看到结果了。
