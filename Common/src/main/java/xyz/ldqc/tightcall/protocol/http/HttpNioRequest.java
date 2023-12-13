@@ -97,5 +97,14 @@ public class HttpNioRequest {
         this.headers.put(key, value);
     }
 
-
+    @Override
+    public String toString() {
+        return "HttpNioRequest{" +
+                "method='" + method + '\'' +
+                ", uri=" + uri +
+                ", protocol='" + protocol + '\'' +
+                ", headers=" + headers +
+                ", body='" + body + '\'' +
+                '}';
+    }
 }
