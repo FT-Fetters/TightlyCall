@@ -1,5 +1,6 @@
 package xyz.ldqc.tightcall.protocol.http;
 
+import com.alibaba.fastjson2.JSON;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -99,12 +100,6 @@ public class HttpNioRequest {
 
     @Override
     public String toString() {
-        return "HttpNioRequest{" +
-                "method='" + method + '\'' +
-                ", uri=" + uri +
-                ", protocol='" + protocol + '\'' +
-                ", headers=" + headers +
-                ", body='" + body + '\'' +
-                '}';
+        return JSON.toJSON(this).toString();
     }
 }
