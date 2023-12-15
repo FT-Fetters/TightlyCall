@@ -36,8 +36,8 @@ Common
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>Common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-common</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -47,8 +47,8 @@ Registry
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>Registry</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-registry</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -58,8 +58,8 @@ RemoteCall
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>RemoteCall</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-remote-call</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
