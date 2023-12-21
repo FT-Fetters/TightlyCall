@@ -103,8 +103,8 @@ public class HttpNioResponse {
             return this;
         }
 
-        public ResponseBuilder contentType(String type) {
-            this.header.put(ResponseHeaderEnum.CONTENT_TYPE.getKey(), type);
+        public ResponseBuilder contentType(ContentTypeEnum type) {
+            addHeader(ResponseHeaderEnum.CONTENT_TYPE.getKey(), type.getValue());
             return this;
         }
 

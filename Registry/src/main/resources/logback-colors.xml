@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <conversionRule conversionWord="highlight"
+    converterClass="com.github.dreamhead.moco.logback.HighlightConverter"/>
+  <conversionRule conversionWord="gray"
+    converterClass="com.github.dreamhead.moco.logback.GrayConverter"/>
+  <conversionRule conversionWord="cyan"
+    converterClass="com.github.dreamhead.moco.logback.CyanConverter"/>
+  <conversionRule conversionWord="magenta"
+    converterClass="com.github.dreamhead.moco.logback.MagentaConverter"/>
+  <conversionRule conversionWord="red"
+    converterClass="com.github.dreamhead.moco.logback.RedConverter"/>
+  <conversionRule conversionWord="green"
+    converterClass="com.github.dreamhead.moco.logback.GreenConverter"/>
+  <conversionRule conversionWord="yellow"
+    converterClass="com.github.dreamhead.moco.logback.YellowConverter"/>
+  <conversionRule conversionWord="blue"
+    converterClass="com.github.dreamhead.moco.logback.BlueConverter"/>
+  <conversionRule conversionWord="boldRed"
+    converterClass="com.github.dreamhead.moco.logback.BoldRedConverter"/>
+  <conversionRule conversionWord="boldGreen"
+    converterClass="com.github.dreamhead.moco.logback.BoldGreenConverter"/>
+  <conversionRule conversionWord="boldYellow"
+    converterClass="com.github.dreamhead.moco.logback.BoldYellowConverter"/>
+  <conversionRule conversionWord="boldBlue"
+    converterClass="com.github.dreamhead.moco.logback.BoldBlueConverter"/>
+  <conversionRule conversionWord="boldMagenta"
+    converterClass="com.github.dreamhead.moco.logback.BoldMagentaConverter"/>
+  <conversionRule conversionWord="boldCyan"
+    converterClass="com.github.dreamhead.moco.logback.BoldCyanConverter"/>
+</configuration>

@@ -47,6 +47,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.7</version>
         </dependency>
+      <dependency>
+        <groupId>xyz.ldqc</groupId>
+        <artifactId>tightly-call-common</artifactId>
+        <version>1.0.1</version>
+        <scope>compile</scope>
+      </dependency>
     </dependencies>
 
 </project>
