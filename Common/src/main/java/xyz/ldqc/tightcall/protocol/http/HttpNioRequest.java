@@ -48,8 +48,11 @@ public class HttpNioRequest {
 
   private static void parseParam(HttpNioRequest request) {
     String query = request.uri.getQuery();
+    request.param = new HashMap<>(16);
+    if(query == null){
+      return;
+    }
     String[] params = query.split("&");
-    request.param = new HashMap<>(params.length);
     for (String param : params) {
       String[] kv = param.split("=");
       if (kv.length != 2) {
