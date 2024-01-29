@@ -28,6 +28,12 @@ public abstract class AbstractByteData implements Comparable<AbstractByteData>{
     public abstract AbstractByteData writeLong(long l);
 
     /**
+     * 读取一个长整数
+     * @return long
+     */
+    public abstract long readLong();
+
+    /**
      * 读取单个字节
      * @return byte
      */

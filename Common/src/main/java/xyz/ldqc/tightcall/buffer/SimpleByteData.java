@@ -200,6 +200,18 @@ public class SimpleByteData extends AbstractByteData {
   }
 
   @Override
+  public long readLong() {
+    int remaining = remaining();
+    if (remaining < DigestUtil.LONG_OCCUPIES_BYTE_LEN) {
+      throw new ByteDataException(
+          "Read long type, must the byte len greater or equal than 8, but the byte len is "
+              + remaining);
+    }
+
+    return 0;
+  }
+
+  @Override
   public byte readByte() {
     checkReadableByte(1);
     byte b = getByte(readPos);
@@ -211,7 +223,7 @@ public class SimpleByteData extends AbstractByteData {
   @Override
   public void readBytes(byte[] bytes) {
     int readLen = bytes.length;
-    if (readLen == 0){
+    if (readLen == 0) {
       return;
     }
     checkReadableByte(readLen);

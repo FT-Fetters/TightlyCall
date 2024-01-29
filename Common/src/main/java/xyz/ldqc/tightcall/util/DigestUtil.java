@@ -7,9 +7,9 @@ import xyz.ldqc.tightcall.exception.DigestException;
  */
 public class DigestUtil {
 
-  private static final int INT_OCCUPIES_BYTE_LEN = 4;
+  public static final int INT_OCCUPIES_BYTE_LEN = 4;
 
-  private static final int LONG_OCCUPIES_BYTE_LEN = 8;
+  public static final int LONG_OCCUPIES_BYTE_LEN = 8;
 
   public static int byte2int(byte[] bytes) {
     int len = bytes.length;
@@ -35,5 +35,17 @@ public class DigestUtil {
       l >>= 8;
     }
     return byteArray;
+  }
+
+  public static long byte2long(byte[] bytes) {
+    if (bytes.length < LONG_OCCUPIES_BYTE_LEN){
+      return 0;
+    }
+    long number = 0;
+    for (int i = 0; i < LONG_OCCUPIES_BYTE_LEN; i++) {
+      number <<= 8;
+      number |= (bytes[i] & 0xFF);
+    }
+    return number;
   }
 }
