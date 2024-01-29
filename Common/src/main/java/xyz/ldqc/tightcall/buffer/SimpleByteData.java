@@ -211,6 +211,9 @@ public class SimpleByteData extends AbstractByteData {
   @Override
   public void readBytes(byte[] bytes) {
     int readLen = bytes.length;
+    if (readLen == 0){
+      return;
+    }
     checkReadableByte(readLen);
     doReadBytes(bytes);
     refreshRead(readLen);
