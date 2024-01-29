@@ -207,8 +207,8 @@ public class SimpleByteData extends AbstractByteData {
           "Read long type, must the byte len greater or equal than 8, but the byte len is "
               + remaining);
     }
-
-    return 0;
+    byte[] bytes = readBytes(DigestUtil.LONG_OCCUPIES_BYTE_LEN);
+    return DigestUtil.byte2long(bytes);
   }
 
   @Override
