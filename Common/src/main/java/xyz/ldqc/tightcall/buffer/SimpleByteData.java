@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.buffer;
 
 import xyz.ldqc.tightcall.exception.ByteDataException;
+import xyz.ldqc.tightcall.util.DigestUtil;
 import xyz.ldqc.tightcall.util.IntegerUtils;
 
 import java.nio.ByteBuffer;
@@ -190,6 +191,12 @@ public class SimpleByteData extends AbstractByteData {
     appendBytes(bs);
     size += bs.length;
     return this;
+  }
+
+  @Override
+  public AbstractByteData writeLong(long l) {
+    byte[] bytes = DigestUtil.long2byte(l);
+    return writeBytes(bytes);
   }
 
   @Override
