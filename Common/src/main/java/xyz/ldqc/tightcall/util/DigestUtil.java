@@ -29,8 +29,7 @@ public class DigestUtil {
   public static byte[] long2byte(long l) {
     byte[] byteArray = new byte[8];
 
-    for (int i = LONG_OCCUPIES_BYTE_LEN - 1; i > 0;
-        i--) {
+    for (int i = LONG_OCCUPIES_BYTE_LEN - 1; i >= 0; i--) {
       byteArray[i] = (byte) (l & 0xFF);
       l >>= 8;
     }
@@ -38,7 +37,7 @@ public class DigestUtil {
   }
 
   public static long byte2long(byte[] bytes) {
-    if (bytes.length < LONG_OCCUPIES_BYTE_LEN){
+    if (bytes.length < LONG_OCCUPIES_BYTE_LEN) {
       return 0;
     }
     long number = 0;
