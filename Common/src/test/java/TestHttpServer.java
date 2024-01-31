@@ -1,5 +1,6 @@
 import org.junit.Test;
 import xyz.ldqc.tightcall.chain.support.DefaultChannelChainGroup;
+import xyz.ldqc.tightcall.protocol.http.HttpCacheBody;
 import xyz.ldqc.tightcall.protocol.http.HttpNioRequest;
 import xyz.ldqc.tightcall.protocol.http.HttpNioResponse;
 import xyz.ldqc.tightcall.protocol.http.HttpVersionEnum;
@@ -59,5 +60,27 @@ public class TestHttpServer {
         .build();
     String responseString = ok.toResponseString();
     System.out.println(responseString);
+  }
+
+  @Test
+  public void testHttpCacheBody() {
+    HttpCacheBody httpCacheBody = new HttpCacheBody();
+    String req = "POST / H";
+    httpCacheBody.append(req.getBytes());
+    req = "TTP/1.1\r\n" +
+        "Host: localhost:8080\r\n" +
+        "Connection: keep-alive\r\n" +
+        "Content-Length:5\r\n";
+    httpCacheBody.append(req.getBytes());
+    req = "\r\n" +
+        "12345GET ";
+    httpCacheBody.append(req.getBytes());
+    System.out.println(new String(httpCacheBody.readRequestData()));
+    req = " /a HTTP/1.1\r\n" +
+        "Host: localhost:8080\r\n" +
+        "Connection: keep-alive\r\n" +
+        "\r\n";
+    httpCacheBody.append(req.getBytes());
+    System.out.println(new String(httpCacheBody.readRequestData()));
   }
 }

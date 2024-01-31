@@ -187,9 +187,26 @@ public class SimpleByteData extends AbstractByteData {
 
   @Override
   public AbstractByteData writeBytes(byte[] bs) {
+    if (bs == null){
+      return this;
+    }
     ensureCapEnough(size + bs.length);
     appendBytes(bs);
     size += bs.length;
+    return this;
+  }
+
+  @Override
+  public AbstractByteData writeBytes(byte[] bs, int src, int len) {
+    if (bs == null){
+      return this;
+    }
+    ensureCapEnough(size + len);
+    // TODO: 更改为不使用多一次的拷贝，而直接进行复制
+    byte[] tbs = new byte[len];
+    System.arraycopy(bs, src, tbs, 0, len);
+    appendBytes(tbs);
+    size += len;
     return this;
   }
 
@@ -267,6 +284,11 @@ public class SimpleByteData extends AbstractByteData {
   @Override
   public int remaining() {
     return this.size;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return this.size == 0;
   }
 
   @Override

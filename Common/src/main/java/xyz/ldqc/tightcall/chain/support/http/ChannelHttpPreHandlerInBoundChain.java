@@ -1,10 +1,13 @@
 package xyz.ldqc.tightcall.chain.support.http;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.buffer.AbstractByteData;
 import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.chain.support.AbstractChannelPreHandlerInBoundChain;
+import xyz.ldqc.tightcall.protocol.http.HttpCacheBody;
 import xyz.ldqc.tightcall.protocol.http.HttpNioRequest;
 
 import java.nio.channels.Channel;
@@ -18,7 +21,7 @@ public class ChannelHttpPreHandlerInBoundChain extends AbstractChannelPreHandler
 
     private static final Logger log = LoggerFactory.getLogger(ChannelHttpPreHandlerInBoundChain.class);
 
-
+    private final Map<SocketChannel, HttpCacheBody> cache = new HashMap<>();
 
     @Override
     public void doHandler(Channel channel, Object obj) {
@@ -40,6 +43,9 @@ public class ChannelHttpPreHandlerInBoundChain extends AbstractChannelPreHandler
             log.info("disconnect");
             return;
         }
+        if (requestData.isBlank()){
+            return;
+        }
         HttpNioRequest httpNioRequest = handleRequestData(requestData);
         nextChain.doChain(channel, httpNioRequest);
     }
@@ -57,7 +63,13 @@ public class ChannelHttpPreHandlerInBoundChain extends AbstractChannelPreHandler
             readLen = byteData.remaining();
             requestData.writeBytes(byteData.readBytes());
         }while (readLen > 0);
-        return requestData.readString();
+        cache.putIfAbsent(channel, new HttpCacheBody());
+        HttpCacheBody httpCacheBody = cache.get(channel);
+        httpCacheBody.append(requestData.readBytes());
+        if (httpCacheBody.isEnd()){
+            return new String(httpCacheBody.readRequestData());
+        }
+        return "";
     }
 
     private HttpNioRequest handleRequestData(String requestData){
