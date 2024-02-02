@@ -292,6 +292,13 @@ public class SimpleByteData extends AbstractByteData {
   }
 
   @Override
+  public void clear() {
+    tail = -1;
+    readPos = 0;
+    size = 0;
+  }
+
+  @Override
   public String toString() {
     byte[] allocBytes = alloc(size);
     doReadBytes(allocBytes);

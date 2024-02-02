@@ -91,4 +91,9 @@ public abstract class AbstractByteData implements Comparable<AbstractByteData>{
      */
     public abstract boolean isEmpty();
 
+    /**
+     * 清理为空
+     */
+    public abstract void clear();
+
 }
