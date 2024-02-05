@@ -375,7 +375,7 @@ public class SimpleByteData extends AbstractByteData {
    * 追加字节数组
    */
   private void appendBytes(byte[] bytes) {
-    if (tail >= readPos) {
+    if (tail >= readPos || (tail + 1 == readPos && size == 0)) {
       // 如果尾指针在读指针的右边，则有可能会把要追加的数据分为两部分
       if (tail + bytes.length >= hp.length) {
         // 如果超出则需要分两部分进行追加

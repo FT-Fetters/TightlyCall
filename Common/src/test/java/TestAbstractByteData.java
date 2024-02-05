@@ -35,7 +35,7 @@ public class TestAbstractByteData {
         for (byte b : byteArray) {
             System.out.println(b);
         }
-        LockSupport.park();
+//        LockSupport.park();
     }
 
     @org.junit.Test
@@ -177,5 +177,20 @@ public class TestAbstractByteData {
         abstractByteData.writeBytes(bytes);
 
         System.out.println(abstractByteData.readString());
+    }
+
+    @Test
+    public void bugFix(){
+        byte[] bs = new byte[17];
+        for (int i = 0; i < bs.length; i++) {
+            bs[i] = (byte) i;
+        }
+        SimpleByteData simpleByteData = new SimpleByteData(32);
+        simpleByteData.writeBytes(bs);
+        System.out.println(Arrays.toString(simpleByteData.readBytes()));
+        simpleByteData.writeBytes(bs);
+        System.out.println(Arrays.toString(simpleByteData.readBytes()));
+
+
     }
 }
