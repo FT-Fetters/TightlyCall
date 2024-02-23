@@ -161,15 +161,17 @@ public class SimpleByteData extends AbstractByteData {
     // 分配新的字节数组
     byte[] hp0 = alloc(targetCap);
     // 判断是否超过末尾循环
-    if (tail >= 0 && readPos > tail) {
-      // 尾部长度
-      int tailLen = hp.length - readPos;
-      // 复制第一部分
-      System.arraycopy(hp, readPos, hp0, 0, tailLen);
-      // 复制第二部分
-      System.arraycopy(hp, 0, hp0, tailLen, size - tailLen);
-    } else {
-      System.arraycopy(hp, readPos, hp0, 0, size);
+    if (size > 0) {
+      if (tail >= 0 && readPos > tail) {
+        // 尾部长度
+        int tailLen = hp.length - readPos;
+        // 复制第一部分
+        System.arraycopy(hp, readPos, hp0, 0, tailLen);
+        // 复制第二部分
+        System.arraycopy(hp, 0, hp0, tailLen, size - tailLen);
+      } else {
+        System.arraycopy(hp, readPos, hp0, 0, size);
+      }
     }
     readPos = 0;
     hp = hp0;
@@ -187,7 +189,7 @@ public class SimpleByteData extends AbstractByteData {
 
   @Override
   public AbstractByteData writeBytes(byte[] bs) {
-    if (bs == null){
+    if (bs == null) {
       return this;
     }
     ensureCapEnough(size + bs.length);
@@ -198,7 +200,7 @@ public class SimpleByteData extends AbstractByteData {
 
   @Override
   public AbstractByteData writeBytes(byte[] bs, int src, int len) {
-    if (bs == null){
+    if (bs == null) {
       return this;
     }
     ensureCapEnough(size + len);
