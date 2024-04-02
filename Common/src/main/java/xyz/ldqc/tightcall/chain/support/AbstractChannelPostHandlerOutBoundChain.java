@@ -13,7 +13,8 @@ import java.nio.channels.SocketChannel;
 /**
  * @author Fetters
  */
-public abstract class AbstractChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHandler {
+public abstract class AbstractChannelPostHandlerOutBoundChain implements OutboundChain,
+    ChannelHandler {
 
     protected Logger logger;
 
@@ -28,7 +29,7 @@ public abstract class AbstractChannelPostHandlerOutBoundChain implements Outboun
     }
 
 
-    protected void doWrite(SocketChannel target , byte[] data) {
+    protected void doWrite(SocketChannel target, byte[] data) {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         // 数据总长度
         int totalLen = data.length;

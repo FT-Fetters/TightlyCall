@@ -55,14 +55,10 @@ public class CglibClientProxy implements ClientProxy {
 
 
     public List<Class<?>> scanAllClasses(){
-        try {
-            List<Class<?>> packageClasses = PackageUtil.getPackageClasses(packageName);
-            packageClasses = packageClasses.stream()
-                    .filter(f -> f.getAnnotation(TightlyCallClient.class) != null)
-                    .collect(Collectors.toList());
-            return packageClasses;
-        } catch (IOException e) {
-            throw new ProxyException("scan classes fail");
-        }
+        List<Class<?>> packageClasses = PackageUtil.getPackageClasses(packageName);
+        packageClasses = packageClasses.stream()
+                .filter(f -> f.getAnnotation(TightlyCallClient.class) != null)
+                .collect(Collectors.toList());
+        return packageClasses;
     }
 }
