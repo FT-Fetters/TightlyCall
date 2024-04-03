@@ -16,6 +16,7 @@ import xyz.ldqc.tightcall.common.request.CallRequest;
 import xyz.ldqc.tightcall.consumer.call.CallClientPool;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallBody;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallResult;
+import xyz.ldqc.tightcall.exception.CallException;
 
 /**
  * 直接访问地址客户端
@@ -62,6 +63,9 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
                     getCallRequest(callBody.getAll().get(addr), methodMapping));
             } else {
                 res = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
+            }
+            if (Exception.class.isAssignableFrom(res.getClass())){
+                throw new CallException(((Exception) res).getMessage());
             }
             result.put(addr, res);
         }
