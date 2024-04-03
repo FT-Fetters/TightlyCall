@@ -1,6 +1,7 @@
 # TightlyCall
 
-Lightweight, easy-to-use remote call framework
+Lightweight, easy-to-use remote call framework  
+[Readme 中文](README_zh_cn.md)
 
 ## Description
 
@@ -35,8 +36,8 @@ Common
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>Common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-common</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -46,8 +47,8 @@ Registry
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>Registry</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-registry</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -57,8 +58,8 @@ RemoteCall
 
 <dependency>
     <groupId>xyz.ldqc</groupId>
-    <artifactId>RemoteCall</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call-remote-call</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 

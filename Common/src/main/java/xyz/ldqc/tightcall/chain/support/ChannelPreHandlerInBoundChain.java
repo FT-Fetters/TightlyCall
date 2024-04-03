@@ -23,21 +23,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * 接收消息的前置处理链，用于获取符合协议的数据
  * @author Fetters
  */
-public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandler {
+public class ChannelPreHandlerInBoundChain extends AbstractChannelPreHandlerInBoundChain{
 
-    private static final Logger logger = LoggerFactory.getLogger(ChannelPreHandlerInBoundChain.class);
+
 
 
     private final ConcurrentHashMap<Channel, CacheBody> cacheMap = new ConcurrentHashMap<>();
 
-    private Chain nextChain;
-
-
     public ChannelPreHandlerInBoundChain() {
-
+        this.logger = LoggerFactory.getLogger(ChannelPreHandlerInBoundChain.class);
     }
-
-
 
 
     @Override
@@ -140,37 +135,6 @@ public class ChannelPreHandlerInBoundChain implements InboundChain, ChannelHandl
             cacheMap.remove(socketChannel);
             nextChain.doChain(socketChannel, cacheBody);
         }
-    }
-
-    /**
-     * 从channel读取数据
-     */
-    private AbstractByteData readDataFromChanel(SocketChannel socketChannel){
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        try {
-            int readLen = socketChannel.read(buffer);
-            if ( readLen == -1) {
-                return null;
-            }
-            if (readLen == 0){
-                return new SimpleByteData();
-            }
-            return new SimpleByteData(buffer);
-        } catch (IOException e) {
-            logger.info("remote {} force close connection", socketChannel);
-            return null;
-        }
-    }
-
-
-    @Override
-    public void doChain(Channel channel, Object obj) {
-        doHandler(channel, obj);
-    }
-
-    @Override
-    public void setNextChain(Chain chain) {
-        this.nextChain = chain;
     }
 
 }

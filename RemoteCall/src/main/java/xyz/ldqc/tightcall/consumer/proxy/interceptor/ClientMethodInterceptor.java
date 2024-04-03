@@ -34,7 +34,7 @@ public class ClientMethodInterceptor implements MethodInterceptor {
     }
 
     @Override
-    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) {
         OpenMapping methodMapping = checkCallable(method);
         if (methodMapping == null){
             return null;

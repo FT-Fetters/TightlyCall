@@ -16,7 +16,7 @@ public class RandomLoadBalance<T> implements LoadBalance<T> {
     private final Random random;
 
     public RandomLoadBalance(){
-        this.balanceContainer = new ArrayList<T>();
+        this.balanceContainer = new ArrayList<>();
         random = new Random(System.currentTimeMillis());
     }
 

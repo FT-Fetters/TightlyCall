@@ -23,32 +23,46 @@ public class DefaultChannelChainGroup implements ChannelChainGroup {
     @Override
     public ChainGroup addLast(Chain chain) {
         if (chain instanceof InboundChain) {
-            if (!inBoundChainList.isEmpty()) {
-                Chain last = inBoundChainList.getLast();
-                if (last != null) {
-                    last.setNextChain(chain);
-                }
-            }
-            inBoundChainList.addLast(chain);
-            if (!outBoundChainList.isEmpty()){
-                chain.setNextChain(outBoundChainList.getFirst());
-            }
+            handleAddInBoundChain(chain);
             return this;
         }
         if (chain instanceof OutboundChain) {
-            if (!outBoundChainList.isEmpty()) {
-                Chain last = outBoundChainList.getLast();
-                if (last != null) {
-                    last.setNextChain(chain);
-                }
-            }else {
-                if (!inBoundChainList.isEmpty()){
-                    inBoundChainList.getLast().setNextChain(chain);
-                }
-            }
-            outBoundChainList.addLast(chain);
+            handleAddOutBoundChain(chain);
         }
         return this;
+    }
+
+    /**
+     * 处理添加入站链点
+     */
+    private void handleAddOutBoundChain(Chain chain) {
+        if (!outBoundChainList.isEmpty()) {
+            Chain last = outBoundChainList.getLast();
+            if (last != null) {
+                last.setNextChain(chain);
+            }
+        }else {
+            if (!inBoundChainList.isEmpty()){
+                inBoundChainList.getLast().setNextChain(chain);
+            }
+        }
+        outBoundChainList.addLast(chain);
+    }
+
+    /**
+     * 处理添加出站链点
+     */
+    private void handleAddInBoundChain(Chain chain) {
+        if (!inBoundChainList.isEmpty()) {
+            Chain last = inBoundChainList.getLast();
+            if (last != null) {
+                last.setNextChain(chain);
+            }
+        }
+        inBoundChainList.addLast(chain);
+        if (!outBoundChainList.isEmpty()){
+            chain.setNextChain(outBoundChainList.getFirst());
+        }
     }
 
     @Override

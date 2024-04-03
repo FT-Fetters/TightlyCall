@@ -12,19 +12,15 @@ public class ScannerTest {
 
     @Test
     public void packageUtilTest(){
-        try {
-            List<Class<?>> packageClasses = PackageUtil.getPackageClasses("com.tc");
-            for (Class<?> packageClass : packageClasses) {
-                System.out.println(packageClass.getName());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        List<Class<?>> packageClasses = PackageUtil.getPackageClasses("com.tc", ScannerTest.class);
+        for (Class<?> packageClass : packageClasses) {
+            System.out.println(packageClass.getName());
         }
     }
 
     @Test
     public void serviceScannerTest(){
-        DefaultServiceScanner defaultServiceScanner = new DefaultServiceScanner("com.tc");
+        DefaultServiceScanner defaultServiceScanner = new DefaultServiceScanner("com.tc", ScannerTest.class);
         List<ServiceDefinition> definitions = defaultServiceScanner.doScan();
 
     }

@@ -19,20 +19,9 @@ import java.nio.channels.SocketChannel;
  * 调用链的出站后置处理链点，用于发送数据
  * @author Fetters
  */
-public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHandler {
+public class ChannelPostHandlerOutBoundChain extends AbstractChannelPostHandlerOutBoundChain {
 
-    private static final Logger logger = LoggerFactory.getLogger(ChannelPostHandlerOutBoundChain.class);
-
-
-    @Override
-    public void doChain(Channel channel, Object obj) {
-        doHandler(channel, obj);
-    }
-
-    @Override
-    public void setNextChain(Chain chain) {
-
-    }
+    protected Logger logger = LoggerFactory.getLogger(ChannelPostHandlerOutBoundChain.class);
 
     @Override
     public void doHandler(Channel channel, Object obj) {
@@ -71,32 +60,6 @@ public class ChannelPostHandlerOutBoundChain implements OutboundChain, ChannelHa
     }
 
 
-    private void doWrite(SocketChannel target ,byte[] data) {
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        // 数据总长度
-        int totalLen = data.length;
-        // 剩余发送的长度
-        int remaining = totalLen;
-        while (remaining > 0) {
-            int offset = totalLen - remaining;
-            // 切换到写模式
-            buffer.clear();
-            // 本次写入的字节数
-            int len = Math.min(buffer.remaining(), remaining);
-            buffer.put(data, offset, len);
-            // 切换到读模式
-            buffer.flip();
-            remaining -= len;
-            try {
-                int writeLen = target.write(buffer);
-                remaining += len - writeLen;
-                logger.debug("write len: {}", writeLen);
-            } catch (IOException e) {
-                logger.error("send message error: {}", e.getMessage());
-                return;
-            }
-        }
-    }
 
 
     /**

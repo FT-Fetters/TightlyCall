@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.ldqc</groupId>
-    <artifactId>TightlyCall</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tightly-call</artifactId>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
     <modules>
         <module>Common</module>

@@ -12,7 +12,7 @@ import java.net.InetSocketAddress;
  */
 public class ClientApplication {
 
-    private ClientExec exec;
+    private final ClientExec exec;
 
     private ClientApplication(ClientExec exec) {
         this.exec = exec;

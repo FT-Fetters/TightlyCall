@@ -16,4 +16,6 @@ public interface ServiceScanner {
     List<ServiceDefinition> doScan();
 
     void setPackagePath(String packagePath);
+
+    void setRunClass(Class<?> runClass);
 }

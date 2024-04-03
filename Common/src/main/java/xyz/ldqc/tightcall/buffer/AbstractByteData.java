@@ -21,6 +21,28 @@ public abstract class AbstractByteData implements Comparable<AbstractByteData>{
     public abstract AbstractByteData writeBytes(byte[] bs);
 
     /**
+     * 写入字节数字
+     * @param bs 字节数字
+     * @param src 开始位置
+     * @param len 长度
+     * @return self
+     */
+    public abstract AbstractByteData writeBytes(byte[] bs, int src, int len);
+
+    /**
+     * 写入长整数
+     * @param l long
+     * @return self
+     */
+    public abstract AbstractByteData writeLong(long l);
+
+    /**
+     * 读取一个长整数
+     * @return long
+     */
+    public abstract long readLong();
+
+    /**
      * 读取单个字节
      * @return byte
      */
@@ -62,5 +84,16 @@ public abstract class AbstractByteData implements Comparable<AbstractByteData>{
      * @return int
      */
     public abstract int remaining();
+
+    /**
+     * 判断是否为空
+     * @return bool
+     */
+    public abstract boolean isEmpty();
+
+    /**
+     * 清理为空
+     */
+    public abstract void clear();
 
 }

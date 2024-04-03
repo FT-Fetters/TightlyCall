@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>xyz.ldqc</groupId>
-        <artifactId>TightlyCall</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>tightly-call</artifactId>
+        <version>1.0.1</version>
     </parent>
 
-    <artifactId>Registry</artifactId>
+    <artifactId>tightly-call-register</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

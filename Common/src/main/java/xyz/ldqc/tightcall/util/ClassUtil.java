@@ -36,4 +36,8 @@ public class ClassUtil {
     public static boolean isCglibProxyClassName(String className) {
         return (className != null && className.contains("$$"));
     }
+
+    public static ClassLoader getClassLoader(){
+        return Thread.currentThread().getContextClassLoader();
+    }
 }

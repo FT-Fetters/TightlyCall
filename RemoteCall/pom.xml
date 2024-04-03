@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>xyz.ldqc</groupId>
-        <artifactId>TightlyCall</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>tightly-call</artifactId>
+        <version>1.0.1</version>
     </parent>
 
-    <artifactId>RemoteCall</artifactId>
+    <artifactId>tightly-call-remote-call</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -47,6 +47,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.7</version>
         </dependency>
+      <dependency>
+        <groupId>xyz.ldqc</groupId>
+        <artifactId>tightly-call-common</artifactId>
+        <version>1.0.1</version>
+        <scope>compile</scope>
+      </dependency>
     </dependencies>
 
 </project>
