@@ -14,6 +14,7 @@ import net.sf.cglib.proxy.MethodProxy;
 import xyz.ldqc.tightcall.common.annotation.OpenMapping;
 import xyz.ldqc.tightcall.common.request.CallRequest;
 import xyz.ldqc.tightcall.consumer.call.CallClientPool;
+import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallBody;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallResult;
 
 /**
@@ -43,13 +44,25 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
             throw new WrongMethodTypeException("returnType must be CallResult");
         }
 
-        CallRequest callRequest = getCallRequest(objects, methodMapping);
+        CallRequest callRequest = null;
+        CallBody callBody = null;
+        if (objects.length > 1) {
+            callRequest = getCallRequest(objects, methodMapping);
+        } else if (objects.length == 1 && CallBody.class.isAssignableFrom(objects[0].getClass())) {
+            callBody = (CallBody) objects[0];
+        }
         Map<String, Object> result = new HashMap<>(address.length);
         for (String addr : address) {
             String[] addrSplit = addr.split(":");
             InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(addrSplit[0],
                 Integer.parseInt(addrSplit[1]));
-            Object res = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
+            Object res = null;
+            if (callRequest == null && callBody != null) {
+                res = CALL_CLIENT_POOL.doCall(targetAddress,
+                    getCallRequest(callBody.getAll().get(addr), methodMapping));
+            } else {
+                res = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
+            }
             result.put(addr, res);
         }
         return new CallResult<>(result);
