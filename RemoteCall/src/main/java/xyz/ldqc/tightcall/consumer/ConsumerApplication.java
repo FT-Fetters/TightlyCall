@@ -68,7 +68,7 @@ public class ConsumerApplication {
         String packageName = scanConfig.packageName();
         Class<? extends ClientProxy> proxyClass = scanConfig.proxy();
         ClientProxy clientProxy = initClientProxy(proxyClass, packageName);
-        callClientProxy = clientProxy.doProxy();
+        callClientProxy = clientProxy.doProxy(bootClazz);
     }
 
     private ClientProxy initClientProxy(Class<? extends ClientProxy> proxyClass, String packageName){

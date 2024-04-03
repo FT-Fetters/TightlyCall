@@ -42,6 +42,7 @@ public class ProviderApplication {
         try {
             ServiceScanner serviceScanner = scannerClazz.getConstructor().newInstance();
             serviceScanner.setPackagePath(packageName);
+            serviceScanner.setRunClass(bootClazz);
             serviceDefinitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
             register.setProviderApplication(this);

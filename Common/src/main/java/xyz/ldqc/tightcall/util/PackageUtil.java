@@ -22,9 +22,9 @@ public class PackageUtil {
     public static final String OS_NAME = "os.name";
     public static final String WIN = "win";
 
-    public static List<Class<?>> getPackageClasses(final String packageName) {
-        if (isClassRunningFromJar(PackageUtil.class)){
-            return new ArrayList<>(getClassNamesFromJarPackage(packageName));
+    public static List<Class<?>> getPackageClasses(final String packageName, Class<?> runClass) {
+        if (isClassRunningFromJar(runClass)) {
+            return new ArrayList<>(getClassNamesFromJarPackage(packageName, runClass));
         }
         String path = packageName.replace('.', '/');
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -46,10 +46,11 @@ public class PackageUtil {
      * @param packageName 要搜索的包名。
      * @return 包含所有类名的集合。
      */
-    public static Set<Class<?>> getClassNamesFromJarPackage(final String packageName) {
+    public static Set<Class<?>> getClassNamesFromJarPackage(final String packageName,
+        Class<?> runClass) {
         Set<String> classNames = new HashSet<>();
         // 获取当前类的保护域代码源的位置
-        String jarPath = PackageUtil.class.getProtectionDomain().getCodeSource().getLocation()
+        String jarPath = runClass.getProtectionDomain().getCodeSource().getLocation()
             .getPath();
 
         // 处理文件路径在不同操作系统和环境下的差异

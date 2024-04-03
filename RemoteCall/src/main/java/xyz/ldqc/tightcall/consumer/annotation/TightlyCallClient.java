@@ -9,6 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TightlyCallClient {
 
-    String serviceName();
+    String serviceName() default "";
+
+    String[] address() default {};
 
 }

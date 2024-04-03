@@ -13,7 +13,7 @@ public interface ClientProxy extends DiscoveryClientAware {
 
     void setPackageName(String packageName);
 
-    Map<Class<?>, Object> doProxy();
+    Map<Class<?>, Object> doProxy(Class<?> runClass);
 
 
 }

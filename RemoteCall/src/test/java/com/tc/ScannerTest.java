@@ -12,7 +12,7 @@ public class ScannerTest {
 
     @Test
     public void packageUtilTest(){
-        List<Class<?>> packageClasses = PackageUtil.getPackageClasses("com.tc");
+        List<Class<?>> packageClasses = PackageUtil.getPackageClasses("com.tc", ScannerTest.class);
         for (Class<?> packageClass : packageClasses) {
             System.out.println(packageClass.getName());
         }
@@ -20,7 +20,7 @@ public class ScannerTest {
 
     @Test
     public void serviceScannerTest(){
-        DefaultServiceScanner defaultServiceScanner = new DefaultServiceScanner("com.tc");
+        DefaultServiceScanner defaultServiceScanner = new DefaultServiceScanner("com.tc", ScannerTest.class);
         List<ServiceDefinition> definitions = defaultServiceScanner.doScan();
 
     }
