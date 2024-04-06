@@ -4,10 +4,13 @@ import java.lang.annotation.Annotation;
 import java.lang.invoke.WrongMethodTypeException;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -53,22 +56,33 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
             callBody = (CallBody) objects[0];
         }
         Map<String, Object> result = new HashMap<>(address.length);
+        Map<String, Future<Object>> futureMap = new HashMap<>(address.length);
         for (String addr : address) {
             String[] addrSplit = addr.split(":");
             InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(addrSplit[0],
                 Integer.parseInt(addrSplit[1]));
-            Object res = null;
+            Future<Object> future;
             if (callRequest == null && callBody != null) {
-                res = CALL_CLIENT_POOL.doCall(targetAddress,
+                 future = CALL_CLIENT_POOL.doAsyncCall(targetAddress,
                     getCallRequest(callBody.getAll().get(addr), methodMapping));
             } else {
-                res = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
+                future = CALL_CLIENT_POOL.doAsyncCall(targetAddress, callRequest);
             }
-            if (Exception.class.isAssignableFrom(res.getClass())){
-                throw new CallException(((Exception) res).getMessage());
-            }
-            result.put(addr, res);
+            futureMap.put(addr, future);
         }
+        futureMap.forEach((addr, future) -> {
+            try {
+                Object res = future.get();
+                if (Exception.class.isAssignableFrom(res.getClass())){
+                    throw new CallException(((Exception) res).getMessage());
+                }
+                result.put(addr, res);
+            } catch (ExecutionException | InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new CallException("call failed: " + e.getMessage());
+            }
+        });
+
         return new CallResult<>(result);
     }
 
