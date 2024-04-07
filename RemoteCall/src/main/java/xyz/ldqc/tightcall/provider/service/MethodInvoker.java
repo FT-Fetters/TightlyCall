@@ -2,16 +2,17 @@ package xyz.ldqc.tightcall.provider.service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import xyz.ldqc.tightcall.exception.MethodNotFoundException;
 
 /**
  * @author Fetters
  */
 public class MethodInvoker {
 
-    public Object invoke(Object o, String methodName, Object[] args){
+    public Object invoke(Object o, String methodName, Object[] args) throws Exception {
         Method method = getMethod(o, methodName, args);
         if (method == null){
-            throw new RuntimeException("unknown method");
+            throw new MethodNotFoundException(String.format("Method '%s' not found in '%s'", methodName, o.getClass().getName()));
         }
         return doInvoke(o, method, args);
     }

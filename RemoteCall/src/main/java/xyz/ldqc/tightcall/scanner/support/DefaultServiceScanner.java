@@ -10,7 +10,6 @@ import xyz.ldqc.tightcall.util.ClassUtil;
 import xyz.ldqc.tightcall.util.PackageUtil;
 import xyz.ldqc.tightcall.util.Path;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;

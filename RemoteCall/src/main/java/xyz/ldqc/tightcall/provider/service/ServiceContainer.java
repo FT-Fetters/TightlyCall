@@ -29,7 +29,7 @@ public class ServiceContainer {
         path2Service(serviceDefinitions);
     }
 
-    public Object invoke(String path, Object[] args){
+    public Object invoke(String path, Object[] args) throws Exception {
         ServiceDefinition serviceDefinition = serviceMap.get(path);
         String clazz = serviceDefinition.getClazz();
         Object o = targetObj.get(clazz);

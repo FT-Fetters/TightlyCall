@@ -37,7 +37,12 @@ public class ChannelCallRequestHandlerInBound implements InboundChain, ChannelHa
         CallRequest callRequest = (CallRequest) obj;
         String path = callRequest.getPath();
         Object[] args = callRequest.getArgs();
-        Object ret = serviceContainer.invoke(path, args);
+        Object ret;
+        try {
+            ret = serviceContainer.invoke(path, args);
+        } catch (Exception e) {
+            ret = e;
+        }
         CallResponse callResponse = new CallResponse();
         callResponse.setSerialNumber(callRequest.getSerialNumber());
         callResponse.setBody(ret);

@@ -4,17 +4,22 @@ import java.lang.annotation.Annotation;
 import java.lang.invoke.WrongMethodTypeException;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import xyz.ldqc.tightcall.common.annotation.OpenMapping;
 import xyz.ldqc.tightcall.common.request.CallRequest;
 import xyz.ldqc.tightcall.consumer.call.CallClientPool;
+import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallBody;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallResult;
+import xyz.ldqc.tightcall.exception.CallException;
 
 /**
  * 直接访问地址客户端
@@ -43,16 +48,53 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
             throw new WrongMethodTypeException("returnType must be CallResult");
         }
 
-        CallRequest callRequest = getCallRequest(objects, methodMapping);
+        CallRequest callRequest = null;
+        CallBody callBody = null;
+        List<String> addressList = Arrays.asList(address);
+        if (objects.length > 1) {
+            callRequest = getCallRequest(objects, methodMapping);
+        } else if (objects.length == 1 && CallBody.class.isAssignableFrom(objects[0].getClass())) {
+            callBody = (CallBody) objects[0];
+        }
+        if (addressList.isEmpty() && callBody != null){
+            addressList = new ArrayList<>(callBody.getAll().keySet());
+        }
+        Map<String, Object> result = doCall(addressList, callRequest, callBody,
+            methodMapping);
+
+        return new CallResult<>(result);
+    }
+
+    private Map<String, Object> doCall(List<String> addressList,
+        CallRequest callRequest, CallBody callBody, OpenMapping methodMapping) {
         Map<String, Object> result = new HashMap<>(address.length);
-        for (String addr : address) {
+        Map<String, Future<Object>> futureMap = new HashMap<>(address.length);
+        for (String addr : addressList) {
             String[] addrSplit = addr.split(":");
             InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(addrSplit[0],
                 Integer.parseInt(addrSplit[1]));
-            Object res = CALL_CLIENT_POOL.doCall(targetAddress, callRequest);
-            result.put(addr, res);
+            Future<Object> future;
+            if (callRequest == null && callBody != null) {
+                 future = CALL_CLIENT_POOL.doAsyncCall(targetAddress,
+                    getCallRequest(callBody.getAll().get(addr), methodMapping));
+            } else {
+                future = CALL_CLIENT_POOL.doAsyncCall(targetAddress, callRequest);
+            }
+            futureMap.put(addr, future);
         }
-        return new CallResult<>(result);
+        futureMap.forEach((addr, future) -> {
+            try {
+                Object res = future.get();
+                if (Exception.class.isAssignableFrom(res.getClass())){
+                    throw new CallException(((Exception) res).getMessage());
+                }
+                result.put(addr, res);
+            } catch (ExecutionException | InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new CallException("call failed: " + e.getMessage());
+            }
+        });
+        return result;
     }
 
     private CallRequest getCallRequest(Object[] objects, OpenMapping methodMapping) {
