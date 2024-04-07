@@ -1,6 +1,8 @@
 package xyz.ldqc.tightcall.provider.register.support;
 
-import xyz.ldqc.tightcall.exception.ServiceRegisterException;
+import java.util.Collections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.provider.ProviderApplication;
 import xyz.ldqc.tightcall.provider.annotation.OpenRegClient;
 import xyz.ldqc.tightcall.provider.annotation.ProviderConfig;
@@ -12,28 +14,32 @@ import java.net.InetSocketAddress;
 import java.util.List;
 
 /**
- * @author LENOVO
+ * @author Fetters
  */
 public class DefaultServiceRegister implements ServiceRegister {
 
+    private static final Logger log = LoggerFactory.getLogger(DefaultServiceRegister.class);
     private RegisterClient client;
 
     private ProviderApplication providerApplication;
 
 
     public DefaultServiceRegister() {
-
+        // Noting to do
     }
 
     @Override
     public void doReg(ServiceDefinition serviceDefinition) {
-        checkAvailable();
-        client.register(serviceDefinition);
+        doReg(Collections.singletonList(serviceDefinition));
     }
 
     @Override
     public void doReg(List<ServiceDefinition> serviceDefinitions) {
         checkAvailable();
+        if (client == null) {
+            log.info("Register is disable");
+            return;
+        }
         serviceDefinitions.forEach(client::register);
     }
 
@@ -42,14 +48,14 @@ public class DefaultServiceRegister implements ServiceRegister {
             Class<?> bootClazz = providerApplication.getBootClazz();
             OpenRegClient openRegClient = bootClazz.getAnnotation(OpenRegClient.class);
             ProviderConfig providerConfig = bootClazz.getAnnotation(ProviderConfig.class);
-            if (openRegClient == null || providerConfig == null){
-                throw new ServiceRegisterException("can not create register client");
+            if (openRegClient == null) {
+                return;
             }
             this.client = RegisterClient.builder()
-                    .target(new InetSocketAddress(openRegClient.host(), openRegClient.port()))
-                    .serviceName(openRegClient.name())
-                    .providerPort(providerConfig.port())
-                    .boot();
+                .target(new InetSocketAddress(openRegClient.host(), openRegClient.port()))
+                .serviceName(openRegClient.name())
+                .providerPort(providerConfig.port())
+                .boot();
         }
     }
 
