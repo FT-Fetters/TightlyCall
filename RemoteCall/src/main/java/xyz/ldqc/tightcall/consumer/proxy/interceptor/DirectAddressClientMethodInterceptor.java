@@ -50,14 +50,26 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
 
         CallRequest callRequest = null;
         CallBody callBody = null;
+        List<String> addressList = Arrays.asList(address);
         if (objects.length > 1) {
             callRequest = getCallRequest(objects, methodMapping);
         } else if (objects.length == 1 && CallBody.class.isAssignableFrom(objects[0].getClass())) {
             callBody = (CallBody) objects[0];
         }
+        if (addressList.isEmpty() && callBody != null){
+            addressList = new ArrayList<>(callBody.getAll().keySet());
+        }
+        Map<String, Object> result = doCall(addressList, callRequest, callBody,
+            methodMapping);
+
+        return new CallResult<>(result);
+    }
+
+    private Map<String, Object> doCall(List<String> addressList,
+        CallRequest callRequest, CallBody callBody, OpenMapping methodMapping) {
         Map<String, Object> result = new HashMap<>(address.length);
         Map<String, Future<Object>> futureMap = new HashMap<>(address.length);
-        for (String addr : address) {
+        for (String addr : addressList) {
             String[] addrSplit = addr.split(":");
             InetSocketAddress targetAddress = InetSocketAddress.createUnresolved(addrSplit[0],
                 Integer.parseInt(addrSplit[1]));
@@ -82,8 +94,7 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
                 throw new CallException("call failed: " + e.getMessage());
             }
         });
-
-        return new CallResult<>(result);
+        return result;
     }
 
     private CallRequest getCallRequest(Object[] objects, OpenMapping methodMapping) {

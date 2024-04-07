@@ -12,6 +12,7 @@ import xyz.ldqc.tightcall.consumer.proxy.factory.ProxySupport;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.ClientMethodInterceptor;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.DirectAddressClientMethodInterceptor;
 import xyz.ldqc.tightcall.util.PackageUtil;
+import xyz.ldqc.tightcall.util.StringUtil;
 
 /**
  * @author Fetters
@@ -53,7 +54,7 @@ public class CglibClientProxy implements ClientProxy {
         ProxySupport proxySupport = new ProxySupport();
         TightlyCallClient clientAnnotation = clazz.getAnnotation(TightlyCallClient.class);
         String[] address = clientAnnotation.address();
-        if (address != null && address.length > 0){
+        if (StringUtil.isBlank(clientAnnotation.serviceName())){
             proxySupport.setInterceptor(new DirectAddressClientMethodInterceptor(address));
         }else {
             proxySupport.setInterceptor(new ClientMethodInterceptor(discoveryClient));
