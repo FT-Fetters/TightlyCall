@@ -10,7 +10,7 @@ public class ProxySupport {
 
     private Class<?> targetClass;
 
-    private MethodInterceptor interceptor;
+    private ProxyMethodInterceptor interceptor;
 
     public Class<?> getTargetClass() {
         return targetClass;
@@ -20,11 +20,11 @@ public class ProxySupport {
         this.targetClass = targetClass;
     }
 
-    public MethodInterceptor getInterceptor() {
+    public ProxyMethodInterceptor getInterceptor() {
         return interceptor;
     }
 
-    public void setInterceptor(MethodInterceptor interceptor) {
+    public void setInterceptor(ProxyMethodInterceptor interceptor) {
         this.interceptor = interceptor;
     }
 }
