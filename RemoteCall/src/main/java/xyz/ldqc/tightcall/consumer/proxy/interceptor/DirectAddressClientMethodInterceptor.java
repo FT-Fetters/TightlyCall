@@ -9,14 +9,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
-import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import xyz.ldqc.tightcall.common.annotation.OpenMapping;
 import xyz.ldqc.tightcall.common.request.CallRequest;
 import xyz.ldqc.tightcall.consumer.call.CallClientPool;
+import xyz.ldqc.tightcall.consumer.proxy.factory.ProxyMethodInterceptor;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallBody;
 import xyz.ldqc.tightcall.consumer.proxy.interceptor.extra.CallResult;
 import xyz.ldqc.tightcall.exception.CallException;
@@ -26,7 +27,7 @@ import xyz.ldqc.tightcall.exception.CallException;
  *
  * @author Fetters
  */
-public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
+public class DirectAddressClientMethodInterceptor implements ProxyMethodInterceptor {
 
     private final String[] address;
 
@@ -123,5 +124,11 @@ public class DirectAddressClientMethodInterceptor implements MethodInterceptor {
             }
         }
         return annotation;
+    }
+
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy,
+        Callable<?> callable) throws Throwable {
+        throw new UnsupportedOperationException("not support");
     }
 }

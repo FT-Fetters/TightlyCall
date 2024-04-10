@@ -1,12 +1,13 @@
 package xyz.ldqc.tightcall.consumer.proxy.interceptor;
 
-import net.sf.cglib.proxy.MethodInterceptor;
+import java.util.concurrent.Callable;
 import net.sf.cglib.proxy.MethodProxy;
 import xyz.ldqc.tightcall.common.annotation.OpenMapping;
 import xyz.ldqc.tightcall.common.request.CallRequest;
 import xyz.ldqc.tightcall.consumer.annotation.TightlyCallClient;
 import xyz.ldqc.tightcall.consumer.call.CallClientPool;
 import xyz.ldqc.tightcall.consumer.discovery.DiscoveryClient;
+import xyz.ldqc.tightcall.consumer.proxy.factory.ProxyMethodInterceptor;
 import xyz.ldqc.tightcall.exception.ClientException;
 import xyz.ldqc.tightcall.exception.ProxyException;
 import xyz.ldqc.tightcall.exception.RegisterClientException;
@@ -22,7 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * @author Fetters
  */
-public class ClientMethodInterceptor implements MethodInterceptor {
+public class ClientMethodInterceptor implements ProxyMethodInterceptor {
 
 
     private static final CallClientPool CALL_CLIENT_POOL = new CallClientPool();
@@ -127,4 +128,9 @@ public class ClientMethodInterceptor implements MethodInterceptor {
     }
 
 
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy,
+        Callable<?> callable) throws Throwable {
+        throw new UnsupportedOperationException("not support");
+    }
 }

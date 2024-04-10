@@ -23,6 +23,8 @@ public class ProviderApplication {
 
     private ProviderServer providerServer;
 
+    private ServiceContainer serviceContainer;
+
     private ProviderApplication(Class<?> bootClazz){
         this.bootClazz = bootClazz;
     }
@@ -58,8 +60,9 @@ public class ProviderApplication {
         if (providerConfig == null){
             throw new ProviderException("cannot find provider config");
         }
+        this.serviceContainer = new ServiceContainer(serviceDefinitions, new MethodInvoker());
         this.providerServer = ProviderServer.builder()
-                .serviceContainer(new ServiceContainer(serviceDefinitions, new MethodInvoker()))
+                .serviceContainer(serviceContainer)
                 .port(providerConfig.port())
                 .boot();
     }
@@ -68,5 +71,7 @@ public class ProviderApplication {
         return bootClazz;
     }
 
-
+    public ServiceContainer getServiceContainer() {
+        return serviceContainer;
+    }
 }

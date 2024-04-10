@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ConsumerApplication {
 
-    private final static Logger log = LoggerFactory.getLogger(ConsumerApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(ConsumerApplication.class);
 
     private final Class<?> bootClazz;
 
