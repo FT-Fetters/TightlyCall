@@ -39,6 +39,7 @@ public class DefaultServiceScanner implements ServiceScanner {
     public List<ServiceDefinition> doScan() {
         List<ServiceDefinition> definitions = new ArrayList<>();
         List<Class<?>> classList = PackageUtil.getPackageClasses(packagePath, runClass);
+        log.info("scan class: {}", classList.size());
         classList.forEach(c -> doScanClass(c, definitions));
         return definitions;
     }

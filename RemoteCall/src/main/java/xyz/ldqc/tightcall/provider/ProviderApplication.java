@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class ProviderApplication {
 
+    public static final String BYTE_BUDDY_FLAG = "ByteBuddy";
     private final Class<?> bootClazz;
 
     private ProviderServer providerServer;
@@ -44,7 +45,11 @@ public class ProviderApplication {
         try {
             ServiceScanner serviceScanner = scannerClazz.getConstructor().newInstance();
             serviceScanner.setPackagePath(packageName);
-            serviceScanner.setRunClass(bootClazz);
+            Class<?> scanClass = bootClazz;
+            if (bootClazz.getName().contains(BYTE_BUDDY_FLAG)){
+                scanClass = bootClazz.getSuperclass();
+            }
+            serviceScanner.setRunClass(scanClass);
             serviceDefinitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
             register.setProviderApplication(this);
