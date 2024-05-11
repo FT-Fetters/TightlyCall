@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.chain.support;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.OutboundChain;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
@@ -16,7 +17,7 @@ import java.nio.channels.SocketChannel;
 public abstract class AbstractChannelPostHandlerOutBoundChain implements OutboundChain,
     ChannelHandler {
 
-    protected Logger logger;
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void doChain(Channel channel, Object obj) {
