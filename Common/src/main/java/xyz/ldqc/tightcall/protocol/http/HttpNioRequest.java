@@ -12,6 +12,7 @@ import xyz.ldqc.tightcall.exception.HttpNioRequestParseException;
 public class HttpNioRequest {
 
   private String method;
+  private HttpMethodEnum definedMethod;
   private URI uri;
   private String protocol;
   private Map<String, String> headers;
@@ -42,6 +43,7 @@ public class HttpNioRequest {
   private static void parseRequestLine(HttpNioRequest request, String firstLine) {
     String[] requestLineParts = firstLine.split(" ");
     request.method = requestLineParts[0];
+    request.definedMethod = HttpMethodEnum.parse(request.method);
     request.uri = URI.create(requestLineParts[1]);
     request.protocol = requestLineParts[2];
   }
@@ -129,5 +131,9 @@ public class HttpNioRequest {
 
   public Map<String, String> getParam() {
     return param;
+  }
+
+  public HttpMethodEnum getDefinedMethod() {
+    return definedMethod;
   }
 }
