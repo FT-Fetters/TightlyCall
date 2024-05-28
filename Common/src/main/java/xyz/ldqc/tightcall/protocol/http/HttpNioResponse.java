@@ -1,12 +1,13 @@
 package xyz.ldqc.tightcall.protocol.http;
 
+import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.exception.HttpNioResponseException;
 import xyz.ldqc.tightcall.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+    /**
  * @author Fetters
  */
 public class HttpNioResponse {
@@ -19,7 +20,7 @@ public class HttpNioResponse {
 
     private final Map<String, String> header;
 
-    private final byte[] body;
+    private byte[] body;
 
     public static ResponseBuilder builder() {
         return new ResponseBuilder();
@@ -60,6 +61,15 @@ public class HttpNioResponse {
         }
 
         return headerBuilder.toString();
+    }
+
+    public void write(String content){
+        SimpleByteData byteData = new SimpleByteData(body);
+        byteData.writeBytes(content.getBytes());
+        this.body = byteData.readBytes();
+        if (this.body != null && this.body.length > 0) {
+            this.header.put(ResponseHeaderEnum.CONTENT_LENGTH.getKey(), String.valueOf(this.body.length));
+        }
     }
 
     public static class ResponseBuilder {
