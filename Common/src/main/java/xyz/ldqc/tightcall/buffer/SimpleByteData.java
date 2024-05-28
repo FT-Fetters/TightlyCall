@@ -124,8 +124,8 @@ public class SimpleByteData extends AbstractByteData {
    */
   public SimpleByteData(byte[] bytes) {
     // 先通过指定大小容量构造函数创建对象，再通过写入的方法写入数据
-    this(bytes.length);
-    this.writeBytes(bytes);
+    this(bytes != null ? bytes.length : 0);
+    this.writeBytes(bytes != null ? bytes : new byte[0]);
   }
 
 
