@@ -198,3 +198,6 @@ public class TestController {
 In the end, boot the three service.
 Request the interface we defined: http://localhost:8081/test/test
 and we can see the result.
+
+## LICENSE
+MIT ©[Fetters](LICENSE)
