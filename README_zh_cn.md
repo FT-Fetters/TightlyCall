@@ -192,3 +192,6 @@ public class TestController {
 
 最后，启动这三个服务。请求我们定义的接口：
 http://localhost:8081/test/test，我们就可以看到结果了。
+
+## LICENSE
+MIT ©[Fetters](LICENSE)
