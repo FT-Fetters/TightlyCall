@@ -72,6 +72,15 @@ public class HttpNioResponse {
         }
     }
 
+    public void write(byte[] content){
+        SimpleByteData byteData = new SimpleByteData(body);
+        byteData.writeBytes(content);
+        this.body = byteData.readBytes();
+        if (this.body != null && this.body.length > 0) {
+            this.header.put(ResponseHeaderEnum.CONTENT_LENGTH.getKey(), String.valueOf(this.body.length));
+        }
+    }
+
     public static class ResponseBuilder {
 
         private HttpVersionEnum version;
