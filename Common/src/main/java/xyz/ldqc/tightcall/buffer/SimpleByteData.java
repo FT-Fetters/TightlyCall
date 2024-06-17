@@ -257,6 +257,9 @@ public class SimpleByteData extends AbstractByteData {
    */
   @Override
   public byte[] readBytes(int len) {
+    if (len == 0){
+      return new byte[0];
+    }
     checkReadableByte(len);
     byte[] allocBytes = alloc(len);
     doReadBytes(allocBytes);

@@ -75,19 +75,14 @@ public class HttpNioResponse {
     }
 
     public void write(String content){
-        SimpleByteData byteData = new SimpleByteData(body);
-        byteData.writeBytes(content.getBytes());
-        this.body = byteData.readBytes();
-        if (this.body != null && this.body.length > 0) {
-            this.header.put(ResponseHeaderEnum.CONTENT_LENGTH.getKey(), String.valueOf(this.body.length));
-        }
+        this.write(content.getBytes());
     }
 
     public void write(byte[] content){
         SimpleByteData byteData = new SimpleByteData(body);
         byteData.writeBytes(content);
         this.body = byteData.readBytes();
-        if (this.body != null && this.body.length > 0) {
+        if (this.body != null) {
             this.header.put(ResponseHeaderEnum.CONTENT_LENGTH.getKey(), String.valueOf(this.body.length));
         }
     }
