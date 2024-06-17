@@ -30,7 +30,7 @@ public class ChannelHttpPostHandlerOutBoundChain extends AbstractChannelPostHand
       return;
     }
     HttpNioResponse httpResponse = (HttpNioResponse) obj;
-    doWrite(((SocketChannel) channel), httpResponse.toResponseString().getBytes());
+    doWrite(((SocketChannel) channel), httpResponse.toResponseBytes());
   }
 
   private void writeDefaultResponse(Channel channel, HttpNioRequest request) {

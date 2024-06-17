@@ -46,6 +46,17 @@ public class HttpNioResponse {
         return responseBuilder.toString();
     }
 
+    public byte[] toResponseBytes() {
+        SimpleByteData byteData = new SimpleByteData();
+        byteData.writeBytes(getStatusLine().getBytes());
+        byteData.writeBytes(getHeaderLies().getBytes());
+        byteData.writeBytes("\r\n".getBytes());
+        if (body != null) {
+            byteData.writeBytes(body);
+        }
+        return byteData.readBytes();
+    }
+
     private String getStatusLine() {
         return version + " " + code +
                 (StringUtil.isNotBlank(msg) ? (" " + msg) : "") +
