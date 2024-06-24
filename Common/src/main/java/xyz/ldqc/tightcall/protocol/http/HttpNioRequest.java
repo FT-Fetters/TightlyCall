@@ -57,11 +57,13 @@ public class HttpNioRequest {
     String[] params = query.split("&");
     for (String param : params) {
       String[] kv = param.split("=");
-      if (kv.length != 2) {
-        throw new HttpNioRequestParseException("Parse param error");
-      }
       String k = kv[0];
-      String v = kv[1];
+      String v;
+      if (kv.length == 1){
+        v = "";
+      }else {
+        v = kv[1];
+      }
       request.param.put(k, v);
     }
   }
