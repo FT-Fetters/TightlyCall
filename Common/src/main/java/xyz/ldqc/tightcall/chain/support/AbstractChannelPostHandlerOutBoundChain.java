@@ -31,7 +31,7 @@ public abstract class AbstractChannelPostHandlerOutBoundChain implements Outboun
 
 
     protected void doWrite(SocketChannel target, byte[] data) {
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
         // 数据总长度
         int totalLen = data.length;
         // 剩余发送的长度
