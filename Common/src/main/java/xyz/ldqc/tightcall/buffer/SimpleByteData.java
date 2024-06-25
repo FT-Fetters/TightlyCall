@@ -14,7 +14,7 @@ public class SimpleByteData extends AbstractByteData {
   /**
    * 默认最大空间
    */
-  private static final int DEFAULT_MAX_CAPACITY = 65535;
+  private static final int DEFAULT_MAX_CAPACITY = 1024 * 1024 * 10;
 
   /**
    * 默认初始空间
