@@ -138,4 +138,8 @@ public class HttpNioRequest {
   public HttpMethodEnum getDefinedMethod() {
     return definedMethod;
   }
+
+  public void resetUri(String uri){
+    this.uri = URI.create(uri);
+  }
 }
