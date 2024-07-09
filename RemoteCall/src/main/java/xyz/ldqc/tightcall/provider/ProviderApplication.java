@@ -19,9 +19,12 @@ import java.util.List;
  */
 public class ProviderApplication {
 
+    public static final String BYTE_BUDDY_FLAG = "ByteBuddy";
     private final Class<?> bootClazz;
 
     private ProviderServer providerServer;
+
+    private ServiceContainer serviceContainer;
 
     private ProviderApplication(Class<?> bootClazz){
         this.bootClazz = bootClazz;
@@ -42,7 +45,11 @@ public class ProviderApplication {
         try {
             ServiceScanner serviceScanner = scannerClazz.getConstructor().newInstance();
             serviceScanner.setPackagePath(packageName);
-            serviceScanner.setRunClass(bootClazz);
+            Class<?> scanClass = bootClazz;
+            if (bootClazz.getName().contains(BYTE_BUDDY_FLAG)){
+                scanClass = bootClazz.getSuperclass();
+            }
+            serviceScanner.setRunClass(scanClass);
             serviceDefinitions = serviceScanner.doScan();
             ServiceRegister register = ServiceRegisterFactory.getRegister(type);
             register.setProviderApplication(this);
@@ -58,8 +65,9 @@ public class ProviderApplication {
         if (providerConfig == null){
             throw new ProviderException("cannot find provider config");
         }
+        this.serviceContainer = new ServiceContainer(serviceDefinitions, new MethodInvoker());
         this.providerServer = ProviderServer.builder()
-                .serviceContainer(new ServiceContainer(serviceDefinitions, new MethodInvoker()))
+                .serviceContainer(serviceContainer)
                 .port(providerConfig.port())
                 .boot();
     }
@@ -68,5 +76,7 @@ public class ProviderApplication {
         return bootClazz;
     }
 
-
+    public ServiceContainer getServiceContainer() {
+        return serviceContainer;
+    }
 }

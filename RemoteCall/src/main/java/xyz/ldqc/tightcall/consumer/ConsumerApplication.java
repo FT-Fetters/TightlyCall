@@ -1,5 +1,7 @@
 package xyz.ldqc.tightcall.consumer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.consumer.annotation.TightCallConfig;
 import xyz.ldqc.tightcall.consumer.annotation.TightlyCallScan;
 import xyz.ldqc.tightcall.consumer.discovery.DiscoveryClient;
@@ -13,6 +15,8 @@ import java.util.Map;
  * @author Fetters
  */
 public class ConsumerApplication {
+
+    private static final Logger log = LoggerFactory.getLogger(ConsumerApplication.class);
 
     private final Class<?> bootClazz;
 
@@ -50,7 +54,8 @@ public class ConsumerApplication {
     private void initDiscoveryClient(){
         TightCallConfig config = this.bootClazz.getAnnotation(TightCallConfig.class);
         if (config == null){
-            throw new ConsumerException("unknown tightly call config annotation");
+            log.info("Discovery client is disable");
+            return;
         }
         String host = config.registerHost();
         int port = config.registerPort();

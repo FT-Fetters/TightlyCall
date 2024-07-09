@@ -2,12 +2,17 @@ package xyz.ldqc.tightcall.provider.service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.exception.MethodNotFoundException;
+import xyz.ldqc.tightcall.exception.ProxyException;
 
 /**
  * @author Fetters
  */
 public class MethodInvoker {
+
+    private static final Logger log = LoggerFactory.getLogger(MethodInvoker.class);
 
     public Object invoke(Object o, String methodName, Object[] args) throws Exception {
         Method method = getMethod(o, methodName, args);
@@ -21,12 +26,14 @@ public class MethodInvoker {
         try {
             return method.invoke(o, args);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            Throwable targetException = e.getCause();
+            log.error("invoke method error", targetException.getMessage(), targetException);
+            throw new ProxyException(targetException.getMessage());
         }
     }
 
     private Method getMethod(Object o, String methodName, Object[] args){
-        Method[] methods = o.getClass().getMethods();
+        Method[] methods = o.getClass().getDeclaredMethods();
         for (Method method : methods) {
             if (method.getName().equals(methodName)
                             && compareTypes(args, method.getParameterTypes())) {

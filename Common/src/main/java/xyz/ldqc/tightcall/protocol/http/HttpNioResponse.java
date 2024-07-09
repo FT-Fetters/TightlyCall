@@ -1,12 +1,13 @@
 package xyz.ldqc.tightcall.protocol.http;
 
+import xyz.ldqc.tightcall.buffer.SimpleByteData;
 import xyz.ldqc.tightcall.exception.HttpNioResponseException;
 import xyz.ldqc.tightcall.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+    /**
  * @author Fetters
  */
 public class HttpNioResponse {
@@ -19,7 +20,7 @@ public class HttpNioResponse {
 
     private final Map<String, String> header;
 
-    private final byte[] body;
+    private byte[] body;
 
     public static ResponseBuilder builder() {
         return new ResponseBuilder();
@@ -45,6 +46,17 @@ public class HttpNioResponse {
         return responseBuilder.toString();
     }
 
+    public byte[] toResponseBytes() {
+        SimpleByteData byteData = new SimpleByteData();
+        byteData.writeBytes(getStatusLine().getBytes());
+        byteData.writeBytes(getHeaderLies().getBytes());
+        byteData.writeBytes("\r\n".getBytes());
+        if (body != null) {
+            byteData.writeBytes(body);
+        }
+        return byteData.readBytes();
+    }
+
     private String getStatusLine() {
         return version + " " + code +
                 (StringUtil.isNotBlank(msg) ? (" " + msg) : "") +
@@ -60,6 +72,19 @@ public class HttpNioResponse {
         }
 
         return headerBuilder.toString();
+    }
+
+    public void write(String content){
+        this.write(content.getBytes());
+    }
+
+    public void write(byte[] content){
+        SimpleByteData byteData = new SimpleByteData(body);
+        byteData.writeBytes(content);
+        this.body = byteData.readBytes();
+        if (this.body != null) {
+            this.header.put(ResponseHeaderEnum.CONTENT_LENGTH.getKey(), String.valueOf(this.body.length));
+        }
     }
 
     public static class ResponseBuilder {

@@ -1,6 +1,7 @@
 package xyz.ldqc.tightcall.chain.support;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.ldqc.tightcall.chain.Chain;
 import xyz.ldqc.tightcall.chain.OutboundChain;
 import xyz.ldqc.tightcall.server.handler.ChannelHandler;
@@ -16,7 +17,7 @@ import java.nio.channels.SocketChannel;
 public abstract class AbstractChannelPostHandlerOutBoundChain implements OutboundChain,
     ChannelHandler {
 
-    protected Logger logger;
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void doChain(Channel channel, Object obj) {
@@ -30,7 +31,7 @@ public abstract class AbstractChannelPostHandlerOutBoundChain implements Outboun
 
 
     protected void doWrite(SocketChannel target, byte[] data) {
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
         // 数据总长度
         int totalLen = data.length;
         // 剩余发送的长度

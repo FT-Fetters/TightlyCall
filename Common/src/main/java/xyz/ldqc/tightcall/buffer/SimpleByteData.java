@@ -14,7 +14,7 @@ public class SimpleByteData extends AbstractByteData {
   /**
    * 默认最大空间
    */
-  private static final int DEFAULT_MAX_CAPACITY = 65535;
+  private static final int DEFAULT_MAX_CAPACITY = 1024 * 1024 * 10;
 
   /**
    * 默认初始空间
@@ -124,8 +124,8 @@ public class SimpleByteData extends AbstractByteData {
    */
   public SimpleByteData(byte[] bytes) {
     // 先通过指定大小容量构造函数创建对象，再通过写入的方法写入数据
-    this(bytes.length);
-    this.writeBytes(bytes);
+    this(bytes != null ? bytes.length : 0);
+    this.writeBytes(bytes != null ? bytes : new byte[0]);
   }
 
 
@@ -257,6 +257,9 @@ public class SimpleByteData extends AbstractByteData {
    */
   @Override
   public byte[] readBytes(int len) {
+    if (len == 0){
+      return new byte[0];
+    }
     checkReadableByte(len);
     byte[] allocBytes = alloc(len);
     doReadBytes(allocBytes);

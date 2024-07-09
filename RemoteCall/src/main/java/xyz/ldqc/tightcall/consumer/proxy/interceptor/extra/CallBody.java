@@ -18,8 +18,12 @@ public class CallBody {
     }
 
     public CallBody set(String address, Object... args) {
+        if (args.length != types.length){
+            throw new IllegalArgumentException("args length not equal types length");
+        }
         for (int i = 0; i < args.length; i++) {
-            if (!types[i].isAssignableFrom(args[i].getClass())) {
+
+            if (args[i] != null && !types[i].isAssignableFrom(args[i].getClass())) {
                 throw new IllegalArgumentException(
                     String.format("Need type %s but is %s", types[i], args[i].getClass()));
             }

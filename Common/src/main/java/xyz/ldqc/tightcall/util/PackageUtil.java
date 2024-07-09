@@ -181,10 +181,14 @@ public class PackageUtil {
     private static String classFile2ClassName(
         File classFile, File baseFile, String basePath) {
         basePath = basePath.replace("/", ".");
-        return basePath + classFile.getAbsolutePath()
+        String className = basePath + classFile.getAbsolutePath()
             .replace(baseFile.getAbsolutePath(), "")
             .replace("\\", ".")
             .replace(CLASS_SUFFIX, "");
+        if (className.startsWith(".")) {
+            className = className.substring(1);
+        }
+        return className;
 
     }
 
