@@ -126,7 +126,7 @@ public class HttpCacheBody {
     private void initContentLength() {
         for (byte[] bytes : lines) {
             String line = new String(bytes);
-            if (line.contains(ResponseHeaderEnum.CONTENT_LENGTH.getKey())) {
+            if (line.split(":")[0].toUpperCase().trim().equals(ResponseHeaderEnum.CONTENT_LENGTH.getKey())) {
                 contentLen = Integer.parseInt(line.split(":")[1].trim());
                 return;
             }
@@ -145,7 +145,7 @@ public class HttpCacheBody {
             if (i - l == 0) {
                 // 如果是空行代表头部结束到数据部分
                 headEndLine(data, i);
-                return;
+                break;
             }
             SimpleByteData byteData = new SimpleByteData();
             // 判断是否在cache中是否有数据，如果有则先把缓存中的数据加入

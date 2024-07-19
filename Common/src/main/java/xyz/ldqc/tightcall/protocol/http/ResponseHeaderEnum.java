@@ -23,7 +23,7 @@ public enum ResponseHeaderEnum {
     }
 
     public String getKey(){
-        return this.key;
+        return this.key.toUpperCase();
     }
 
     @Override
