@@ -1,5 +1,8 @@
 package xyz.ldqc.tightcall.chain.support.http;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -38,19 +41,26 @@ public class ChannelHttpPreHandlerInBoundChain extends AbstractChannelPreHandler
     }
 
     private void handleSocketChannel(SocketChannel channel, SelectionKey selectionKey){
-        String requestData = getRequestData(channel, selectionKey);
+        byte[] requestData = getRequestData(channel, selectionKey);
         if (requestData == null){
             log.info("disconnect");
             return;
         }
-        if (requestData.isBlank()){
+        if (requestData.length == 0){
             return;
         }
         HttpNioRequest httpNioRequest = handleRequestData(requestData);
+        try {
+            InetSocketAddress remoteAddress = ((InetSocketAddress) channel.getRemoteAddress());
+            httpNioRequest.setConnectIp(remoteAddress.getHostName());
+            httpNioRequest.setConnectPort(remoteAddress.getPort());
+        }catch (IOException ignored) {
+            // ignore
+        }
         nextChain.doChain(channel, httpNioRequest);
     }
 
-    private String getRequestData(SocketChannel channel, SelectionKey selectionKey){
+    private byte[] getRequestData(SocketChannel channel, SelectionKey selectionKey){
         SimpleByteData requestData = new SimpleByteData(1024);
         AbstractByteData byteData;
         int readLen;
@@ -67,12 +77,12 @@ public class ChannelHttpPreHandlerInBoundChain extends AbstractChannelPreHandler
         HttpCacheBody httpCacheBody = cache.get(channel);
         httpCacheBody.append(requestData.readBytes());
         if (httpCacheBody.isEnd()){
-            return new String(httpCacheBody.readRequestData());
+            return httpCacheBody.readRequestData();
         }
-        return "";
+        return new byte[0];
     }
 
-    private HttpNioRequest handleRequestData(String requestData){
+    private HttpNioRequest handleRequestData(byte[] requestData){
         HttpNioRequest httpNioRequest = HttpNioRequest.parse(requestData);
         String method = httpNioRequest.getMethod();
         String uri = httpNioRequest.getUri().toString();

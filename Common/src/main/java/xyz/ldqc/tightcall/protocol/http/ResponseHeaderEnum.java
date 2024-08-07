@@ -14,7 +14,12 @@ public enum ResponseHeaderEnum {
     /**
      * 内容类型
      */
-    CONTENT_TYPE("Content-Type");
+    CONTENT_TYPE("Content-Type"),
+    /**
+     * 内容分发
+     */
+    CONTENT_DISPOSITION("Content-Disposition");
+
 
     private final String key;
 

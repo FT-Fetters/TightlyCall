@@ -54,6 +54,7 @@ public class HttpCacheBody {
 
     public void append(byte[] data) {
         if (isEnd()) {
+            preData.writeBytes(data);
             return;
         }
         handlePreCache();
@@ -145,7 +146,7 @@ public class HttpCacheBody {
             if (i - l == 0) {
                 // 如果是空行代表头部结束到数据部分
                 headEndLine(data, i);
-                break;
+                return;
             }
             SimpleByteData byteData = new SimpleByteData();
             // 判断是否在cache中是否有数据，如果有则先把缓存中的数据加入
