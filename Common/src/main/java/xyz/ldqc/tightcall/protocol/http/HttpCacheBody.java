@@ -54,6 +54,7 @@ public class HttpCacheBody {
 
     public void append(byte[] data) {
         if (isEnd()) {
+            preData.writeBytes(data);
             return;
         }
         handlePreCache();
@@ -126,7 +127,7 @@ public class HttpCacheBody {
     private void initContentLength() {
         for (byte[] bytes : lines) {
             String line = new String(bytes);
-            if (line.contains(ResponseHeaderEnum.CONTENT_LENGTH.getKey())) {
+            if (line.split(":")[0].toUpperCase().trim().equals(ResponseHeaderEnum.CONTENT_LENGTH.getKey())) {
                 contentLen = Integer.parseInt(line.split(":")[1].trim());
                 return;
             }
