@@ -5,9 +5,11 @@ import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import xyz.ldqc.tightcall.protocol.http.support.multipart.AbstractMultipartContent;
 import xyz.ldqc.tightcall.protocol.http.support.multipart.MultipartFile;
 import xyz.ldqc.tightcall.util.StringUtil;
@@ -314,7 +316,14 @@ public class HttpNioRequest {
         if (this.headers == null) {
             this.headers = new HashMap<>(16);
         }
-        this.headers.put(key, value);
+        this.headers.put(standardHeaderKey(key), value);
+    }
+
+    private String standardHeaderKey(String key){
+        return Arrays.stream(key.split("-"))
+            .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase())
+            .collect(Collectors.joining("-"));
+
     }
 
     @Override
