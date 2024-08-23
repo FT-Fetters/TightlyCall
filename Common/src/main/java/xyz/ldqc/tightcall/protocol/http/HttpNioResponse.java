@@ -87,6 +87,10 @@ public class HttpNioResponse {
         }
     }
 
+    public void addHeader(String key, String value) {
+        header.put(key, value);
+    }
+
     public static class ResponseBuilder {
 
         private HttpVersionEnum version;
