@@ -35,7 +35,7 @@ Common
 ```xml
 
 <dependency>
-    <groupId>xyz.ldqc</groupId>
+    <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-common</artifactId>
     <version>1.0.1</version>
 </dependency>
@@ -46,7 +46,7 @@ Registry
 ```xml
 
 <dependency>
-    <groupId>xyz.ldqc</groupId>
+    <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-registry</artifactId>
     <version>1.0.1</version>
 </dependency>
@@ -57,7 +57,7 @@ RemoteCall
 ```xml
 
 <dependency>
-    <groupId>xyz.ldqc</groupId>
+    <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-remote-call</artifactId>
     <version>1.0.1</version>
 </dependency>

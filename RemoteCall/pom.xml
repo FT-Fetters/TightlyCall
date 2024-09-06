@@ -4,27 +4,55 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>xyz.ldqc</groupId>
+    <groupId>com.heybcat</groupId>
     <artifactId>tightly-call</artifactId>
     <version>1.0.1</version>
   </parent>
 
   <artifactId>tightly-call-remote-call</artifactId>
+  <version>1.0.1</version>
+  <description>tightly-call-remote-call</description>
+
+  <url>https://github.com/FT-Fetters/TightlyCall</url>
+
+  <scm>
+    <url>https://github.com/FT-Fetters/TightlyCall</url>
+    <connection>https://github.com/FT-Fetters/TightlyCall.git</connection>
+    <developerConnection>https://github.com/FT-Fetters/TightlyCall.git</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>Fetters</id>
+      <name>Fetters</name>
+      <email>ftfetters@gamil.com</email>
+      <url>https://github.com/FT-Fetters/TightlyCall</url>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <properties>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
     <dependency>
-      <groupId>xyz.ldqc</groupId>
+      <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-common</artifactId>
       <version>1.0.1</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>xyz.ldqc</groupId>
+      <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-register</artifactId>
       <version>1.0.1</version>
       <scope>compile</scope>
@@ -48,7 +76,7 @@
       <version>1.9.7</version>
     </dependency>
     <dependency>
-      <groupId>xyz.ldqc</groupId>
+      <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-common</artifactId>
       <version>1.0.1</version>
       <scope>compile</scope>
@@ -56,5 +84,81 @@
 
 
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+      <!-- Source -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Javadoc -->
+      <!-- Gpg Signature -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.4.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+          <tokenAuth>true</tokenAuth>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>${serverId}</id>
+      <url>https://central.sonatype.com/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
