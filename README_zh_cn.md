@@ -15,7 +15,7 @@ Spring Boot 的 SPI 中，但仍可在 Spring Boot 中使用。
 ### 步骤 1
 
 从 GitHub 上拉取项目  
-当前最新分支为 dev-1.0.1
+当前最新分支为 dev-1.0.2
 
 ```shell
 mvn clean -f pom.xml
@@ -35,7 +35,7 @@ Common
 <dependency>
     <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-common</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -46,7 +46,7 @@ Registry
 <dependency>
     <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-registry</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 

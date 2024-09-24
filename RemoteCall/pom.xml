@@ -6,11 +6,10 @@
 <!--  <parent>-->
   <groupId>com.heybcat</groupId>
 <!--  <artifactId>tightly-call</artifactId>-->
-<!--  <version>1.0.1</version>-->
 <!--  </parent>-->
 
   <artifactId>tightly-call-remote-call</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <description>tightly-call-remote-call</description>
 
   <url>https://github.com/FT-Fetters/TightlyCall</url>
@@ -48,13 +47,13 @@
     <dependency>
       <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-common</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-register</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
       <scope>compile</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/cglib/cglib -->
@@ -78,7 +77,7 @@
     <dependency>
       <groupId>com.heybcat</groupId>
       <artifactId>tightly-call-common</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
       <scope>compile</scope>
     </dependency>
 

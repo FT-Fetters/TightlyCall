@@ -17,7 +17,7 @@ Since it has not been uploaded to the Maven repository, it needs to be installed
 ### Step 1
 
 pull project from GitHub  
-current newest branch iss dev-1.0.1
+current newest branch iss dev-1.0.2
 
 ```shell
 mvn clean -f pom.xml
@@ -37,7 +37,7 @@ Common
 <dependency>
     <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-common</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Registry
 <dependency>
     <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-registry</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -59,7 +59,7 @@ RemoteCall
 <dependency>
     <groupId>com.heybcat</groupId>
     <artifactId>tightly-call-remote-call</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
